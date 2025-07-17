@@ -1,0 +1,66 @@
+import { Link } from "react-router";
+import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn } from "react-icons/fa";
+import logo from "../../../assets/logo.png";
+
+const Footer = () => {
+  return (
+    <footer className="bg-gray-100 text-gray-700 mt-12 border-t">
+      <div className="max-w-6xl mx-auto px-4 py-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+        
+        {/* Logo & Description */}
+        <div className="flex flex-col items-start gap-3">
+          <Link to="/" className="flex items-center gap-2">
+            <img src={logo} alt="BrickBase Logo" className="w-8 h-8" />
+            <span className="text-xl font-bold text-gray-800">BrickBase</span>
+          </Link>
+          <p className="text-sm text-gray-600">
+            Your trusted platform for buying, renting, and listing properties.
+          </p>
+        </div>
+
+        {/* Navigation Links */}
+        <div className="flex flex-col gap-2">
+          <h3 className="font-semibold text-gray-800 mb-2">Quick Links</h3>
+          <Link to="/" className="hover:text-blue-600">Home</Link>
+          <Link to="/properties" className="hover:text-blue-600">All Properties</Link>
+          <Link to="/dashboard" className="hover:text-blue-600">Dashboard</Link>
+          <Link to="/login" className="hover:text-blue-600">Login</Link>
+        </div>
+
+        {/* Company Links */}
+        <div className="flex flex-col gap-2">
+          <h3 className="font-semibold text-gray-800 mb-2">Company</h3>
+          <Link to="/about" className="hover:text-blue-600">About Us</Link>
+          <Link to="/contact" className="hover:text-blue-600">Contact Us</Link>
+          <Link to="/privacy-policy" className="hover:text-blue-600">Privacy Policy</Link>
+          <Link to="/terms" className="hover:text-blue-600">Terms of Use</Link>
+        </div>
+
+        {/* Social Links */}
+        <div className="flex flex-col gap-2">
+          <h3 className="font-semibold text-gray-800 mb-2">Follow Us</h3>
+          <div className="flex gap-4">
+            <a href="https://facebook.com" target="_blank" rel="noreferrer" className="hover:text-blue-600">
+              <FaFacebookF size={20} />
+            </a>
+            <a href="https://twitter.com" target="_blank" rel="noreferrer" className="hover:text-blue-500">
+              <FaTwitter size={20} />
+            </a>
+            <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="hover:text-blue-700">
+              <FaLinkedinIn size={20} />
+            </a>
+            <a href="https://instagram.com" target="_blank" rel="noreferrer" className="hover:text-pink-500">
+              <FaInstagram size={20} />
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div className="text-center text-sm text-gray-500 py-4 border-t">
+        &copy; {new Date().getFullYear()} BrickBase. All rights reserved.
+      </div>
+    </footer>
+  );
+};
+
+export default Footer;
