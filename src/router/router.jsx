@@ -4,6 +4,9 @@ import {
 import RootLayout from "../layouts/RootLayout";
 import Home from "../pages/Home/Home/Home";
 import AboutUs from "../pages/AboutUs/AboutUs";
+import ContactUs from "../pages/ContactUs/ContactUs";
+import TermsOfUse from "../pages/TermsOfUse/TermsOfUse";
+import FAQs from "../pages/FAQs/FAQs";
 
 export const router = createBrowserRouter([
   {
@@ -17,6 +20,18 @@ export const router = createBrowserRouter([
         {
             path: 'about',
             Component: AboutUs,
+        },
+        {
+            path: 'contact',
+            Component: ContactUs,
+        },
+        {
+            path: 'terms',
+            Component: TermsOfUse,
+        },
+        {
+            path: 'faq',
+            Component: FAQs,
         }
     ]
   },
