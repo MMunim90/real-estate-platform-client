@@ -4,7 +4,7 @@ import logo from "../../../assets/logo.png";
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-100 text-gray-700 mt-12 border-t">
+    <footer className="bg-gray-100 text-gray-700 border-t">
       <div className="max-w-6xl mx-auto px-4 py-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
         
         {/* Logo & Description */}
@@ -40,16 +40,16 @@ const Footer = () => {
         <div className="flex flex-col gap-2">
           <h3 className="font-semibold text-gray-800 mb-2">Follow Us</h3>
           <div className="flex gap-4">
-            <a href="https://facebook.com" target="_blank" rel="noreferrer" className="hover:text-blue-600">
+            <a href="https://facebook.com/profile.php?id=61554851699924" target="_blank" rel="noreferrer" className="hover:text-blue-600">
               <FaFacebookF size={20} />
             </a>
-            <a href="https://twitter.com" target="_blank" rel="noreferrer" className="hover:text-blue-500">
+            <a href="https://x.com/__munim__" target="_blank" rel="noreferrer" className="hover:text-blue-500">
               <FaTwitter size={20} />
             </a>
-            <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="hover:text-blue-700">
+            <a href="https://linkedin.com/in/m-munim-436456279" target="_blank" rel="noreferrer" className="hover:text-blue-700">
               <FaLinkedinIn size={20} />
             </a>
-            <a href="https://instagram.com" target="_blank" rel="noreferrer" className="hover:text-pink-500">
+            <a href="https://instagram.com/_mmunim_" target="_blank" rel="noreferrer" className="hover:text-pink-500">
               <FaInstagram size={20} />
             </a>
           </div>
