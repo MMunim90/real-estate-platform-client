@@ -21,20 +21,20 @@ const PropertyToolsSection = () => {
       </div>
 
       {/* Block 2 - Image */}
-      <div className="w-full h-64 md:h-auto">
+      <div className="w-full h-64 md:h-[250px] lg:h-[450px]">
         <img
           src="https://images.unsplash.com/photo-1501183638710-841dd1904471"
           alt="Apartment"
-          className="w-full h-[450px] object-cover"
+          className="w-full h-full object-cover"
         />
       </div>
 
       {/* Block 3 - Image */}
-      <div className="w-full h-64 md:h-auto">
+      <div className="w-full h-64 md:h-[250px] lg:h-[450px]">
         <img
           src="https://www.authorlove.com/wp-content/uploads/2017/04/Happy-Couple-Love-Pure-scaled.jpg"
           alt="Happy Couple"
-          className="w-full h-[450px] object-cover"
+          className="w-full h-full object-cover"
         />
       </div>
 
