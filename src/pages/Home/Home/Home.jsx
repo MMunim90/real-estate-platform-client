@@ -5,6 +5,7 @@ import FeatureSection from "../FeatureSection/FeatureSection";
 import PropertyToolsSection from "../PropertyToolsSection/PropertyToolsSection";
 import { Fade } from "react-awesome-reveal";
 import { keyframes } from "@emotion/react";
+import PropertyManagementCompanies from "../PropertyManagementCompanies/PropertyManagementCompanies";
 
 const Home = () => {
   const slightFadeDown = keyframes`
@@ -22,6 +23,11 @@ const Home = () => {
       <Banner></Banner>
       <Fade direction="down" keyframes={slightFadeDown}>
         <StatsHighlight></StatsHighlight>
+      </Fade>
+      <Fade direction="down" keyframes={slightFadeDown}>
+        <div className="w-10/12 mx-auto">
+        <PropertyManagementCompanies></PropertyManagementCompanies>
+        </div>
       </Fade>
       <Fade direction="down" keyframes={slightFadeDown}>
         <div className="w-10/12 mx-auto">
