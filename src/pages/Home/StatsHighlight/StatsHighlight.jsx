@@ -14,21 +14,21 @@ const StatsHighlight = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-gray-700 text-center">
           <div className="py-4 px-6">
             <p className="text-2xl font-bold">
-              <CountUp end={30000} duration={5} separator="," />+
+              <CountUp end={30000} duration={10} separator="," />+
             </p>
             <p className="text-sm text-gray-400">Active Listings</p>
           </div>
 
           <div className="py-4 px-6">
             <p className="text-2xl font-bold">
-              <CountUp end={3000000} duration={5} separator="," />+
+              <CountUp end={3000000} duration={10} separator="," />+
             </p>
             <p className="text-sm text-gray-400">Monthly Visitors</p>
           </div>
 
           <div className="py-4 px-6">
             <p className="text-2xl font-bold">
-              $<CountUp end={19} decimals={1} duration={5} />B+
+              $<CountUp end={19} decimals={1} duration={10} />B+
             </p>
             <p className="text-sm text-gray-400">In Transaction Value</p>
           </div>

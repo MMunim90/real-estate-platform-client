@@ -25,7 +25,7 @@ const Home = () => {
         <StatsHighlight></StatsHighlight>
       </Fade>
       <Fade direction="down" keyframes={slightFadeDown}>
-        <div className="w-10/12 mx-auto">
+        <div className="md:w-10/12 mx-auto">
         <PropertyManagementCompanies></PropertyManagementCompanies>
         </div>
       </Fade>

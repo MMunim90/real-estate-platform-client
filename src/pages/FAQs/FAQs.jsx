@@ -42,28 +42,43 @@ const FAQs = () => {
   };
 
   return (
-    <div className="max-w-5xl mx-auto px-4 py-12">
+    <div className="bg-white pb-6 lg:pb-0">
       <Helmet>
         <title>FAQ'S | BrickBase</title>
       </Helmet>
-      <h2 className="text-3xl font-bold mb-8 text-center">
-        Frequently Asked Questions
-      </h2>
-      <div className="space-y-4">
-        {faqs.map((item, index) => (
-          <div key={index} className="border border-gray-300 rounded p-4">
-            <button
-              onClick={() => toggle(index)}
-              className="flex justify-between w-full text-left font-medium text-lg"
-            >
-              {item.question}
-              <span>{openIndex === index ? "−" : "+"}</span>
-            </button>
-            {openIndex === index && (
-              <p className="mt-2 text-gray-400">{item.answer}</p>
-            )}
+
+      <div className="flex flex-col lg:flex-row gap-8 items-center">
+        {/* Cover Image */}
+        <div className="w-full lg:w-1/2">
+          <img
+            src='https://realestate.humber.ca/hubfs/residential.jpg'
+            alt="FAQ Cover"
+            className="w-full h-full md:h-[300px] lg:h-[600px] object-cover"
+          />
+        </div>
+
+        {/* FAQ Section */}
+        <div className="w-full lg:w-1/2 text-black">
+          <h2 className="text-3xl font-bold mb-6 text-center lg:text-left">
+            Frequently Asked Questions
+          </h2>
+          <div className="space-y-4 mx-2 md:mx-4 lg:mr-10">
+            {faqs.map((item, index) => (
+              <div key={index} className="border border-gray-300 rounded p-4">
+                <button
+                  onClick={() => toggle(index)}
+                  className="flex justify-between w-full text-left font-medium text-lg"
+                >
+                  {item.question}
+                  <span>{openIndex === index ? "−" : "+"}</span>
+                </button>
+                {openIndex === index && (
+                  <p className="mt-2 text-gray-500">{item.answer}</p>
+                )}
+              </div>
+            ))}
           </div>
-        ))}
+        </div>
       </div>
     </div>
   );
