@@ -7,6 +7,8 @@ import AboutUs from "../pages/AboutUs/AboutUs";
 import ContactUs from "../pages/ContactUs/ContactUs";
 import TermsOfUse from "../pages/TermsOfUse/TermsOfUse";
 import FAQs from "../pages/FAQs/FAQs";
+import AuthLayout from "../layouts/AuthLayout";
+import Login from "../pages/Authentication/Login/Login";
 
 export const router = createBrowserRouter([
   {
@@ -35,4 +37,14 @@ export const router = createBrowserRouter([
         }
     ]
   },
+  {
+    path: '/',
+    Component: AuthLayout,
+    children: [
+      {
+        path: '/login',
+        Component: Login,
+      }
+    ]
+  }
 ]);
