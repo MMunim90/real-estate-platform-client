@@ -16,7 +16,7 @@ const Contact = () => {
               boxShadow: '0 0 0 4px rgba(59,130,246,0.4)',
             }}
             transition={{ duration: 0.4 }}
-            className="rounded overflow-hidden bg-cover bg-center relative bg-[url('https://sevenluxuryrealestate.com/wp-content/uploads/2024/11/dubai-real-estate-boom-a-response-to-growing-demand-for-home-ownership.webp')]"
+            className="rounded overflow-hidden bg-cover bg-center relative bg-[url('https://m.cbhomes.com/p/967/872993/2239676239eD45a/original.jpg')]"
           >
             <div className="bg-black/10 backdrop-blur p-8 h-full lg:h-[400px] flex flex-col justify-between rounded">
               <div className="text-center w-full m-auto">

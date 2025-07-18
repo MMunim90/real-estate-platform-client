@@ -33,7 +33,7 @@ const Footer = () => {
           <Link to="/about" className="hover:text-blue-600">About Us</Link>
           <Link to="/contact" className="hover:text-blue-600">Contact Us</Link>
           <Link to="/terms" className="hover:text-blue-600">Terms of Use</Link>
-          <Link to="/faq" className="hover:text-blue-600">FAQ's</Link>
+          <Link to="/privacyPolicy" className="hover:text-blue-600">PrivacyPolicy</Link>
         </div>
 
         {/* Social Links */}

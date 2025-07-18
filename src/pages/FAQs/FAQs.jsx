@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Helmet } from "react-helmet-async";
 
 const faqs = [
   {
@@ -42,38 +41,36 @@ const FAQs = () => {
   };
 
   return (
-    <div className="bg-white pb-6 lg:pb-0">
-      <Helmet>
-        <title>FAQ'S | BrickBase</title>
-      </Helmet>
-
-      <div className="flex flex-col lg:flex-row gap-8 items-center">
-        {/* Cover Image */}
-        <div className="w-full lg:w-1/2">
-          <img
-            src='https://realestate.humber.ca/hubfs/residential.jpg'
-            alt="FAQ Cover"
-            className="w-full h-full md:h-[300px] lg:h-[600px] object-cover"
-          />
+    <div className="pb-6 lg:pb-0 my-4">
+      <div className="flex flex-col lg:flex-row gap-8 items-center px-4 md:px-10">
+        {/* Title Section */}
+        <div className="w-full lg:w-1/2 text-center lg:text-left">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">
+            Frequently Asked Questions
+          </h2>
+          <p className="text-gray-400 text-base md:text-lg">
+            Here are answers to some of the most common questions about using BrickBase.
+            If you can’t find what you’re looking for, feel free to contact us.
+          </p>
         </div>
 
         {/* FAQ Section */}
-        <div className="w-full lg:w-1/2 text-black">
-          <h2 className="text-3xl font-bold mb-6 text-center lg:text-left">
-            Frequently Asked Questions
-          </h2>
-          <div className="space-y-4 mx-2 md:mx-4 lg:mr-10">
+        <div className="w-full lg:w-1/2">
+          <div className="space-y-4 mx-0 md:mx-4 lg:mr-10">
             {faqs.map((item, index) => (
-              <div key={index} className="border border-gray-300 rounded p-4">
+              <div
+                key={index}
+                className="border border-gray-300 rounded-lg p-4 shadow-sm transition hover:shadow-md"
+              >
                 <button
                   onClick={() => toggle(index)}
                   className="flex justify-between w-full text-left font-medium text-lg cursor-pointer"
                 >
-                  {item.question}
+                  <span>{item.question}</span>
                   <span>{openIndex === index ? "−" : "+"}</span>
                 </button>
                 {openIndex === index && (
-                  <p className="mt-2 text-gray-500">{item.answer}</p>
+                  <p className="mt-2 text-gray-400">{item.answer}</p>
                 )}
               </div>
             ))}

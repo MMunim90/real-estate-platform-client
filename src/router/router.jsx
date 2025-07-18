@@ -6,10 +6,10 @@ import Home from "../pages/Home/Home/Home";
 import AboutUs from "../pages/AboutUs/AboutUs";
 import ContactUs from "../pages/ContactUs/ContactUs";
 import TermsOfUse from "../pages/TermsOfUse/TermsOfUse";
-import FAQs from "../pages/FAQs/FAQs";
 import AuthLayout from "../layouts/AuthLayout";
 import Login from "../pages/Authentication/Login/Login";
 import Register from "../pages/Authentication/Register/Register";
+import PrivacyPolicy from "../pages/PrivacyPolicy/PrivacyPolicy";
 
 export const router = createBrowserRouter([
   {
@@ -33,8 +33,8 @@ export const router = createBrowserRouter([
             Component: TermsOfUse,
         },
         {
-            path: 'faq',
-            Component: FAQs,
+            path: 'privacyPolicy',
+            Component: PrivacyPolicy,
         }
     ]
   },

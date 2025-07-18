@@ -6,6 +6,7 @@ import PropertyToolsSection from "../PropertyToolsSection/PropertyToolsSection";
 import { Fade } from "react-awesome-reveal";
 import { keyframes } from "@emotion/react";
 import PropertyManagementCompanies from "../PropertyManagementCompanies/PropertyManagementCompanies";
+import FAQs from "../../FAQs/FAQs";
 
 const Home = () => {
   const slightFadeDown = keyframes`
@@ -36,6 +37,11 @@ const Home = () => {
       </Fade>
       <Fade direction="down" keyframes={slightFadeDown}>
         <FeatureSection></FeatureSection>
+      </Fade>
+      <Fade direction="down" keyframes={slightFadeDown}>
+        <div className="w-10/12 mx-auto">
+        <FAQs></FAQs>
+        </div>
       </Fade>
     </div>
   );
