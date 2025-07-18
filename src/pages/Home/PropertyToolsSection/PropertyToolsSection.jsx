@@ -2,9 +2,9 @@ import React from "react";
 
 const PropertyToolsSection = () => {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 my-6">
+    <div className="grid grid-cols-1 md:grid-cols-2">
       {/* Block 1 - Text */}
-      <div className="text-white p-8 flex flex-col justify-center">
+      <div className="p-8 flex flex-col justify-center">
         <h2 className="text-2xl md:text-3xl lg:text-5xl font-semibold mb-4">
           Advertise Your Rental
         </h2>
@@ -39,7 +39,7 @@ const PropertyToolsSection = () => {
       </div>
 
       {/* Block 4 - Text */}
-      <div className="text-white p-8 flex flex-col justify-center">
+      <div className="p-8 flex flex-col justify-center">
         <h2 className="text-2xl md:text-3xl font-semibold mb-4 lg:text-5xl">
           Lease 100% Online
         </h2>

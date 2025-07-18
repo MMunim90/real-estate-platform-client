@@ -1,5 +1,5 @@
 import React from "react";
-import { FaBullhorn, FaCameraRetro, FaRocket } from "react-icons/fa";
+import { FaBullhorn, FaCameraRetro, FaRocket, FaSearch } from "react-icons/fa";
 
 const FeatureSection = () => {
   return (
@@ -45,9 +45,18 @@ const FeatureSection = () => {
           </div>
         </div>
 
-        <button className="mt-10 bg-white text-black font-semibold py-2 px-6 rounded hover:bg-gray-200 transition duration-300 cursor-pointer">
-          Explore Marketing Tools
-        </button>
+        <div className="mt-10 max-w-2xl mx-auto">
+          <div className="flex items-center bg-white rounded overflow-hidden">
+            <input
+              type="text"
+              placeholder="Search properties by city, type, or ID..."
+              className="w-full px-4 py-3 text-black placeholder-gray-500 focus:outline-none"
+            />
+            <button className="bg-gray-800 hover:bg-gray-700 text-white px-5 py-4 cursor-pointer">
+              <FaSearch />
+            </button>
+          </div>
+        </div>
 
         <p className="mt-4 text-sm opacity-80">
           *Based on internal analysis comparing listings with and without

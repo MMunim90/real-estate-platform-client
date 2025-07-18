@@ -1,6 +1,5 @@
 import React from "react";
 import FadeIn from "react-fade-in";
-import developerImg from "../../assets/developer.jpg";
 import { Helmet } from "react-helmet-async";
 import {
   FaRocket,
@@ -11,7 +10,12 @@ import {
   FaLinkedin,
   FaEnvelope,
   FaTelegram,
+  FaShieldAlt,
+  FaTools,
+  FaGlobe,
+  FaHandshake,
 } from "react-icons/fa";
+import developerImg from "../../assets/developer.jpg";
 
 const AboutUs = () => {
   return (
@@ -20,62 +24,133 @@ const AboutUs = () => {
         <title>About | BrickBase</title>
       </Helmet>
       <FadeIn>
-        {/* Header Section */}
-        <section className="bg-blue-100 py-12 px-6 md:px-16">
-          <div className="max-w-5xl mx-auto text-center">
-            <h1 className="text-3xl md:text-5xl font-bold text-blue-900 mb-4">
+
+        {/* Header Section with Background */}
+        <section
+          className="bg-cover bg-center text-white py-20 px-6 md:px-16 relative"
+          style={{
+            backgroundImage:
+              "url('https://www.bankrate.com/2022/09/21122002/Residential-real-estate.jpg?auto=webp&optimize=high&crop=16:9')",
+          }}
+        >
+          <div className="absolute inset-0 bg-black opacity-60"></div>
+          <div className="relative z-10 max-w-5xl mx-auto text-center">
+            <h1 className="text-4xl md:text-5xl font-bold mb-4">
               About BrickBase
             </h1>
-            <p className="text-lg md:text-xl text-gray-700">
+            <p className="text-lg md:text-xl text-gray-200">
               Your trusted platform for smarter real estate experiences.
             </p>
           </div>
         </section>
 
-        {/* Company Mission & Vision */}
+        {/* Mission & Vision */}
         <section className="py-12 px-6 md:px-16">
           <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-10">
             <div>
               <h2 className="text-2xl font-semibold mb-4 text-blue-800 flex items-center gap-2">
                 <FaRocket /> Our Mission
               </h2>
-              <p className="text-gray-600 leading-relaxed">
+              <p className="text-gray-600">
                 At BrickBase, our mission is to simplify the process of buying,
-                selling, and renting real estate by providing users with the
-                most accurate listings, data-driven insights, and seamless tools
-                to make confident decisions.
+                selling, and renting real estate by providing users with accurate
+                listings, insights, and seamless tools.
               </p>
             </div>
             <div>
               <h2 className="text-2xl font-semibold mb-4 text-blue-800 flex items-center gap-2">
                 <FaEye /> Our Vision
               </h2>
-              <p className="text-gray-600 leading-relaxed">
+              <p className="text-gray-600">
                 We envision a future where technology transforms real estate
                 transactions into transparent, efficient, and empowering
-                experiences for everyone involved — from individuals to
-                investors.
+                experiences for everyone.
               </p>
             </div>
           </div>
         </section>
 
-        {/* History / Impact Section */}
+        {/* 4 Responsive Feature Cards */}
+        <section className="bg-gray-50 py-16 px-6 md:px-16">
+          <div className="max-w-7xl mx-auto text-center">
+            <h2 className="text-3xl font-bold text-blue-800 mb-10">
+              What Makes Us Unique
+            </h2>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              <div className="bg-white p-6 rounded-lg shadow hover:shadow-lg transition">
+                <FaShieldAlt className="text-blue-500 text-3xl mb-3" />
+                <h3 className="font-semibold text-lg mb-2">Trusted Platform</h3>
+                <p className="text-sm text-gray-600">
+                  We are trusted by thousands across Bangladesh for real estate services.
+                </p>
+              </div>
+
+              <div className="bg-white p-6 rounded-lg shadow hover:shadow-lg transition">
+                <FaTools className="text-blue-500 text-3xl mb-3" />
+                <h3 className="font-semibold text-lg mb-2">Smart Tools</h3>
+                <p className="text-sm text-gray-600">
+                  Access AI-powered search, virtual tours, and smart listing filters.
+                </p>
+              </div>
+
+              <div className="bg-white p-6 rounded-lg shadow hover:shadow-lg transition">
+                <FaGlobe className="text-blue-500 text-3xl mb-3" />
+                <h3 className="font-semibold text-lg mb-2">Nationwide Reach</h3>
+                <p className="text-sm text-gray-600">
+                  Our listings cover all major cities and rural areas across the country.
+                </p>
+              </div>
+
+              <div className="bg-white p-6 rounded-lg shadow hover:shadow-lg transition">
+                <FaHandshake className="text-blue-500 text-3xl mb-3" />
+                <h3 className="font-semibold text-lg mb-2">Customer Support</h3>
+                <p className="text-sm text-gray-600">
+                  Our support team is ready 24/7 to assist buyers, sellers & renters.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* History Section */}
         <section className="bg-gray-100 py-12 px-6 md:px-16">
           <div className="max-w-6xl mx-auto text-center">
             <h2 className="text-2xl font-semibold mb-4 text-blue-800 flex justify-center items-center gap-2">
               <FaHistory /> Our Journey
             </h2>
-            <p className="text-gray-700 leading-relaxed max-w-3xl mx-auto">
+            <p className="text-gray-700 max-w-3xl mx-auto">
               For over 10 years, BrickBase has grown from a local platform to a
               nationwide hub, connecting millions of users with their ideal
-              properties. Our commitment to trust, innovation, and transparency
-              remains at the heart of what we do.
+              properties. Trust, innovation, and transparency are our pillars.
             </p>
           </div>
         </section>
 
-        {/* Developer Details */}
+        {/* New Section: Why Choose Us */}
+        <section className="py-16 px-6 md:px-16">
+          <div className="max-w-6xl mx-auto text-center">
+            <h2 className="text-2xl font-bold mb-6 text-blue-800">Why Choose Us?</h2>
+            <p className="text-gray-600 max-w-3xl mx-auto">
+              BrickBase is more than just a listing platform — it's a trusted companion
+              in your property journey. With user-friendly tools, transparent data, and a
+              focus on simplicity, we make every step easier.
+            </p>
+          </div>
+        </section>
+
+        {/* New Section: Technology We Use */}
+        <section className="bg-blue-50 py-16 px-6 md:px-16">
+          <div className="max-w-6xl mx-auto text-center">
+            <h2 className="text-2xl font-bold mb-6 text-blue-800">Technology We Use</h2>
+            <p className="text-gray-600 max-w-3xl mx-auto mb-6">
+              BrickBase is built using modern, scalable technologies like React.js,
+              Node.js, MongoDB, Tailwind CSS, and cloud infrastructure — ensuring
+              performance, security, and scalability.
+            </p>
+          </div>
+        </section>
+
+        {/* Developer Info */}
         <section className="py-12 px-6 md:px-16">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-2xl font-semibold mb-6 text-blue-800 flex justify-center items-center gap-2">
@@ -97,34 +172,16 @@ const AboutUs = () => {
                 Engineering.
               </p>
               <div className="flex flex-wrap justify-center gap-6 text-blue-600 text-sm">
-                <a
-                  href="https://github.com/shahanalmunim"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="flex items-center gap-1 hover:underline"
-                >
+                <a href="https://github.com/shahanalmunim" target="_blank" rel="noreferrer" className="flex items-center gap-1 hover:underline">
                   <FaGithub /> GitHub
                 </a>
-                <a
-                  href="https://www.linkedin.com/in/shahanalmunim"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="flex items-center gap-1 hover:underline"
-                >
+                <a href="https://www.linkedin.com/in/shahanalmunim" target="_blank" rel="noreferrer" className="flex items-center gap-1 hover:underline">
                   <FaLinkedin /> LinkedIn
                 </a>
-                <a
-                  href="mailto:shahanalmunim@gmail.com"
-                  className="flex items-center gap-1 hover:underline"
-                >
+                <a href="mailto:shahanalmunim@gmail.com" className="flex items-center gap-1 hover:underline">
                   <FaEnvelope /> Email
                 </a>
-                <a
-                  href="https://t.me/codecraftgamers"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="flex items-center gap-1 hover:underline"
-                >
+                <a href="https://t.me/codecraftgamers" target="_blank" rel="noreferrer" className="flex items-center gap-1 hover:underline">
                   <FaTelegram /> Telegram
                 </a>
               </div>

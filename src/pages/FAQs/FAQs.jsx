@@ -67,7 +67,7 @@ const FAQs = () => {
               <div key={index} className="border border-gray-300 rounded p-4">
                 <button
                   onClick={() => toggle(index)}
-                  className="flex justify-between w-full text-left font-medium text-lg"
+                  className="flex justify-between w-full text-left font-medium text-lg cursor-pointer"
                 >
                   {item.question}
                   <span>{openIndex === index ? "−" : "+"}</span>

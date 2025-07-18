@@ -51,14 +51,14 @@ const companies = [
 const PropertyManagementCompanies = () => {
   return (
     <div className="py-12">
-      <h2 className="text-3xl font-bold text-center mb-6">
+      <h2 className="text-3xl font-bold text-center mb-10">
         Trusted Property Management Companies
       </h2>
       <Marquee gradient={false} speed={50} pauseOnHover>
         {companies.map((company, index) => (
           <div
             key={index}
-            className="mx-6 flex flex-col items-center text-center"
+            className="mx-8 md:mx-18 flex flex-col items-center text-center"
           >
             <img
               src={company.logo}

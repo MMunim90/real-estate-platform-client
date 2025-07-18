@@ -26,7 +26,7 @@ const TermsOfUse = () => {
         <div>
           <h3 className="text-xl font-semibold flex items-center gap-2">
             <Globe className="w-5 h-5 text-blue-600" />
-            1. Use of Website
+            Use of Website
           </h3>
           <p className="mt-2">
             The content on this website is for informational purposes only. You
@@ -37,7 +37,7 @@ const TermsOfUse = () => {
         <div>
           <h3 className="text-xl font-semibold flex items-center gap-2">
             <ShieldCheck className="w-5 h-5 text-green-600" />
-            2. Intellectual Property
+            Intellectual Property
           </h3>
           <p className="mt-2">
             All content, logos, and visuals on BrickBase are protected by
@@ -48,7 +48,7 @@ const TermsOfUse = () => {
         <div>
           <h3 className="text-xl font-semibold flex items-center gap-2">
             <AlertTriangle className="w-5 h-5 text-yellow-500" />
-            3. Liability
+            Liability
           </h3>
           <p className="mt-2">
             BrickBase is not liable for any damages resulting from the use or
@@ -59,7 +59,7 @@ const TermsOfUse = () => {
         <div>
           <h3 className="text-xl font-semibold flex items-center gap-2">
             <RefreshCcw className="w-5 h-5 text-indigo-600" />
-            4. Changes to Terms
+            Changes to Terms
           </h3>
           <p className="mt-2">
             We reserve the right to change these terms at any time. Continued
