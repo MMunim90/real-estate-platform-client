@@ -1,6 +1,6 @@
 import React from "react";
 import { FcGoogle } from "react-icons/fc";
-import { Link } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import logo from "../../../assets/logo.png";
 import { Helmet } from "react-helmet-async";
 import Lottie from "lottie-react";
@@ -9,6 +9,8 @@ import FadeIn from "react-fade-in";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
+import useAuth from "../../../hooks/useAuth";
+import Swal from "sweetalert2";
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -16,6 +18,27 @@ const Login = () => {
 
   const onSubmit = (data) => {
     console.log(data);
+  };
+
+  const location = useLocation();
+  const navigate = useNavigate();
+  const from = location.state?.from || "/";
+
+  const { signInWithGoogle } = useAuth();
+  const handleGoogleSignIn = () => {
+    signInWithGoogle()
+      .then((result) => {
+        Swal.fire({
+          title: "Login Successful!",
+          icon: "success",
+          confirmButtonColor: "#01AFF7",
+        });
+
+        navigate(from);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   };
   return (
     <div className="min-h-screen flex flex-col md:flex-row">
@@ -81,7 +104,7 @@ const Login = () => {
             </div>
 
             {/* Sign In */}
-            <button className="w-full bg-blue-500 text-white font-semibold py-2 rounded hover:bg-blue-600 transition">
+            <button type="submit" className="w-full bg-blue-500 text-white font-semibold py-2 rounded hover:bg-blue-600 transition">
               Sign in
             </button>
 
@@ -93,7 +116,7 @@ const Login = () => {
             </div>
 
             {/* Google Sign In */}
-            <button className="w-full flex items-center justify-center border border-gray-300 py-2 rounded hover:bg-gray-100 transition">
+            <button type="button" onClick={handleGoogleSignIn} className="w-full flex items-center justify-center border border-gray-300 py-2 rounded hover:bg-gray-100 transition">
               <FcGoogle className="text-xl mr-2" />
               Sign in with Google
             </button>

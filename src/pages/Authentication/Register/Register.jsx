@@ -1,6 +1,6 @@
 import React from "react";
 import { FcGoogle } from "react-icons/fc";
-import { Link } from "react-router"; // make sure to use 'react-router-dom'
+import { Link, useLocation, useNavigate } from "react-router"; // make sure to use 'react-router-dom'
 import logo from "../../../assets/logo.png";
 import { Helmet } from "react-helmet-async";
 import Lottie from "lottie-react";
@@ -9,6 +9,7 @@ import FadeIn from "react-fade-in";
 import { useState } from "react";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import { useForm } from "react-hook-form";
+import useAuth from "../../../hooks/useAuth";
 import Swal from "sweetalert2";
 
 const Register = () => {
@@ -21,6 +22,40 @@ const Register = () => {
 
   const onSubmit = (data) => {
     console.log(data);
+  };
+
+  const location = useLocation();
+  const navigate = useNavigate();
+  const from = location.state?.from || "/";
+
+  const { signInWithGoogle } = useAuth();
+  const handleGoogleSignIn = () => {
+    signInWithGoogle()
+      .then(async(result) => {
+        // const user = result.user;
+        //console.log(res.user);
+        Swal.fire({
+          title: "Registration Successful!",
+          icon: "success",
+          confirmButtonColor: "#01AFF7",
+        });
+
+        //update userinfo in the database
+        // const userInfo = {
+        //   email: user.email,
+        //   role: "user", // default role
+        //   created_at: new Date().toISOString(),
+        //   last_logged_in: new Date().toISOString(),
+        // };
+
+        // const res = await axiosInstance.post('/users', userInfo);
+        //console.log('user update info', result.data);
+
+        navigate(from);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   };
   return (
     <div className="min-h-screen flex flex-col md:flex-row">
@@ -117,10 +152,9 @@ const Register = () => {
             )}
 
             {/* Register Button */}
-            <button className="w-full bg-blue-500 text-white font-semibold py-2 rounded hover:bg-blue-600 transition">
+            <button type="submit" className="w-full bg-blue-500 text-white font-semibold py-2 rounded hover:bg-blue-600 transition">
               Sign up
             </button>
-
             {/* OR Divider */}
             <div className="flex items-center my-4">
               <div className="flex-grow h-px bg-gray-300"></div>
@@ -129,7 +163,11 @@ const Register = () => {
             </div>
 
             {/* Google Register */}
-            <button className="w-full flex items-center justify-center border border-gray-300 py-2 rounded hover:bg-gray-100 transition">
+            <button
+              type="button"
+              onClick={handleGoogleSignIn}
+              className="w-full flex items-center justify-center border border-gray-300 py-2 rounded hover:bg-gray-100 transition"
+            >
               <FcGoogle className="text-xl mr-2" />
               Sign up with Google
             </button>
