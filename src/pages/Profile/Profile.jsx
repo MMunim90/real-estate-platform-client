@@ -4,10 +4,11 @@ import useAuth from "../../hooks/useAuth";
 import { toast } from "react-toastify";
 import Swal from "sweetalert2";
 import dayjs from "dayjs";
+import { Helmet } from "react-helmet-async";
 
 const Profile = () => {
   const { user, setUser, updateUserProfile } = useAuth();
-  const formatDate = (dateString) => dayjs(dateString).format('DD/MM/YYYY');
+  const formatDate = (dateString) => dayjs(dateString).format("DD/MM/YYYY");
 
   const handleUpdateUser = (e) => {
     e.preventDefault();
@@ -37,6 +38,9 @@ const Profile = () => {
   };
   return (
     <div className="w-full min-h-screen bg-gray-100">
+      <Helmet>
+        <title>Profile | BrickBase</title>
+      </Helmet>
       {/* Banner Section */}
       <div className="w-full h-64 md:h-80 lg:h-96 relative">
         <img src={banner} alt="Banner" className="w-full h-full object-cover" />
@@ -56,7 +60,13 @@ const Profile = () => {
           <h1 className="text-2xl md:text-3xl font-semibold text-gray-800">
             {user.displayName}
           </h1>
-          <p className="text-gray-700 mt-4">Hey there, [User Role]! 👋 Your account "{user.email}" was created on {formatDate(user.metadata.creationTime)} <br /> and you last signed in on {formatDate(user.metadata.lastSignInTime)}. Glad to have you back—feel free to update your info or explore your dashboard!</p>
+          <p className="text-gray-700 mt-4">
+            Hey there, [User Role]! 👋 Your account "{user.email}" was created
+            on {formatDate(user.metadata.creationTime)} <br /> and you last
+            signed in on {formatDate(user.metadata.lastSignInTime)}. Glad to
+            have you back—feel free to update your info or explore your
+            dashboard!
+          </p>
         </div>
 
         {/* Update Profile Form */}

@@ -13,6 +13,7 @@ import PrivacyPolicy from "../pages/PrivacyPolicy/PrivacyPolicy";
 import ResetPassword from "../pages/Authentication/ResetPassword/ResetPassword";
 import PrivateRoute from "../routes/PrivateRoute";
 import Profile from "../pages/Profile/Profile";
+import ErrorPage from "../pages/ErrorPage/ErrorPage";
 
 export const router = createBrowserRouter([
   {
@@ -38,6 +39,10 @@ export const router = createBrowserRouter([
         {
             path: 'privacyPolicy',
             Component: PrivacyPolicy,
+        },
+        {
+          path: '/*',
+          Component: ErrorPage,
         },
         {
           path: 'profile',

@@ -15,7 +15,7 @@ const TermsOfUse = () => {
       <Helmet>
         <title>Terms | BrickBase</title>
       </Helmet>
-      <h2 className="text-3xl font-bold mb-6 text-center text-gray-400">
+      <h2 className="text-3xl font-bold mb-6 text-center text-gray-500">
         Terms of Use
       </h2>
       <div className="space-y-8 text-gray-500">

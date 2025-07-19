@@ -1,8 +1,11 @@
 import { Link } from "react-router";
 import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn } from "react-icons/fa";
 import logo from "../../../assets/logo.png";
+import { useContext } from "react";
+import { AuthContext } from "../../../context/AuthContext/AuthContext";
 
 const Footer = () => {
+  const { user } = useContext(AuthContext);
   return (
     <footer className="bg-white text-gray-700">
       <div className="max-w-6xl mx-auto px-4 py-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
@@ -24,7 +27,9 @@ const Footer = () => {
           <Link to="/" className="hover:text-blue-600">Home</Link>
           <Link to="/properties" className="hover:text-blue-600">All Properties</Link>
           <Link to="/dashboard" className="hover:text-blue-600">Dashboard</Link>
-          <Link to="/login" className="hover:text-blue-600">Login</Link>
+          {
+            !user && (<Link to="/login" className="hover:text-blue-600">Login</Link>)
+          }
         </div>
 
         {/* Company Links */}
