@@ -1,0 +1,12 @@
+@keyframes loading-bar {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.loading-bar {
+  animation: loading-bar 1.5s linear infinite;
+}
