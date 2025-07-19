@@ -8,9 +8,20 @@ import registerLottie from "../../../assets/lottie/register.json";
 import FadeIn from "react-fade-in";
 import { useState } from "react";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
+import { useForm } from "react-hook-form";
+import Swal from "sweetalert2";
 
 const Register = () => {
   const [showPassword, setShowPassword] = useState(false);
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
+  const onSubmit = (data) => {
+    console.log(data);
+  };
   return (
     <div className="min-h-screen flex flex-col md:flex-row">
       <Helmet>
@@ -18,7 +29,10 @@ const Register = () => {
       </Helmet>
 
       {/* Left: Form Section */}
-      <form className="flex-1 flex items-center justify-center p-8 bg-white text-black">
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className="flex-1 flex items-center justify-center p-8 bg-white text-black"
+      >
         <div className="w-full max-w-md">
           <FadeIn>
             {/* Logo */}
@@ -40,9 +54,13 @@ const Register = () => {
             {/* Name */}
             <input
               type="text"
+              {...register("name", { required: true })}
               placeholder="Full Name"
               className="w-full mb-4 px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
+            {errors.name?.type === "required" && (
+              <p className="text-red-500 mb-4">Name is required</p>
+            )}
 
             {/* Photo Upload */}
             <input
@@ -53,24 +71,50 @@ const Register = () => {
             {/* Email */}
             <input
               type="email"
+              {...register("email", { required: true })}
               placeholder="Email address"
               className="w-full mb-4 px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
+            {errors.email?.type === "required" && (
+              <p className="text-red-500 mb-4">Email is required</p>
+            )}
 
             {/* Password */}
             <div className="relative mb-2">
               <input
                 type={showPassword ? "text" : "password"}
+                {...register("password", {
+                  required: "Password is required",
+                  minLength: {
+                    value: 6,
+                    message: "Password must be at least 6 characters",
+                  },
+                  validate: {
+                    hasCapitalLetter: (value) =>
+                      /[A-Z]/.test(value) ||
+                      "Must include at least one capital letter",
+                    hasSpecialChar: (value) =>
+                      /[!@#$%^&*(),.?":{}|<>]/.test(value) ||
+                      "Must include at least one special character",
+                  },
+                })}
                 placeholder="Password"
                 className="w-full px-4 py-2 pr-10 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
               <div
-                className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 cursor-pointer"
+                className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-500 cursor-pointer"
                 onClick={() => setShowPassword(!showPassword)}
               >
                 {showPassword ? <AiFillEyeInvisible /> : <AiFillEye />}
               </div>
             </div>
+
+            {/* Error Messages */}
+            {errors.password && (
+              <p className="text-red-500 mt-1 text-sm">
+                {errors.password.message}
+              </p>
+            )}
 
             {/* Register Button */}
             <button className="w-full bg-blue-500 text-white font-semibold py-2 rounded hover:bg-blue-600 transition">

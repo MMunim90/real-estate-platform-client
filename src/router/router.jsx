@@ -10,6 +10,7 @@ import AuthLayout from "../layouts/AuthLayout";
 import Login from "../pages/Authentication/Login/Login";
 import Register from "../pages/Authentication/Register/Register";
 import PrivacyPolicy from "../pages/PrivacyPolicy/PrivacyPolicy";
+import ResetPassword from "../pages/Authentication/ResetPassword/ResetPassword";
 
 export const router = createBrowserRouter([
   {
@@ -49,6 +50,10 @@ export const router = createBrowserRouter([
       {
         path: '/register',
         Component: Register,
+      },
+      {
+        path: '/reset',
+        Component: ResetPassword,
       },
     ]
   }

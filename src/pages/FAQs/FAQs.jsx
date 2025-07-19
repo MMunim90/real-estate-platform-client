@@ -59,8 +59,8 @@ const FAQs = () => {
           <div className="space-y-4 mx-0 md:mx-4 lg:mr-10">
             {faqs.map((item, index) => (
               <div
-                key={index}
-                className="border border-gray-300 rounded-lg p-4 shadow-sm transition hover:shadow-md"
+              key={index}
+              className="border border-gray-300 rounded-lg p-4 shadow-sm transition hover:shadow-md"
               >
                 <button
                   onClick={() => toggle(index)}

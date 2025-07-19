@@ -1,5 +1,6 @@
 import React from "react";
 import { FaBullhorn, FaCameraRetro, FaRocket, FaSearch } from "react-icons/fa";
+import { Typewriter } from "react-simple-typewriter";
 
 const FeatureSection = () => {
   return (
@@ -12,8 +13,21 @@ const FeatureSection = () => {
     >
       <div className="absolute inset-0 bg-black opacity-60"></div>
       <div className="relative z-10 max-w-7xl mx-auto text-center">
-        <h2 className="text-3xl md:text-4xl font-bold mb-4">
-          BrickBase Listings Sell or Rent Faster
+        <h2 className="text-3xl lg:text-5xl font-bold mb-4">
+          BrickBase{" "}
+          <Typewriter
+            words={[
+              "Listings Sell Faster",
+              "Listings Rent Faster",
+              "Homes Reach Buyers",
+              "Properties Get Views",
+              "Rentals Get Noticed",
+              "Listings Move Quickly",
+            ]}
+            loop={Infinity}
+            typeSpeed={70}
+            deleteSpeed={50}
+          />
         </h2>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-10 text-left">
