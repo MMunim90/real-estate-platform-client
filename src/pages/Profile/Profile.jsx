@@ -5,9 +5,11 @@ import { toast } from "react-toastify";
 import Swal from "sweetalert2";
 import dayjs from "dayjs";
 import { Helmet } from "react-helmet-async";
+import useUserRole from "../../hooks/useUserRole";
 
 const Profile = () => {
   const { user, setUser, updateUserProfile } = useAuth();
+  const { role } = useUserRole();
   const formatDate = (dateString) => dayjs(dateString).format("DD/MM/YYYY");
 
   const handleUpdateUser = (e) => {
@@ -62,7 +64,7 @@ const Profile = () => {
             {user.displayName}
           </h1>
           <p className="text-gray-700 mt-4">
-            Hey there, [User Role]! 👋 Your account "{user.email}" was created
+            Hey there, {role}! 👋 Your account "{user.email}" was created
             on {formatDate(user.metadata.creationTime)} <br /> and you last
             signed in on {formatDate(user.metadata.lastSignInTime)}. Glad to
             have you back—feel free to update your info or explore your
