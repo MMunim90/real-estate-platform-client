@@ -7,16 +7,12 @@ import {
   FaUserCircle,
 } from "react-icons/fa";
 import logo from "../assets/logo.png";
-import { Helmet } from "react-helmet-async";
 import useAuth from "../hooks/useAuth";
 
 const DashboardLayout = () => {
   const { user } = useAuth();
   return (
     <div className="drawer lg:drawer-open">
-      <Helmet>
-        <title>Dashboard | BrickBase</title>
-      </Helmet>
       <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
       <div className="drawer-content flex flex-col bg-gray-200 text-black">
         {/* Navbar */}

@@ -1,6 +1,6 @@
 import React from "react";
 import { FcGoogle } from "react-icons/fc";
-import { Link, useLocation, useNavigate } from "react-router"; // make sure to use 'react-router-dom'
+import { Link, useLocation, useNavigate } from "react-router"; 
 import logo from "../../../assets/logo.png";
 import { Helmet } from "react-helmet-async";
 import Lottie from "lottie-react";
@@ -12,6 +12,7 @@ import { useForm } from "react-hook-form";
 import useAuth from "../../../hooks/useAuth";
 import Swal from "sweetalert2";
 import axios from "axios";
+import useAxios from "../../../hooks/useAxios";
 
 const Register = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -21,6 +22,7 @@ const Register = () => {
     handleSubmit,
     formState: { errors },
   } = useForm();
+  const axiosInstance = useAxios();
 
   const { createUser, updateUserProfile, signInWithGoogle } = useAuth();
 
@@ -35,15 +37,15 @@ const Register = () => {
         //console.log(result.user);
 
         //update userinfo in the database
-        // const userInfo = {
-        //   email: data.email,
-        //   role: "user", // default role
-        //   created_at: new Date().toISOString(),
-        //   last_logged_in: new Date().toISOString(),
-        // };
+        const userInfo = {
+          email: data.email,
+          role: "user", // default role
+          created_at: new Date().toISOString(),
+          last_logged_in: new Date().toISOString(),
+        };
 
-        // const userRes = await axiosInstance.post("/users", userInfo);
-        // //console.log(userRes.data);
+        const userRes = await axiosInstance.post("/users", userInfo);
+        //console.log(userRes.data);
 
         // update user profile in firebase
         const userProfile = {

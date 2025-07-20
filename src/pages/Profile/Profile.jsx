@@ -16,7 +16,7 @@ const Profile = () => {
     const form = e.target;
     const name = form.name.value;
     const photoURL = form.photoURL.value;
-    console.log(photoURL)
+    console.log(photoURL);
 
     updateUserProfile({
       displayName: name,
@@ -70,40 +70,78 @@ const Profile = () => {
           </p>
         </div>
 
-        {/* Update Profile Form */}
-        <div className="mt-10 px-4 md:pl-40 max-w-2xl">
-          <h2 className="text-xl font-semibold text-gray-800 mb-4">
-            Update Profile
-          </h2>
-          <form
-            onSubmit={handleUpdateUser}
-            className="border border-black p-10 rounded-2xl space-y-6"
-          >
-            <input
-              type="text"
-              name="name"
-              id="username"
-              placeholder="New Username"
-              required
-              className="w-full px-4 py-3 rounded-md border border-gray-300 bg-gray-50 text-black"
-            />
-
-            <input
-              type="text"
-              name="photoURL"
-              id="photoURL"
-              placeholder="New Photo URL"
-              required
-              className="w-full px-4 py-3 rounded-md border border-gray-300 bg-gray-50 text-black"
-            />
-
-            <button
-              type="submit"
-              className="block w-full p-3 text-white text-center rounded-sm text-xl bg-blue-500 hover:bg-blue-600 cursor-pointer"
-            >
+        <div className="flex flex-col lg:flex-row">
+          {/* Update Profile Form */}
+          <div className="mt-10 px-4 md:pl-40 max-w-2xl">
+            <h2 className="text-xl font-semibold text-gray-800 mb-4">
               Update Profile
-            </button>
-          </form>
+            </h2>
+            <form
+              onSubmit={handleUpdateUser}
+              className="border border-black p-10 rounded-2xl space-y-6"
+            >
+              <input
+                type="text"
+                name="name"
+                id="username"
+                placeholder="New Username"
+                required
+                className="w-full px-4 py-3 rounded-md border border-gray-300 bg-gray-50 text-black"
+              />
+
+              <input
+                type="text"
+                name="photoURL"
+                id="photoURL"
+                placeholder="New Photo URL"
+                required
+                className="w-full px-4 py-3 rounded-md border border-gray-300 bg-gray-50 text-black"
+              />
+
+              <button
+                type="submit"
+                className="block w-full p-3 text-white text-center rounded-sm text-xl bg-blue-500 hover:bg-blue-600 cursor-pointer"
+              >
+                Save
+              </button>
+            </form>
+          </div>
+
+          {/* Add Social Media Links Form */}
+          <div className="mt-10 px-4 md:pl-40 max-w-2xl">
+            <h2 className="text-xl font-semibold text-gray-800 mb-4">
+              Add Media Links
+            </h2>
+            <form className="border border-black p-10 rounded-2xl space-y-6">
+              <input
+                type="url"
+                name="facebook"
+                className="w-full px-4 py-3 rounded-md border border-gray-300 bg-gray-50 text-black"
+                placeholder="Facebook Profile Link"
+              />
+
+              <input
+                type="url"
+                name="twitter"
+                className="w-full px-4 py-3 rounded-md border border-gray-300 bg-gray-50 text-black"
+                placeholder="Twitter Profile Link"
+              />
+
+              <input
+                type="url"
+                name="whatsapp"
+                className="w-full px-4 py-3 rounded-md border border-gray-300 bg-gray-50 text-black"
+                placeholder="WhatsApp Link"
+              />
+
+              <button
+                type="submit"
+                className="block w-full p-3 text-white text-center rounded-sm text-xl bg-blue-500 hover:bg-blue-600 cursor-pointer"
+              >
+                Add
+              </button>
+            </form>
+          </div>
         </div>
       </div>
     </div>
