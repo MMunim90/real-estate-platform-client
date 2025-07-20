@@ -14,6 +14,8 @@ import Profile from "../pages/Profile/Profile";
 import ErrorPage from "../pages/ErrorPage/ErrorPage";
 import DashboardLayout from "../layouts/DashboardLayout";
 import Forbidden from "../pages/Forbidden/Forbidden";
+import AgentRoute from "../routes/AgentRoute";
+import AddProperty from "../pages/Dashboard/AddProperty/AddProperty";
 
 export const router = createBrowserRouter([
   {
@@ -83,6 +85,14 @@ export const router = createBrowserRouter([
             <Profile></Profile>
           </PrivateRoute>
         ),
+      },
+
+      //agent only route
+      {
+        path: "addProperty",
+        element: <AgentRoute>
+          <AddProperty></AddProperty>
+        </AgentRoute>
       },
     ],
   },

@@ -104,7 +104,7 @@ const Profile = () => {
   if (error) return <p className="text-red-500 text-center mt-4">{error}</p>;
 
   return (
-    <div className="w-full min-h-screen bg-gray-100">
+    <div className="w-full min-h-screen bg-blue-50">
       <Helmet>
         <title>Profile | BrickBase</title>
       </Helmet>

@@ -25,7 +25,7 @@ const DashboardLayout = () => {
   return (
     <div className="drawer lg:drawer-open">
       <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
-      <div className="drawer-content flex flex-col bg-gray-200 text-black">
+      <div className="drawer-content flex flex-col bg-blue-50 text-black">
         {/* Navbar */}
         <div className="navbar bg-white text-black w-full lg:hidden">
           <div className="flex-none">

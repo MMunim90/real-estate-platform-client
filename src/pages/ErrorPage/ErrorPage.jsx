@@ -8,7 +8,7 @@ const ErrorPage = () => {
   // console.error(error);
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-white text-center px-6">
+    <div className="min-h-screen flex flex-col items-center justify-center bg-blue-50 text-center px-6">
       <Helmet>
         <title>Error</title>
       </Helmet>

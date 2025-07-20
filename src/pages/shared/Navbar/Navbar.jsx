@@ -66,7 +66,7 @@ const Navbar = () => {
 
   return (
     <header className="bg-white shadow-md sticky top-0 z-50">
-      <div className="container mx-auto px-4 py-3 flex items-center">
+      <div className="container mx-auto px-4 lg:px-0 py-3 flex items-center">
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2">
           <img src={logo} alt="BrickBase Logo" className="w-8 h-8" />
