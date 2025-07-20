@@ -5,7 +5,7 @@ import { Helmet } from "react-helmet-async";
 const ErrorPage = () => {
    const navigate = useNavigate();
   const error = useRouteError();
-  console.error(error);
+  // console.error(error);
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-white text-center px-6">

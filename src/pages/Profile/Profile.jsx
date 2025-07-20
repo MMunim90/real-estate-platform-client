@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import banner from "../../assets/banner.jpg";
 import useAuth from "../../hooks/useAuth";
 import { toast } from "react-toastify";
@@ -6,10 +6,21 @@ import Swal from "sweetalert2";
 import dayjs from "dayjs";
 import { Helmet } from "react-helmet-async";
 import useUserRole from "../../hooks/useUserRole";
+import useAxios from "../../hooks/useAxios";
+import { useForm } from "react-hook-form";
+import { FaFacebook, FaTwitter, FaWhatsapp } from "react-icons/fa";
+import { Link } from "react-router";
+import Loading from "../shared/Loading/Loading";
 
 const Profile = () => {
   const { user, setUser, updateUserProfile } = useAuth();
+  const [socials, setSocials] = useState({});
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  const axiosInstance = useAxios();
   const { role } = useUserRole();
+  const { register, handleSubmit } = useForm();
   const formatDate = (dateString) => dayjs(dateString).format("DD/MM/YYYY");
 
   const handleUpdateUser = (e) => {
@@ -39,6 +50,59 @@ const Profile = () => {
         setUser(user);
       });
   };
+
+  const handleApplyFromSubmit = async (data) => {
+    const application = {
+      applicant: user.email,
+      facebook: data.facebook,
+      twitter: data.twitter,
+      whatsapp: data.whatsapp,
+    };
+
+    try {
+      const res = await axiosInstance.patch("/users", application);
+      console.log(res.data);
+      if (res.data.modifiedCount > 0) {
+        Swal.fire({
+          icon: "success",
+          title: "Media links submitted",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      }
+    } catch (error) {
+      console.error(error);
+      toast.error("Failed to update media links.");
+    }
+  };
+
+  useEffect(() => {
+    if (!user?.email) return;
+
+    const fetchSocialLinks = async () => {
+      try {
+        const res = await axiosInstance.get(
+          `/users/socials?email=${user.email}`
+        );
+        setSocials(res.data); 
+      } catch (err) {
+        setError(err.response?.data?.error || "Failed to fetch social links");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchSocialLinks();
+  }, [user?.email, axiosInstance]);
+
+  if (loading)
+    return (
+      <div className="text-center mt-4">
+        <Loading></Loading>
+      </div>
+    );
+  if (error) return <p className="text-red-500 text-center mt-4">{error}</p>;
+
   return (
     <div className="w-full min-h-screen bg-gray-100">
       <Helmet>
@@ -63,12 +127,42 @@ const Profile = () => {
           <h1 className="text-2xl md:text-3xl font-semibold text-gray-800">
             {user.displayName}
           </h1>
+
+          <div className="flex gap-4 justify-center md:justify-start my-2">
+            {socials?.facebook && (
+              <a
+                href={socials.facebook}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FaFacebook className="text-blue-600 text-2xl" />
+              </a>
+            )}
+            {socials?.twitter && (
+              <a
+                href={socials.twitter}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FaTwitter className="text-sky-500 text-2xl" />
+              </a>
+            )}
+            {socials?.whatsapp && (
+              <a
+                href={socials.whatsapp}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FaWhatsapp className="text-green-500 text-2xl" />
+              </a>
+            )}
+          </div>
+
           <p className="text-gray-700 mt-4">
-            Hey there, {role}! 👋 Your account "{user.email}" was created
-            on {formatDate(user.metadata.creationTime)} <br /> and you last
-            signed in on {formatDate(user.metadata.lastSignInTime)}. Glad to
-            have you back—feel free to update your info or explore your
-            dashboard!
+            Hey there, {role}! 👋 Your account "{user.email}" was created on{" "}
+            {formatDate(user.metadata.creationTime)} <br /> and you last signed
+            in on {formatDate(user.metadata.lastSignInTime)}. Glad to have you
+            back—feel free to update your info or explore your dashboard!
           </p>
         </div>
 
@@ -114,24 +208,27 @@ const Profile = () => {
             <h2 className="text-xl font-semibold text-gray-800 mb-4">
               Add Media Links
             </h2>
-            <form className="border border-black p-10 rounded-2xl space-y-6">
+            <form
+              onSubmit={handleSubmit(handleApplyFromSubmit)}
+              className="border border-black p-10 rounded-2xl space-y-6"
+            >
               <input
                 type="url"
-                name="facebook"
+                {...register("facebook")}
                 className="w-full px-4 py-3 rounded-md border border-gray-300 bg-gray-50 text-black"
                 placeholder="Facebook Profile Link"
               />
 
               <input
                 type="url"
-                name="twitter"
+                {...register("twitter")}
                 className="w-full px-4 py-3 rounded-md border border-gray-300 bg-gray-50 text-black"
                 placeholder="Twitter Profile Link"
               />
 
               <input
                 type="url"
-                name="whatsapp"
+                {...register("whatsapp")}
                 className="w-full px-4 py-3 rounded-md border border-gray-300 bg-gray-50 text-black"
                 placeholder="WhatsApp Link"
               />

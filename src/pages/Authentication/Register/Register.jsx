@@ -1,6 +1,6 @@
 import React from "react";
 import { FcGoogle } from "react-icons/fc";
-import { Link, useLocation, useNavigate } from "react-router"; 
+import { Link, useLocation, useNavigate } from "react-router";
 import logo from "../../../assets/logo.png";
 import { Helmet } from "react-helmet-async";
 import Lottie from "lottie-react";
@@ -75,11 +75,24 @@ const Register = () => {
   const handleGoogleSignIn = () => {
     signInWithGoogle()
       .then(async (result) => {
+        const googleUser = result.user;
+
+        const userInfo = {
+          email: googleUser.email,
+          role: "user",
+          created_at: new Date().toISOString(),
+          last_logged_in: new Date().toISOString(),
+        };
+
+        // Save to database (only if not already exists – optional logic)
+        await axiosInstance.post("/users", userInfo);
+
         Swal.fire({
           title: "Registration Successful!",
           icon: "success",
           confirmButtonColor: "#01AFF7",
         });
+
         navigate(from);
       })
       .catch((error) => {

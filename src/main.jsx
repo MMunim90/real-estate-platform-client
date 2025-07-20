@@ -7,6 +7,7 @@ import { HelmetProvider } from "react-helmet-async";
 import AuthProvider from "./context/AuthContext/Authprovider.jsx";
 import { ToastContainer } from "react-toastify";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import "aos/dist/aos.css";
 import Aos from "aos";
 
 Aos.init();

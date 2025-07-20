@@ -1,16 +1,27 @@
 import React from "react";
 import { Link, NavLink, Outlet } from "react-router";
 import {
-    FaCheckCircle,
-    FaHeart,
+  FaBuilding,
+  FaCheckCircle,
+  FaClipboardList,
+  FaCommentDots,
+  FaHandHoldingUsd,
+  FaHeart,
+  FaListAlt,
+  FaPlusSquare,
   FaStar,
   FaUserCircle,
+  FaUserCog,
+  FaUsers,
+  FaUserTie,
 } from "react-icons/fa";
 import logo from "../assets/logo.png";
 import useAuth from "../hooks/useAuth";
+import useUserRole from "../hooks/useUserRole";
 
 const DashboardLayout = () => {
   const { user } = useAuth();
+  const { role, loading } = useUserRole();
   return (
     <div className="drawer lg:drawer-open">
       <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
@@ -38,7 +49,9 @@ const DashboardLayout = () => {
               </svg>
             </label>
           </div>
-          <div className="mx-2 flex-1 px-2 lg:hidden font-semibold">Dashboard</div>
+          <div className="mx-2 flex-1 px-2 lg:hidden font-semibold">
+            Dashboard
+          </div>
         </div>
         {/* Page content here */}
         <Outlet></Outlet>
@@ -49,7 +62,7 @@ const DashboardLayout = () => {
           aria-label="close sidebar"
           className="drawer-overlay"
         ></label>
-        <ul className="flex flex-col justify-between menu bg-white text-black min-h-full w-60 p-8">
+        <ul className="flex flex-col justify-between menu bg-white text-black min-h-full w-auto p-8">
           {/* Sidebar content here */}
           <div>
             <div className="text-center">
@@ -64,58 +77,218 @@ const DashboardLayout = () => {
             <div className="border border-blue-400 text-black mb-2"></div>
 
             {/* user link */}
-            <li>
-              <NavLink
-                to="/dashboard/profile"
-                className={({ isActive }) =>
-                  `flex items-center gap-2 px-3 py-2 rounded ${
-                    isActive ? "text-blue-600 font-semibold" : "hover:text-blue-500"
-                  }`
-                }
-              >
-                <FaUserCircle /> My Profile
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="/dashboard/wishlist"
-                className={({ isActive }) =>
-                  `flex items-center gap-2 px-3 py-2 rounded ${
-                    isActive ? "text-blue-600 font-semibold" : "hover:text-blue-500"
-                  }`
-                }
-              >
-                <FaHeart /> Wishlist
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="/dashboard/propertyBought"
-                className={({ isActive }) =>
-                  `flex items-center gap-2 px-3 py-2 rounded ${
-                    isActive ? "text-blue-600 font-semibold" : "hover:text-blue-500"
-                  }`
-                }
-              >
-                <FaCheckCircle /> Property Bought
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="/dashboard/myReviews"
-                className={({ isActive }) =>
-                  `flex items-center gap-2 px-3 py-2 rounded ${
-                    isActive ? "text-blue-600 font-semibold" : "hover:text-blue-500"
-                  }`
-                }
-              >
-                <FaStar /> My Reviews
-              </NavLink>
-            </li>
+            {!loading && role === "user" && (
+              <>
+                <li>
+                  <NavLink
+                    to="/dashboard/profile"
+                    className={({ isActive }) =>
+                      `flex items-center gap-2 px-3 py-2 rounded ${
+                        isActive
+                          ? "text-blue-600 font-semibold"
+                          : "hover:text-blue-500"
+                      }`
+                    }
+                  >
+                    <FaUserCircle /> My Profile
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    to="/dashboard/wishlist"
+                    className={({ isActive }) =>
+                      `flex items-center gap-2 px-3 py-2 rounded ${
+                        isActive
+                          ? "text-blue-600 font-semibold"
+                          : "hover:text-blue-500"
+                      }`
+                    }
+                  >
+                    <FaHeart /> Wishlist
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    to="/dashboard/propertyBought"
+                    className={({ isActive }) =>
+                      `flex items-center gap-2 px-3 py-2 rounded ${
+                        isActive
+                          ? "text-blue-600 font-semibold"
+                          : "hover:text-blue-500"
+                      }`
+                    }
+                  >
+                    <FaCheckCircle /> Property Bought
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    to="/dashboard/myReviews"
+                    className={({ isActive }) =>
+                      `flex items-center gap-2 px-3 py-2 rounded ${
+                        isActive
+                          ? "text-blue-600 font-semibold"
+                          : "hover:text-blue-500"
+                      }`
+                    }
+                  >
+                    <FaStar /> My Reviews
+                  </NavLink>
+                </li>
+              </>
+            )}
 
             {/* admin link */}
+            {!loading && role === "admin" && (
+              <>
+                <li>
+                  <NavLink
+                    to="/dashboard/profile"
+                    className={({ isActive }) =>
+                      `flex items-center gap-2 px-3 py-2 rounded ${
+                        isActive
+                          ? "text-blue-600 font-semibold"
+                          : "hover:text-blue-500"
+                      }`
+                    }
+                  >
+                    <FaUserCog /> Admin Profile
+                  </NavLink>
+                </li>
 
-            {/* riders link */}
+                {/* Manage Properties */}
+                <li>
+                  <NavLink
+                    to="/dashboard/manageProperties"
+                    className={({ isActive }) =>
+                      `flex items-center gap-2 px-3 py-2 rounded ${
+                        isActive
+                          ? "text-blue-600 font-semibold"
+                          : "hover:text-blue-500"
+                      }`
+                    }
+                  >
+                    <FaBuilding /> Manage Properties
+                  </NavLink>
+                </li>
+
+                {/* Manage Users */}
+                <li>
+                  <NavLink
+                    to="/dashboard/manageUsers"
+                    className={({ isActive }) =>
+                      `flex items-center gap-2 px-3 py-2 rounded ${
+                        isActive
+                          ? "text-blue-600 font-semibold"
+                          : "hover:text-blue-500"
+                      }`
+                    }
+                  >
+                    <FaUsers /> Manage Users
+                  </NavLink>
+                </li>
+
+                {/* Manage Reviews */}
+                <li>
+                  <NavLink
+                    to="/dashboard/manageReviews"
+                    className={({ isActive }) =>
+                      `flex items-center gap-2 px-3 py-2 rounded ${
+                        isActive
+                          ? "text-blue-600 font-semibold"
+                          : "hover:text-blue-500"
+                      }`
+                    }
+                  >
+                    <FaCommentDots /> Manage Reviews
+                  </NavLink>
+                </li>
+              </>
+            )}
+
+            {/* agent link */}
+            {!loading && role === "agent" && (
+              <>
+                <li>
+                  <NavLink
+                    to="/dashboard/profile"
+                    className={({ isActive }) =>
+                      `flex items-center gap-2 px-3 py-2 rounded ${
+                        isActive
+                          ? "text-blue-600 font-semibold"
+                          : "hover:text-blue-500"
+                      }`
+                    }
+                  >
+                    <FaUserTie /> Agent Profile
+                  </NavLink>
+                </li>
+
+                {/* Add Property */}
+                <li>
+                  <NavLink
+                    to="/dashboard/addProperty"
+                    className={({ isActive }) =>
+                      `flex items-center gap-2 px-3 py-2 rounded ${
+                        isActive
+                          ? "text-blue-600 font-semibold"
+                          : "hover:text-blue-500"
+                      }`
+                    }
+                  >
+                    <FaPlusSquare /> Add Property
+                  </NavLink>
+                </li>
+
+                {/* My Added Properties */}
+                <li>
+                  <NavLink
+                    to="/dashboard/myProperties"
+                    className={({ isActive }) =>
+                      `flex items-center gap-2 px-3 py-2 rounded ${
+                        isActive
+                          ? "text-blue-600 font-semibold"
+                          : "hover:text-blue-500"
+                      }`
+                    }
+                  >
+                    <FaListAlt /> My Properties
+                  </NavLink>
+                </li>
+
+                {/* My Sold Properties */}
+                <li>
+                  <NavLink
+                    to="/dashboard/soldProperties"
+                    className={({ isActive }) =>
+                      `flex items-center gap-2 px-3 py-2 rounded ${
+                        isActive
+                          ? "text-blue-600 font-semibold"
+                          : "hover:text-blue-500"
+                      }`
+                    }
+                  >
+                    <FaHandHoldingUsd /> Sold Properties
+                  </NavLink>
+                </li>
+
+                {/* Requested Properties */}
+                <li>
+                  <NavLink
+                    to="/dashboard/requestedProperties"
+                    className={({ isActive }) =>
+                      `flex items-center gap-2 px-3 py-2 rounded ${
+                        isActive
+                          ? "text-blue-600 font-semibold"
+                          : "hover:text-blue-500"
+                      }`
+                    }
+                  >
+                    <FaClipboardList /> Requested Properties
+                  </NavLink>
+                </li>
+              </>
+            )}
           </div>
 
           <div>
