@@ -74,7 +74,7 @@ const ResetPassword = () => {
             <p className="text-center text-sm text-gray-600 mt-6">
               Remember your password?{" "}
               <Link to="/login" className="text-blue-600 hover:underline">
-                Login
+                Sign in
               </Link>
             </p>
           </FadeIn>

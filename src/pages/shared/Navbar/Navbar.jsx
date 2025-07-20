@@ -44,7 +44,7 @@ const Navbar = () => {
         All Properties
       </NavLink>
       <NavLink
-        to="/dashboard"
+        to="/dashboard/profile"
         className={({ isActive }) =>
           isActive ? "text-blue-600 font-semibold" : "hover:text-blue-500"
         }
@@ -85,7 +85,7 @@ const Navbar = () => {
             <div className="relative">
               <img
                 src={
-                  user?.photoURL || "https://i.ibb.co/2FsfXqM/default-user.png"
+                  user?.photoURL || "https://i.ibb.co/F4BxGnK2/user.png"
                 }
                 alt="Profile"
                 className="w-9 h-9 rounded-full cursor-pointer border-2 border-blue-400 object-cover"
@@ -94,15 +94,9 @@ const Navbar = () => {
               {dropdownOpen && (
                 <div className="absolute right-0 mt-2 w-56 bg-white border rounded-md shadow-lg py-2 z-50 text-black">
                   <div className="px-4 py-2 border-b">
-                    <p className="font-semibold text-sm">
+                    <p className="font-semibold text-xl">
                       {user?.displayName || "User"}
                     </p>
-                    <Link
-                      to="/profile"
-                      className="text-xs text-blue-500 hover:underline"
-                    >
-                      Go to profile
-                    </Link>
                   </div>
                   <Link
                     to="/about"

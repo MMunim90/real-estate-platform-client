@@ -15,16 +15,26 @@ import Swal from "sweetalert2";
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const { register, handleSubmit } = useForm();
-
-  const onSubmit = (data) => {
-    console.log(data);
-  };
+  const { signIn, signInWithGoogle } = useAuth();
 
   const location = useLocation();
   const navigate = useNavigate();
   const from = location.state?.from || "/";
 
-  const { signInWithGoogle } = useAuth();
+  const onSubmit = (data) => {
+    signIn(data.email, data.password)
+      .then((result) => {
+        //console.log(result.user);
+        Swal.fire({
+          title: "Login Successful!",
+          icon: "success",
+          confirmButtonColor: "#01AFF7",
+        });
+        navigate(from);
+      })
+      .catch((error) => console.log(error));
+  };
+
   const handleGoogleSignIn = () => {
     signInWithGoogle()
       .then((result) => {

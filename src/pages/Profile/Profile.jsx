@@ -16,6 +16,7 @@ const Profile = () => {
     const form = e.target;
     const name = form.name.value;
     const photoURL = form.photoURL.value;
+    console.log(photoURL)
 
     updateUserProfile({
       displayName: name,
@@ -45,11 +46,11 @@ const Profile = () => {
       <div className="w-full h-64 md:h-80 lg:h-96 relative">
         <img src={banner} alt="Banner" className="w-full h-full object-cover" />
         {/* Profile Image */}
-        <div className="absolute left-1/2 transform -translate-x-1/2 md:left-32 md:translate-x-0 -bottom-16">
+        <div className="absolute left-1/2 transform -translate-x-1/2 md:left-32 md:translate-x-0 -bottom-16 lg:-bottom-20">
           <img
-            src={user?.photoURL}
+            src={user?.photoURL || "https://i.ibb.co/F4BxGnK2/user.png"}
             alt="Profile"
-            className="w-32 h-32 md:w-36 md:h-36 rounded-full border-4 border-white shadow-md object-cover"
+            className="w-32 h-32 md:w-36 md:h-36 lg:w-44 lg:h-44 rounded-full border-4 border-white shadow-md object-cover"
           />
         </div>
       </div>

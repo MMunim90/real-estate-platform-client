@@ -11,52 +11,93 @@ import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import { useForm } from "react-hook-form";
 import useAuth from "../../../hooks/useAuth";
 import Swal from "sweetalert2";
+import axios from "axios";
 
 const Register = () => {
   const [showPassword, setShowPassword] = useState(false);
+  const [profilePic, setProfilePic] = useState("");
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => {
-    console.log(data);
-  };
+  const { createUser, updateUserProfile, signInWithGoogle } = useAuth();
 
   const location = useLocation();
   const navigate = useNavigate();
   const from = location.state?.from || "/";
 
-  const { signInWithGoogle } = useAuth();
-  const handleGoogleSignIn = () => {
-    signInWithGoogle()
-      .then(async(result) => {
-        // const user = result.user;
-        //console.log(res.user);
-        Swal.fire({
-          title: "Registration Successful!",
-          icon: "success",
-          confirmButtonColor: "#01AFF7",
-        });
+  const onSubmit = (data) => {
+    //console.log(data);
+    createUser(data.email, data.password)
+      .then(async (result) => {
+        //console.log(result.user);
 
         //update userinfo in the database
         // const userInfo = {
-        //   email: user.email,
+        //   email: data.email,
         //   role: "user", // default role
         //   created_at: new Date().toISOString(),
         //   last_logged_in: new Date().toISOString(),
         // };
 
-        // const res = await axiosInstance.post('/users', userInfo);
-        //console.log('user update info', result.data);
+        // const userRes = await axiosInstance.post("/users", userInfo);
+        // //console.log(userRes.data);
 
+        // update user profile in firebase
+        const userProfile = {
+          displayName: data.name,
+          photoURL: profilePic,
+        };
+        updateUserProfile(userProfile)
+          .then(() => {
+            //console.log("profile name pic updated");
+          })
+          .catch((error) => {
+            //console.log(error);
+          });
+
+        Swal.fire({
+          title: "Registration Successful!",
+          icon: "success",
+          confirmButtonColor: "#01AFF7",
+        });
         navigate(from);
       })
       .catch((error) => {
         console.error(error);
       });
   };
+
+  const handleGoogleSignIn = () => {
+    signInWithGoogle()
+      .then(async (result) => {
+        Swal.fire({
+          title: "Registration Successful!",
+          icon: "success",
+          confirmButtonColor: "#01AFF7",
+        });
+        navigate(from);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
+
+  const handleImageUpload = async (e) => {
+    const image = e.target.files[0];
+    //console.log(image);
+    const formData = new FormData();
+    formData.append("image", image);
+
+    const imageUploadUrl = `https://api.imgbb.com/1/upload?key=${
+      import.meta.env.VITE_image_upload_key
+    }`;
+    const res = await axios.post(imageUploadUrl, formData);
+    setProfilePic(res.data.data.url);
+  };
+
   return (
     <div className="min-h-screen flex flex-col md:flex-row">
       <Helmet>
@@ -100,6 +141,8 @@ const Register = () => {
             {/* Photo Upload */}
             <input
               type="file"
+              accept="image/*"
+              onChange={handleImageUpload}
               className="w-full mb-4 text-sm file:px-4 file:py-2 border border-gray-300 rounded file:bg-blue-500 file:text-white file:cursor-pointer file:hover:bg-blue-600"
             />
 
@@ -115,7 +158,7 @@ const Register = () => {
             )}
 
             {/* Password */}
-            <div className="relative mb-2">
+            <div className="relative mb-4">
               <input
                 type={showPassword ? "text" : "password"}
                 {...register("password", {
@@ -152,7 +195,10 @@ const Register = () => {
             )}
 
             {/* Register Button */}
-            <button type="submit" className="w-full bg-blue-500 text-white font-semibold py-2 rounded hover:bg-blue-600 transition">
+            <button
+              type="submit"
+              className="w-full bg-blue-500 text-white font-semibold py-2 rounded hover:bg-blue-600 transition"
+            >
               Sign up
             </button>
             {/* OR Divider */}

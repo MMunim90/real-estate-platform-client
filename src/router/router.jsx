@@ -14,6 +14,7 @@ import ResetPassword from "../pages/Authentication/ResetPassword/ResetPassword";
 import PrivateRoute from "../routes/PrivateRoute";
 import Profile from "../pages/Profile/Profile";
 import ErrorPage from "../pages/ErrorPage/ErrorPage";
+import DashboardLayout from "../layouts/DashboardLayout";
 
 export const router = createBrowserRouter([
   {
@@ -44,12 +45,6 @@ export const router = createBrowserRouter([
           path: '/*',
           Component: ErrorPage,
         },
-        {
-          path: 'profile',
-          element: <PrivateRoute>
-            <Profile></Profile>
-          </PrivateRoute>
-        }
     ]
   },
   {
@@ -68,6 +63,20 @@ export const router = createBrowserRouter([
         path: '/reset',
         Component: ResetPassword,
       },
+    ]
+  },
+  {
+    path: '/dashboard',
+    element: <PrivateRoute>
+      <DashboardLayout></DashboardLayout>
+    </PrivateRoute>,
+    children: [
+      {
+          path: 'profile',
+          element: <PrivateRoute>
+            <Profile></Profile>
+          </PrivateRoute>
+        }
     ]
   }
 ]);

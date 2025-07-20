@@ -1,8 +1,9 @@
-import { Link, useRouteError } from "react-router";
+import { Link, useNavigate, useRouteError } from "react-router";
 import { FaExclamationTriangle } from "react-icons/fa";
 import { Helmet } from "react-helmet-async";
 
 const ErrorPage = () => {
+   const navigate = useNavigate();
   const error = useRouteError();
   console.error(error);
 
@@ -34,11 +35,10 @@ const ErrorPage = () => {
       )}
 
       {/* Back to home button */}
-      <Link
-        to="/"
+      <Link onClick={() => navigate(-1)}
         className="inline-block px-6 py-3 bg-blue-400 hover:bg-blue-500 font-semibold rounded-lg transition text-white"
       >
-        🔙 Back to Home
+        🔙 Back
       </Link>
     </div>
   );
