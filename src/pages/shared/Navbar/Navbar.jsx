@@ -92,10 +92,13 @@ const Navbar = () => {
                 onClick={() => setDropdownOpen(!dropdownOpen)}
               />
               {dropdownOpen && (
-                <div className="absolute right-0 mt-2 w-56 bg-white border rounded-md shadow-lg py-2 z-50 text-black">
+                <div className="absolute right-0 mt-2 w-56 bg-white border rounded-md shadow-lg z-50 text-black">
                   <div className="px-4 py-2 border-b">
-                    <p className="font-semibold text-xl">
+                    <p className="font-semibold text-lg">
                       {user?.displayName || "User"}
+                    </p>
+                    <p className="text-xs">
+                      {user?.email}
                     </p>
                   </div>
                   <Link
