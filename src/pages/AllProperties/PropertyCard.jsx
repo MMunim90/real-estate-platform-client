@@ -31,7 +31,7 @@ const PropertyCard = ({ property }) => {
         <p className="flex items-center gap-2 text-sm text-black font-semibold"><MdVerified className="text-blue-500 text-2xl inline"/> Verified</p>
 
         <div className="pt-4">
-          <Link to={`/property-details/${property._id}`}>
+          <Link to={`/properties/${property._id}`}>
             <button className="w-full bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded transition-all">
               View Details
             </button>

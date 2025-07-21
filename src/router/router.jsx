@@ -28,6 +28,7 @@ import MyProperties from "../pages/Dashboard/MyProperties/MyProperties";
 import SoldProperties from "../pages/Dashboard/SoldProperties/SoldProperties";
 import RequestedProperties from "../pages/Dashboard/RequestedProperties/RequestedProperties";
 import UserRoute from "../routes/UserRoute";
+import PropertyDetails from "../pages/PropertyDetails/PropertyDetails";
 
 export const router = createBrowserRouter([
   {
@@ -66,6 +67,12 @@ export const router = createBrowserRouter([
         path: "allProperties",
         element: <PrivateRoute>
           <AllProperties></AllProperties>
+        </PrivateRoute>
+      },
+      {
+        path: "properties",
+        element: <PrivateRoute>
+          <PropertyDetails></PropertyDetails>
         </PrivateRoute>
       },
     ],

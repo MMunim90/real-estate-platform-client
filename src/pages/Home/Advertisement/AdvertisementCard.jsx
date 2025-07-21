@@ -3,7 +3,7 @@ import { Link } from "react-router";
 
 const AdvertisementCard = ({ property }) => {
   return (
-    <div className="bg-white rounded shadow-md border border-gray-300 overflow-hidden">
+    <div className="bg-blue-50 rounded shadow-md border border-gray-400 overflow-hidden">
       <img
         src={property.image}
         alt={property.title}
@@ -25,7 +25,7 @@ const AdvertisementCard = ({ property }) => {
         </p>
 
         <div className="pt-3">
-          <Link to={`/property-details/${property._id}`}>
+          <Link to={`/properties/${property._id}`}>
             <button className="w-full bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded transition-all">
               View Details
             </button>

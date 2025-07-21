@@ -1,8 +1,65 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { FaBullhorn, FaCameraRetro, FaRocket, FaSearch } from "react-icons/fa";
 import { Typewriter } from "react-simple-typewriter";
+import { IoMdClose } from "react-icons/io";
+import { Link } from "react-router";
+import { GoArrowUpLeft } from "react-icons/go";
+import './SearchBar.css'
 
 const FeatureSection = () => {
+  const [search, setSearch] = useState("");
+  const [searchData, setSearchData] = useState([]);
+  const [selectedItem, setSelectedItem] = useState(-1);
+
+  const handleChange = (e) => {
+    setSearch(e.target.value);
+  };
+
+  const handleClose = () => {
+    setSearch("");
+    setSearchData([]);
+    setSelectedItem(-1);
+  };
+
+  const handleKeyDown = (e) => {
+    if (selectedItem < searchData.length) {
+      if (e.key === "ArrowUp" && selectedItem > 0) {
+        setSelectedItem((prev) => prev - 1);
+      } else if (
+        e.key === "ArrowDown" &&
+        selectedItem < searchData.length - 1
+      ) {
+        setSelectedItem((prev) => prev + 1);
+      } else if (e.key === "Enter" && selectedItem >= 0) {
+        const selected = searchData[selectedItem];
+        if (selected && selected._id) {
+          window.open(`/properties/${selected._id}`, "_self");
+        }
+      }
+    } else {
+      setSelectedItem(-1);
+    }
+  };
+
+  useEffect(() => {
+    if (search !== "") {
+      fetch(`http://localhost:5000/properties/verified`)
+        .then((res) => {
+          if (!res.ok) throw new Error("Server returned error");
+          return res.json();
+        })
+        .then((data) => {
+          const filtered = data.filter((property) =>
+            property.location.toLowerCase().includes(search.toLowerCase())
+          );
+          setSearchData(filtered);
+        })
+        .catch((error) => console.error("Fetch error:", error));
+    } else {
+      setSearchData([]);
+    }
+  }, [search]);
+
   return (
     <div
       className="relative bg-cover bg-center text-white py-16 px-4 md:px-16"
@@ -59,16 +116,48 @@ const FeatureSection = () => {
           </div>
         </div>
 
-        <div className="mt-10 max-w-2xl mx-auto">
-          <div className="flex items-center bg-white rounded overflow-hidden">
+        <div className="search_section mt-10 max-w-2xl mx-auto">
+          <div className="search_input_div flex items-center bg-white rounded overflow-hidden">
             <input
               type="text"
-              placeholder="Search properties by city, type, or ID..."
-              className="w-full px-4 py-3 text-black placeholder-gray-500 focus:outline-none"
+              placeholder="Search properties by city or location..."
+              className="w-full px-4 py-3 text-black placeholder-gray-500 focus:outline-none search_input"
+              autoComplete="off"
+              onChange={handleChange}
+              value={search}
+              onKeyDown={handleKeyDown}
             />
             <button className="bg-gray-800 hover:bg-gray-700 text-white px-5 py-4 cursor-pointer">
-              <FaSearch />
+              {search === "" ? (
+                <FaSearch />
+              ) : (
+                <IoMdClose onClick={handleClose} />
+              )}
             </button>
+          </div>
+          <div className="search_result">
+            {searchData.map((data, index) => {
+              return (
+                <Link
+                  key={index}
+                  className={
+                    selectedItem === index
+                      ? "search_suggestion_line active"
+                      : "search_suggestion_line"
+                  }
+                  to={`/properties/${data._id}`}
+                >
+                  {data ? (
+                    <div>
+                      <GoArrowUpLeft className="inline mr-2" />{" "}
+                      {data.show?.location || data.location}
+                    </div>
+                  ) : (
+                    "Nothing match to search input"
+                  )}
+                </Link>
+              );
+            })}
           </div>
         </div>
 
