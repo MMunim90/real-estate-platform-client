@@ -1,27 +1,29 @@
-import React, { useState } from "react";
+import { useMutation } from "@tanstack/react-query";
 import { useForm } from "react-hook-form";
+import { useState } from "react";
+import axios from "axios";
 import { FaUpload } from "react-icons/fa";
-import useAuth from "../../../hooks/useAuth";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
-import { toast } from "react-toastify";
+import useAuth from "../../../hooks/useAuth";
+import Swal from "sweetalert2";
 
 const AddProperty = () => {
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
   const { register, handleSubmit, reset } = useForm();
   const [imagePreview, setImagePreview] = useState(null);
+  const imageUploadKey = import.meta.env.VITE_image_upload_key;
 
-  const onSubmit = async (data) => {
-    const formData = new FormData();
-    formData.append("image", data.image[0]);
+  const mutation = useMutation({
+    mutationFn: async (data) => {
+      const formData = new FormData();
+      formData.append("image", data.image[0]);
 
-    try {
-      // Upload image to your server or cloud service
-      const uploadRes = await axiosSecure.post("/upload", formData, {
-        headers: { "Content-Type": "multipart/form-data" },
-      });
+      const imageUploadUrl = `https://api.imgbb.com/1/upload?key=${imageUploadKey}`;
 
-      const imageUrl = uploadRes.data?.url;
+      // Upload image to imgbb
+      const res = await axios.post(imageUploadUrl, formData);
+      const imageUrl = res.data?.data?.url;
 
       const propertyInfo = {
         title: data.title,
@@ -34,14 +36,31 @@ const AddProperty = () => {
         createdAt: new Date(),
       };
 
-      await axiosSecure.post("/properties", propertyInfo);
-      toast.success("Property added successfully!");
+      // Save property info to DB
+      return await axiosSecure.post("/addProperties", propertyInfo);
+    },
+    onSuccess: () => {
+      Swal.fire({
+        icon: "success",
+        title: "Success",
+        text: "Property added successfully!",
+        confirmButtonColor: "#01AFF7",
+      });
       reset();
       setImagePreview(null);
-    } catch (error) {
-      console.error(error);
-      toast.error("Failed to add property");
-    }
+    },
+    onError: () => {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Failed to add property",
+        confirmButtonColor: "#d33",
+      });
+    },
+  });
+
+  const onSubmit = (data) => {
+    mutation.mutate(data);
   };
 
   const handleImagePreview = (e) => {
@@ -101,7 +120,7 @@ const AddProperty = () => {
             <img
               src={imagePreview}
               alt="Preview"
-              className="mt-2 rounded w-full h-40 object-cover"
+              className="mt-2 rounded w-120 h-80 object-cover"
             />
           )}
         </div>

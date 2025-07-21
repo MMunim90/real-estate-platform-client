@@ -16,6 +16,18 @@ import DashboardLayout from "../layouts/DashboardLayout";
 import Forbidden from "../pages/Forbidden/Forbidden";
 import AgentRoute from "../routes/AgentRoute";
 import AddProperty from "../pages/Dashboard/AddProperty/AddProperty";
+import AllProperties from "../pages/AllProperties/AllProperties";
+import AdminRoute from "../routes/AdminRoute";
+import ManageProperties from "../pages/Dashboard/ManageProperties/ManageProperties";
+import ManageUsers from "../pages/Dashboard/ManageUsers/ManageUsers";
+import ManageReviews from "../pages/Dashboard/ManageReviews/ManageReviews";
+import Wishlist from "../pages/Dashboard/Wishlist/Wishlist";
+import PropertyBought from "../pages/Dashboard/PropertyBought/PropertyBought";
+import MyReviews from "../pages/Dashboard/MyReviews/MyReviews";
+import MyProperties from "../pages/Dashboard/MyProperties/MyProperties";
+import SoldProperties from "../pages/Dashboard/SoldProperties/SoldProperties";
+import RequestedProperties from "../pages/Dashboard/RequestedProperties/RequestedProperties";
+import UserRoute from "../routes/UserRoute";
 
 export const router = createBrowserRouter([
   {
@@ -50,6 +62,12 @@ export const router = createBrowserRouter([
         path: "forbidden",
         Component: Forbidden,
       },
+      {
+        path: "allProperties",
+        element: <PrivateRoute>
+          <AllProperties></AllProperties>
+        </PrivateRoute>
+      },
     ],
   },
   {
@@ -78,13 +96,50 @@ export const router = createBrowserRouter([
       </PrivateRoute>
     ),
     children: [
+      //common route
       {
         path: "profile",
-        element: (
-          <PrivateRoute>
-            <Profile></Profile>
-          </PrivateRoute>
-        ),
+        Component: Profile,
+      },
+
+      //user only route
+      {
+        path: "wishlist",
+        element: <UserRoute>
+          <Wishlist></Wishlist>
+        </UserRoute>
+      },
+      {
+        path: "propertyBought",
+        element: <UserRoute>
+          <PropertyBought></PropertyBought>
+        </UserRoute>
+      },
+      {
+        path: "myReviews",
+        element: <UserRoute>
+          <MyReviews></MyReviews>
+        </UserRoute>
+      },
+
+      //admin only route
+      {
+        path: "manageProperties",
+        element: <AdminRoute>
+          <ManageProperties></ManageProperties>
+        </AdminRoute>
+      },
+      {
+        path: "manageUsers",
+        element: <AdminRoute>
+          <ManageUsers></ManageUsers>
+        </AdminRoute>
+      },
+      {
+        path: "manageReviews",
+        element: <AdminRoute>
+          <ManageReviews></ManageReviews>
+        </AdminRoute>
       },
 
       //agent only route
@@ -92,6 +147,24 @@ export const router = createBrowserRouter([
         path: "addProperty",
         element: <AgentRoute>
           <AddProperty></AddProperty>
+        </AgentRoute>
+      },
+      {
+        path: "myProperties",
+        element: <AgentRoute>
+          <MyProperties></MyProperties>
+        </AgentRoute>
+      },
+      {
+        path: "soldProperties",
+        element: <AgentRoute>
+          <SoldProperties></SoldProperties>
+        </AgentRoute>
+      },
+      {
+        path: "requestedProperties",
+        element: <AgentRoute>
+          <RequestedProperties></RequestedProperties>
         </AgentRoute>
       },
     ],

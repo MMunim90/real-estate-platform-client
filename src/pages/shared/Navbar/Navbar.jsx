@@ -36,7 +36,7 @@ const Navbar = () => {
         Home
       </NavLink>
       <NavLink
-        to="/properties"
+        to="/allProperties"
         className={({ isActive }) =>
           isActive ? "text-blue-600 font-semibold" : "hover:text-blue-500"
         }
