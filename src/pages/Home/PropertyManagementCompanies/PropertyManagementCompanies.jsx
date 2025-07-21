@@ -50,8 +50,8 @@ const companies = [
 
 const PropertyManagementCompanies = () => {
   return (
-    <div className="py-12">
-      <h2 className="text-3xl font-bold text-center mb-10">
+    <div className="pt-12 pb-6">
+      <h2 className="text-3xl lg:text-5xl font-bold text-center mb-10">
         Trusted Property Management Companies
       </h2>
       <Marquee gradient={false} speed={50} pauseOnHover>

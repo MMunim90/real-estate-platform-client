@@ -7,6 +7,7 @@ import { Fade } from "react-awesome-reveal";
 import { keyframes } from "@emotion/react";
 import PropertyManagementCompanies from "../PropertyManagementCompanies/PropertyManagementCompanies";
 import FAQs from "../../FAQs/FAQs";
+import Advertisement from "../Advertisement/Advertisement";
 
 const Home = () => {
   const slightFadeDown = keyframes`
@@ -27,7 +28,12 @@ const Home = () => {
       </Fade>
       <Fade direction="down" keyframes={slightFadeDown}>
         <div className="md:w-10/12 mx-auto">
-        <PropertyManagementCompanies></PropertyManagementCompanies>
+          <PropertyManagementCompanies></PropertyManagementCompanies>
+        </div>
+      </Fade>
+      <Fade direction="down" keyframes={slightFadeDown}>
+        <div className="md:w-10/12 mx-auto">
+        <Advertisement></Advertisement>
         </div>
       </Fade>
       <Fade direction="down" keyframes={slightFadeDown}>
@@ -40,7 +46,7 @@ const Home = () => {
       </Fade>
       <Fade direction="down" keyframes={slightFadeDown}>
         <div className="w-10/12 mx-auto">
-        <FAQs></FAQs>
+          <FAQs></FAQs>
         </div>
       </Fade>
     </div>

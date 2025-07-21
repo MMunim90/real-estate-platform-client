@@ -2,6 +2,7 @@ import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import Loading from "../../shared/Loading/Loading";
+import { Helmet } from "react-helmet-async";
 
 const ManageProperties = () => {
   const axiosSecure = useAxiosSecure();
@@ -81,6 +82,9 @@ const ManageProperties = () => {
 
   return (
     <div className="p-4 md:p-8">
+      <Helmet>
+        <title>Manage Properties | BrickBase</title>
+      </Helmet>
       <h2 className="text-3xl lg:text-5xl font-semibold text-center mb-10">
         Manage Properties
       </h2>

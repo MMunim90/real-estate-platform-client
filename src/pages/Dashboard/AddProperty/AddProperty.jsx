@@ -6,6 +6,7 @@ import { FaUpload } from "react-icons/fa";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import useAuth from "../../../hooks/useAuth";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
 const AddProperty = () => {
   const { user } = useAuth();
@@ -73,6 +74,9 @@ const AddProperty = () => {
 
   return (
     <div className="min-h-screen flex flex-col justify-center bg-blue-50">
+      <Helmet>
+        <title>Add Property | BrickBase</title>
+      </Helmet>
       <h2 className="text-3xl lg:text-5xl font-semibold text-center mb-8 mt-8 lg:mt-4">
         Add New Property
       </h2>

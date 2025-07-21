@@ -1,4 +1,5 @@
 import { Link } from "react-router";
+import { MdVerified } from "react-icons/md";
 
 const PropertyCard = ({ property }) => {
   return (
@@ -27,7 +28,7 @@ const PropertyCard = ({ property }) => {
           <span className="font-medium">Price Range:</span> {property.priceRange}
         </p>
 
-        <p className="text-sm text-green-600 font-semibold">✔ Verified by Admin</p>
+        <p className="flex items-center gap-2 text-sm text-black font-semibold"><MdVerified className="text-blue-500 text-2xl inline"/> Verified</p>
 
         <div className="pt-4">
           <Link to={`/property-details/${property._id}`}>
