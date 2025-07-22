@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import PropertyCard from "./PropertyCard";
 import { Helmet } from "react-helmet-async";
+import Loading from "../shared/Loading/Loading";
 
 const AllProperties = () => {
   const axiosPublic = useAxiosPublic();
@@ -15,7 +16,7 @@ const AllProperties = () => {
   });
 
   if (isLoading)
-    return <div className="text-center py-20 text-lg">Loading...</div>;
+    return <div className="text-center py-20 text-lg"><Loading></Loading></div>;
 
   return (
     <section className="py-10 px-4 md:px-10 bg-blue-50 min-h-screen">

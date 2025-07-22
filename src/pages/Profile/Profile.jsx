@@ -166,15 +166,15 @@ const Profile = () => {
           </p>
         </div>
 
-        <div className="flex flex-col lg:flex-row">
+        <div className="flex flex-col">
           {/* Update Profile Form */}
-          <div className="mt-10 px-4 md:pl-40 max-w-2xl">
+          <div className="mt-10 px-4 md:pl-40 max-w-7xl mb-10">
             <h2 className="text-xl font-semibold text-gray-800 mb-4">
               Update Profile
             </h2>
             <form
               onSubmit={handleUpdateUser}
-              className="border border-black p-10 rounded-2xl space-y-6"
+              className="space-y-6"
             >
               <input
                 type="text"
@@ -204,13 +204,13 @@ const Profile = () => {
           </div>
 
           {/* Add Social Media Links Form */}
-          <div className="mt-10 px-4 md:pl-40 max-w-2xl">
+          <div className="mt-10 px-4 md:pl-40 max-w-7xl">
             <h2 className="text-xl font-semibold text-gray-800 mb-4">
               Add Media Links
             </h2>
             <form
               onSubmit={handleSubmit(handleApplyFromSubmit)}
-              className="border border-black p-10 rounded-2xl space-y-6"
+              className="space-y-6"
             >
               <input
                 type="url"

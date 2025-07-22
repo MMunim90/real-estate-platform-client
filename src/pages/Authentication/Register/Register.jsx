@@ -13,6 +13,7 @@ import useAuth from "../../../hooks/useAuth";
 import Swal from "sweetalert2";
 import axios from "axios";
 import useAxios from "../../../hooks/useAxios";
+import { toast } from "react-toastify";
 
 const Register = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -57,7 +58,9 @@ const Register = () => {
             //console.log("profile name pic updated");
           })
           .catch((error) => {
-            //console.log(error);
+            const errorCode = error.code;
+            const errorMessage = error.errorMessage;
+            toast.error(errorMessage, errorCode);
           });
 
         Swal.fire({
@@ -68,7 +71,9 @@ const Register = () => {
         navigate(from);
       })
       .catch((error) => {
-        console.error(error);
+        const errorCode = error.code;
+        const errorMessage = error.errorMessage;
+        toast.error(errorMessage, errorCode);
       });
   };
 

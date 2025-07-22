@@ -1,5 +1,6 @@
 import { Link } from "react-router";
 import { MdVerified } from "react-icons/md";
+import { CiLocationOn } from "react-icons/ci";
 
 const PropertyCard = ({ property }) => {
   return (
@@ -8,8 +9,8 @@ const PropertyCard = ({ property }) => {
 
       <div className="p-5 space-y-2">
         <h3 className="text-xl font-semibold text-black">{property.title}</h3>
-        <p className="text-gray-600">
-          <span className="font-medium">Location:</span> {property.location}
+        <p className="text-gray-600 flex items-center space-x-2">
+          <span className="font-medium">Location:</span> <CiLocationOn className="mr-1" /> {property.location}
         </p>
 
         <div className="flex items-center gap-3 mt-2">

@@ -1,5 +1,6 @@
 import { MdVerified } from "react-icons/md";
 import { Link } from "react-router";
+import { CiLocationOn } from "react-icons/ci";
 
 const AdvertisementCard = ({ property }) => {
   return (
@@ -12,8 +13,8 @@ const AdvertisementCard = ({ property }) => {
 
       <div className="p-4 space-y-2">
         <h1 className="text-xl font-semibold text-black">{property.title}</h1>
-        <p className="text-md text-gray-800">
-          {property.location}
+        <p className="text-gray-800 flex items-center">
+          <CiLocationOn className="mr-1" /> {property.location}
         </p>
         <p className="text-sm text-gray-600">
           <span className="font-medium">Price Range:</span>{" "}

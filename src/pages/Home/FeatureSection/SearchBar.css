@@ -26,7 +26,7 @@
 } */
 
 .search_result {
-    background: rgb(231, 244, 248);
+    background: #ffffff;
     width: 350px;
     margin-top: 10px;
     position: absolute;
@@ -52,7 +52,7 @@
 }
 
 .search_suggestion_line.active {
-    background: #88cae4;
+    background: #7c8588;
     color: white;
 }
 

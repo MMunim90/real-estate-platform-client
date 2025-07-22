@@ -9,7 +9,7 @@ const slides = [
     title: "Find Your Dream Home",
     description: "Discover thousands of listings from trusted agents and property owners.",
     buttonText: "Browse Properties",
-    buttonLink: "/properties",
+    buttonLink: "/allProperties",
     bg: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c",
   },
   {
@@ -17,7 +17,7 @@ const slides = [
     title: "List Your Property Today",
     description: "Join BrickBase to rent or sell your property with ease and security.",
     buttonText: "Start Listing",
-    buttonLink: "/dashboard",
+    buttonLink: "/dashboard/profile",
     bg: "https://images.unsplash.com/photo-1599423300746-b62533397364",
   },
   {

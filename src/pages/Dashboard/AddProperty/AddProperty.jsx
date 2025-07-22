@@ -87,7 +87,7 @@ const AddProperty = () => {
 
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="flex flex-col gap-6 p-6"
+        className="w-full mx-auto space-y-6 p-6 max-w-7xl"
       >
         {/* Title */}
         <div className="col-span-1">
@@ -95,7 +95,7 @@ const AddProperty = () => {
           <input
             type="text"
             {...register("title", { required: true })}
-            className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full px-4 py-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
             placeholder="Enter property title"
           />
         </div>
@@ -106,7 +106,7 @@ const AddProperty = () => {
           <input
             type="text"
             {...register("location", { required: true })}
-            className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full px-4 py-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
             placeholder="Enter location"
           />
         </div>
@@ -119,7 +119,7 @@ const AddProperty = () => {
             accept="image/*"
             {...register("image", { required: true })}
             onChange={handleImagePreview}
-            className="w-full text-sm file:px-4 file:py-2 border border-gray-300 rounded file:bg-blue-500 file:text-white file:cursor-pointer file:hover:bg-blue-600"
+            className="w-full text-sm file:px-4 file:py-3 border border-gray-300 rounded file:bg-blue-500 file:text-white file:cursor-pointer file:hover:bg-blue-600"
           />
           {imagePreview && (
             <img
@@ -136,7 +136,7 @@ const AddProperty = () => {
           <input
             type="text"
             {...register("priceRange", { required: true })}
-            className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full px-4 py-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
             placeholder="Ex: $100,000 - $150,000"
           />
         </div>
@@ -167,7 +167,7 @@ const AddProperty = () => {
         <div className="col-span-1 md:col-span-2 text-center mt-4">
           <button
             type="submit"
-            className="btn bg-blue-500 hover:bg-blue-600 border-none px-6 py-2 text-white"
+            className="btn bg-blue-500 hover:bg-blue-600 border-none px-6 py-3 text-white"
           >
             <FaUpload className="mr-2" />
             Add Property
