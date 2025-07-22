@@ -11,6 +11,7 @@ import { useForm } from "react-hook-form";
 import { FaFacebook, FaTwitter, FaWhatsapp } from "react-icons/fa";
 import { Link } from "react-router";
 import Loading from "../shared/Loading/Loading";
+import StatCards from "./StatCards";
 
 const Profile = () => {
   const { user, setUser, updateUserProfile } = useAuth();
@@ -35,19 +36,30 @@ const Profile = () => {
       displayName: name,
       photoURL: photoURL,
     })
-      .then(() => {
+      .then(async () => {
+        // Update local state
         setUser({ ...user, displayName: name, photoURL: photoURL });
+
+        // Update displayName in MongoDB
+        try {
+          await axiosInstance.patch("/users/updateName", {
+            email: user.email,
+            displayName: name,
+          });
+        } catch (error) {
+          console.error("Failed to update name in DB", error);
+        }
+
         Swal.fire({
           title: "Great!",
-          text: "You update your profile successfully!",
+          text: "You updated your profile successfully!",
           icon: "success",
           confirmButtonColor: "#01AFF7",
         });
       })
       .catch((error) => {
-        //console.log(error);
-        toast.error(error);
-        setUser(user);
+        toast.error(error.message);
+        setUser(user); // revert back
       });
   };
 
@@ -84,7 +96,7 @@ const Profile = () => {
         const res = await axiosInstance.get(
           `/users/socials?email=${user.email}`
         );
-        setSocials(res.data); 
+        setSocials(res.data);
       } catch (err) {
         setError(err.response?.data?.error || "Failed to fetch social links");
       } finally {
@@ -112,7 +124,7 @@ const Profile = () => {
       <div className="w-full h-64 md:h-80 lg:h-96 relative">
         <img src={banner} alt="Banner" className="w-full h-full object-cover" />
         {/* Profile Image */}
-        <div className="absolute left-1/2 transform -translate-x-1/2 md:left-32 md:translate-x-0 -bottom-16 lg:-bottom-20">
+        <div className="absolute left-1/2 transform -translate-x-1/2 md:left-20 lg:left-32 md:translate-x-0 -bottom-16 lg:-bottom-20">
           <img
             src={user?.photoURL || "https://i.ibb.co/F4BxGnK2/user.png"}
             alt="Profile"
@@ -123,7 +135,7 @@ const Profile = () => {
 
       <div className="py-6 md:py-12">
         {/* Profile Info */}
-        <div className="mt-20 md:mt-12 px-4 md:pl-40 text-center md:text-left">
+        <div className="mt-20 md:mt-12 px-4 md:pl-20 lg:pl-40 text-center md:text-left">
           <h1 className="text-2xl md:text-3xl font-semibold text-gray-800">
             {user.displayName}
           </h1>
@@ -166,16 +178,34 @@ const Profile = () => {
           </p>
         </div>
 
+        <h2 className="text-xl px-4 font-semibold text-gray-800 mb-4 mt-10 md:pl-20 lg:pl-40 max-w-7xl">
+          Overview
+        </h2>
+        {role === "admin" && (
+          <div className="mt-10 md:pl-16 lg:pl-36 max-w-7xl mb-10">
+            <StatCards></StatCards>
+          </div>
+        )}
+
+        {role === "agent" && (
+          <div className="mt-10 md:pl-16 lg:pl-36 max-w-7xl mb-10">
+            <StatCards></StatCards>
+          </div>
+        )}
+
+        {role === "user" && (
+          <div className="mt-10 md:pl-16 lg:pl-36 max-w-7xl mb-10">
+            <StatCards></StatCards>
+          </div>
+        )}
+
         <div className="flex flex-col">
           {/* Update Profile Form */}
-          <div className="mt-10 px-4 md:pl-40 max-w-7xl mb-10">
+          <div className="mt-10 px-4 md:pl-20 lg:pl-40 max-w-7xl mb-10">
             <h2 className="text-xl font-semibold text-gray-800 mb-4">
               Update Profile
             </h2>
-            <form
-              onSubmit={handleUpdateUser}
-              className="space-y-6"
-            >
+            <form onSubmit={handleUpdateUser} className="space-y-6">
               <input
                 type="text"
                 name="name"
@@ -204,7 +234,7 @@ const Profile = () => {
           </div>
 
           {/* Add Social Media Links Form */}
-          <div className="mt-10 px-4 md:pl-40 max-w-7xl">
+          <div className="mt-10 px-4 md:pl-20 lg:pl-40 max-w-7xl">
             <h2 className="text-xl font-semibold text-gray-800 mb-4">
               Add Media Links
             </h2>

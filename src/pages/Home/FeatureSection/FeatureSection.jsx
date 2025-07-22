@@ -43,7 +43,7 @@ const FeatureSection = () => {
 
   useEffect(() => {
     if (search !== "") {
-      fetch(`http://localhost:5000/properties/verified`)
+      fetch(`${import.meta.env.VITE_API_URL}/properties/verified`)
         .then((res) => {
           if (!res.ok) throw new Error("Server returned error");
           return res.json();

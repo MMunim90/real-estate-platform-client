@@ -39,6 +39,7 @@ const Register = () => {
 
         //update userinfo in the database
         const userInfo = {
+          displayName: data.name,
           email: data.email,
           role: "user", // default role
           created_at: new Date().toISOString(),
@@ -83,6 +84,7 @@ const Register = () => {
         const googleUser = result.user;
 
         const userInfo = {
+          displayName: googleUser.displayName,
           email: googleUser.email,
           role: "user",
           created_at: new Date().toISOString(),
