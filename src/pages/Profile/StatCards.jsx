@@ -41,6 +41,7 @@ const StatCards = () => {
   // agent stats
   const [agentStats, setAgentStats] = useState({
     myAdded: 0,
+    VerifiedProperties: 0,
     mySold: 0,
     unVerified: 0,
     requested: 0,
@@ -131,6 +132,13 @@ const StatCards = () => {
         sub: "Last updated today",
         icon: <Home size={24} />,
         color: "from-indigo-500 to-indigo-400",
+      },
+      {
+        title: "Total Verified Properties",
+        value: agentStats.VerifiedProperties,
+        sub: "+35% This week",
+        icon: <Building2 size={24} />,
+        color: "from-blue-500 to-blue-400",
       },
       {
         title: "My Sold Properties",

@@ -48,7 +48,7 @@ const Wishlist = () => {
   if (loading) return <div className="text-center mt-10"><Loading></Loading></div>;
 
   return (
-    <div className="px-4 py-8 max-w-6xl mx-auto">
+    <div className="min-h-screen px-4 py-8 max-w-6xl mx-auto">
       <Helmet>
         <title>Wishlist | BrickBase</title>
       </Helmet>

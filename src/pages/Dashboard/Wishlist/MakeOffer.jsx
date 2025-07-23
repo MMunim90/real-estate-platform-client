@@ -68,7 +68,7 @@ const MakeOffer = () => {
   if (!property) return <div className="text-center py-20"><Loading></Loading></div>;
 
   return (
-    <div className="max-w-7xl mx-auto px-4 py-10">
+    <div className="min-h-screen max-w-7xl mx-auto px-4 py-10">
       <Helmet>
         <title>Make an Offer | BrickBase</title>
       </Helmet>
