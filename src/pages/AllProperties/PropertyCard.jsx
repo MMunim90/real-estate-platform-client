@@ -26,7 +26,7 @@ const PropertyCard = ({ property }) => {
         </div>
 
         <p className="text-sm text-gray-700">
-          <span className="font-medium">Price Range:</span> {property.priceRange}
+          <span className="font-medium">Price Range:</span> {property.minRate} - {property.maxRate}
         </p>
 
         <p className="flex items-center gap-2 text-sm text-black font-semibold"><MdVerified className="text-blue-500 text-2xl inline"/> Verified</p>

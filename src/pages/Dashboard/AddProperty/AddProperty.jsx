@@ -33,7 +33,8 @@ const AddProperty = () => {
         agentName: user.displayName,
         agentEmail: user.email,
         agentImage: user.photoURL,
-        priceRange: data.priceRange,
+        minRate: data.minRate,
+        maxRate: data.maxRate,
         status: "available",
         createdAt: new Date(),
       };
@@ -77,7 +78,7 @@ const AddProperty = () => {
       <Helmet>
         <title>Add Property | BrickBase</title>
       </Helmet>
-      <h2 className="text-3xl lg:text-5xl font-semibold text-center mb-8 mt-8 lg:mt-4">
+      <h2 className="text-3xl lg:text-5xl font-semibold text-center mb-8 mt-8 lg:mt-8">
         Add New Property
       </h2>
       <p className="text-center text-gray-600 text-base lg:text-lg max-w-2xl mx-auto mb-6">
@@ -107,7 +108,7 @@ const AddProperty = () => {
             type="text"
             {...register("location", { required: true })}
             className="w-full px-4 py-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
-            placeholder="Enter location"
+            placeholder="Enter location (Division of the property must be given)"
           />
         </div>
 
@@ -130,14 +131,25 @@ const AddProperty = () => {
           )}
         </div>
 
-        {/* Price Range */}
+        {/* min Rate */}
         <div className="col-span-1">
-          <label className="block mb-1 font-medium">Price Range</label>
+          <label className="block mb-1 font-medium">Min Rate</label>
           <input
-            type="text"
-            {...register("priceRange", { required: true })}
+            type="number"
+            {...register("minRate", { required: true })}
             className="w-full px-4 py-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
-            placeholder="Ex: $100,000 - $150,000"
+            placeholder="৳ 0.00"
+          />
+        </div>
+        
+        {/* max Rate */}
+        <div className="col-span-1">
+          <label className="block mb-1 font-medium">Max Rate</label>
+          <input
+            type="number"
+            {...register("maxRate", { required: true })}
+            className="w-full px-4 py-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+            placeholder="৳ 0.00"
           />
         </div>
 

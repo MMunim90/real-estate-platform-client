@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router";
-import useAxiosSecure from "../../hooks/useAxiosSecure";
 import ReviewModal from "./ReviewModal";
 import Loading from "../shared/Loading/Loading";
 import { Helmet } from "react-helmet-async";
 import useUserRole from "../../hooks/useUserRole";
 import Swal from "sweetalert2";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
+import useAuth from "../../hooks/useAuth";
 
 const PropertyDetails = () => {
   const navigate = useNavigate();
@@ -15,6 +16,7 @@ const PropertyDetails = () => {
   const [property, setProperty] = useState(null);
   const [reviews, setReviews] = useState([]);
   const [showModal, setShowModal] = useState(false);
+  const {user} = useAuth()
 
   useEffect(() => {
     const fetchProperty = async () => {
@@ -43,10 +45,15 @@ const PropertyDetails = () => {
     try {
       await axiosSecure.post("/wishlist", {
         propertyId: property._id,
+        userEmail: user.email,
         title: property.title,
         image: property.image,
-        priceRange: property.priceRange,
+        location: property.location,
+        minRate: property.minRate,
+        maxRate: property.maxRate,
         agentName: property.agentName,
+        agentImage: property.agentImage,
+        status: property.status
       });
       Swal.fire({
         title: "Added to wishlist!",
@@ -94,7 +101,7 @@ const PropertyDetails = () => {
           <h1 className="text-3xl lg:text-5xl font-bold">{property.title}</h1>
           {/* <p className="text-gray-600">{property.description}</p> */}
           <p className="text-lg font-semibold text-blue-500">
-            Price Range: {property.priceRange}
+            Price Range: {property.minRate} - {property.maxRate}
           </p>
           <p className="text-md text-green-600 font-medium">
             Agent: {property.agentName}

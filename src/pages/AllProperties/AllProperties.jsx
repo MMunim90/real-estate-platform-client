@@ -56,28 +56,42 @@ const AllProperties = () => {
         Verified Properties
       </h2>
 
-      <div className="flex flex-row items-center justify-between mb-6 gap-4">
-        <p className="text-md md:text-2xl text-black">
-          Property list({filteredProperties.length})
-        </p>
-
-        <div className="text-center md:text-start">
-          <label className="hidden md:inline text-lg font-semibold mr-2 text-black">
-            Filter by Division:
-          </label>
-          <select
-            className="border border-gray-400 rounded px-3 py-1 md:py-2 text-black"
-            value={selectedDivision}
-            onChange={(e) => setSelectedDivision(e.target.value)}
+      {filteredProperties.length === 0 ? (
+        <div className="flex flex-col gap-5">
+          <p className="text-center text-gray-500">
+            No properties found in this Division.
+          </p>
+          <button
+            onClick={() => (window.location.href = '/allProperties')}
+            className="text-white px-4 py-2 rounded bg-blue-500 hover:bg-blue-600 max-w-[100px] w-full mx-auto"
           >
-            {divisions.map((division) => (
-              <option key={division} value={division}>
-                {division}
-              </option>
-            ))}
-          </select>
+            Back
+          </button>
         </div>
-      </div>
+      ) : (
+        <div className="flex flex-row items-center justify-between mb-6 gap-4">
+          <p className="text-md md:text-2xl text-black">
+            Property list({filteredProperties.length})
+          </p>
+
+          <div className="text-center md:text-start">
+            <label className="hidden md:inline text-lg font-semibold mr-2 text-black">
+              Filter by Division:
+            </label>
+            <select
+              className="border border-gray-400 rounded px-3 py-1 md:py-2 text-black"
+              value={selectedDivision}
+              onChange={(e) => setSelectedDivision(e.target.value)}
+            >
+              {divisions.map((division) => (
+                <option key={division} value={division}>
+                  {division}
+                </option>
+              ))}
+            </select>
+          </div>
+        </div>
+      )}
 
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
         {filteredProperties.map((property) => (

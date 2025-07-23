@@ -29,6 +29,7 @@ import SoldProperties from "../pages/Dashboard/SoldProperties/SoldProperties";
 import RequestedProperties from "../pages/Dashboard/RequestedProperties/RequestedProperties";
 import UserRoute from "../routes/UserRoute";
 import PropertyDetails from "../pages/PropertyDetails/PropertyDetails";
+import UpdateProperty from "../pages/Dashboard/MyProperties/UpdateProperty";
 
 export const router = createBrowserRouter([
   {
@@ -160,6 +161,12 @@ export const router = createBrowserRouter([
         path: "myProperties",
         element: <AgentRoute>
           <MyProperties></MyProperties>
+        </AgentRoute>
+      },
+      {
+        path: "/dashboard/update-property/:id",
+        element: <AgentRoute>
+          <UpdateProperty></UpdateProperty>
         </AgentRoute>
       },
       {
