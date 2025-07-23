@@ -3,6 +3,7 @@ import { useNavigate, useParams } from "react-router";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { Helmet } from "react-helmet-async";
+import Loading from "../../shared/Loading/Loading";
 
 const UpdateProperty = () => {
   const navigate = useNavigate();
@@ -38,7 +39,7 @@ const UpdateProperty = () => {
     }
   };
 
-  if (!property) return <p className="text-center mt-10">Loading...</p>;
+  if (!property) return <div className="text-center mt-10"><Loading></Loading></div>;
 
   return (
     <div className="p-4 md:p-8 my-8">

@@ -58,6 +58,24 @@ const StatCards = () => {
     }
   }, [user, role]);
 
+  //user stats
+  const [userStats, setUserStats] = useState({
+    wishlist: 0,
+    bought: 0,
+    reviews: 0,
+  });
+
+  useEffect(() => {
+    if (role === "user" && user?.email) {
+      axios
+        .get(
+          `${import.meta.env.VITE_API_URL}/api/user-stats?email=${user.email}`
+        )
+        .then((res) => setUserStats(res.data))
+        .catch((err) => console.error("Failed to load user stats", err));
+    }
+  }, [user?.email, role]);
+
   if (role === "admin") {
     stats = [
       {
@@ -149,21 +167,21 @@ const StatCards = () => {
     stats = [
       {
         title: "Wishlist",
-        value: "648",
+        value: userStats.wishlist,
         sub: "Tracked user favorites",
         icon: <Heart size={24} />,
         color: "from-rose-500 to-pink-400",
       },
       {
         title: "Total Property Bought",
-        value: "312",
+        value: userStats.bought,
         sub: "Completed purchases",
         icon: <ShoppingCart size={24} />,
         color: "from-emerald-500 to-teal-400",
       },
       {
-        title: "My Review",
-        value: "36",
+        title: "My Reviews",
+        value: userStats.reviews,
         sub: "Submitted by you",
         icon: <MessageSquareHeart size={24} />,
         color: "from-fuchsia-500 to-pink-400",

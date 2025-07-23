@@ -1,15 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { FaCheckCircle, FaTrashAlt } from "react-icons/fa";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import useAuth from "../../../hooks/useAuth";
 import { Helmet } from "react-helmet-async";
+import Loading from "../../shared/Loading/Loading";
 
 const Wishlist = () => {
   const [wishlist, setWishlist] = useState([]);
   const [loading, setLoading] = useState(true);
   const axiosSecure = useAxiosSecure();
   const { user } = useAuth();
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (!user?.email) return;
@@ -40,18 +42,17 @@ const Wishlist = () => {
   };
 
   const handleOffer = (propertyId) => {
-    // You can redirect or open a modal for making an offer
-    console.log("Make an offer for:", propertyId);
+    navigate(`/dashboard/my-offer/${propertyId}`);
   };
 
-  if (loading) return <p className="text-center mt-10">Loading Wishlist...</p>;
+  if (loading) return <div className="text-center mt-10"><Loading></Loading></div>;
 
   return (
     <div className="px-4 py-8 max-w-6xl mx-auto">
       <Helmet>
         <title>Wishlist | BrickBase</title>
       </Helmet>
-      <h2 className="text-3xl font-semibold mb-6 text-center text-gray-800">
+      <h2 className="text-3xl md:text-5xl font-bold mb-6 text-center text-gray-800">
         Your Wishlist
       </h2>
 
@@ -60,11 +61,11 @@ const Wishlist = () => {
           No properties added to wishlist yet.
         </p>
       ) : (
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          <div>
+        <div className="flex flex-col gap-6">
             <p className="text-md md:text-2xl text-black mb-6">
               Wishlist list({wishlist.length})
             </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 items-center justify-between mb-6 gap-4">
             {wishlist.map((property) => (
               <div
                 key={property._id}
@@ -113,7 +114,7 @@ const Wishlist = () => {
 
                   <div className="mt-4 flex justify-between items-center gap-2">
                     <button
-                      onClick={() => handleOffer(property.propertyId)}
+                      onClick={() => handleOffer(property._id)}
                       className="flex-1 bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 transition"
                     >
                       Make an Offer
