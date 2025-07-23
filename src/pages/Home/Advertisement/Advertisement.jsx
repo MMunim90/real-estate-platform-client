@@ -26,9 +26,10 @@ const Advertisement = () => {
   }, [axiosPublic]);
   return (
     <section className="py-12 px-4 md:px-8 lg:px-16">
-      <h2 className="text-3xl lg:text-5xl font-bold text-center mb-8">
+      <h2 className="text-3xl lg:text-5xl font-bold text-center mb-2">
         Advertisement Properties
       </h2>
+      <p className="max-w-2xl mx-auto mb-8 text-center text-gray-400">Explore Our Featured Properties Currently Available for Advertisement and Investment Opportunities in Prime Locations</p>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {ads.map((property) => (
           <AdvertisementCard key={property._id} property={property} />

@@ -8,6 +8,7 @@ import { keyframes } from "@emotion/react";
 import PropertyManagementCompanies from "../PropertyManagementCompanies/PropertyManagementCompanies";
 import FAQs from "../../FAQs/FAQs";
 import Advertisement from "../Advertisement/Advertisement";
+import ReviewsSection from "../ReviewSection.jsx/ReviewsSection";
 
 const Home = () => {
   const slightFadeDown = keyframes`
@@ -33,12 +34,17 @@ const Home = () => {
       </Fade>
       <Fade direction="down" keyframes={slightFadeDown}>
         <div className="md:w-10/12 mx-auto">
-        <Advertisement></Advertisement>
+          <Advertisement></Advertisement>
         </div>
       </Fade>
       <Fade direction="down" keyframes={slightFadeDown}>
         <div className="w-10/12 mx-auto">
           <PropertyToolsSection></PropertyToolsSection>
+        </div>
+      </Fade>
+      <Fade direction="down" keyframes={slightFadeDown}>
+        <div className="w-10/12 mx-auto">
+          <ReviewsSection></ReviewsSection>
         </div>
       </Fade>
       <Fade direction="down" keyframes={slightFadeDown}>
