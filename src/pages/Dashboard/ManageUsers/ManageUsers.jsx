@@ -71,17 +71,17 @@ const ManageUsers = () => {
   };
 
   return (
-    <div className="p-4 md:p-8 bg-white min-h-screen">
+    <div className="p-4 md:p-8 min-h-screen">
       <Helmet>
         <title>Manage Users | BrickBase</title>
       </Helmet>
-      <h2 className="text-3xl font-bold mb-6 text-center text-blue-800">
+      <h2 className="text-3xl md:text-5xl font-semibold mb-6 text-center">
         Manage Users
       </h2>
 
       <div className="overflow-x-auto border border-gray-400">
         <table className="table w-full table-auto border border-gray-200">
-          <thead className="bg-blue-100 text-black">
+          <thead className="bg-blue-200 text-black">
             <tr>
               <th>Name</th>
               <th>Email</th>

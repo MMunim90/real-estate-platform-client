@@ -104,7 +104,7 @@ const PropertyDetails = () => {
       setShowModal(false);
       const res = await axiosSecure.get(`/reviews?propertyId=${id}`);
       setReviews(res.data);
-      // Swal.fire({title: "Review added"})
+      setHasReviewed(true);
     } catch (err) {
       console.error("Error adding review", err);
     }

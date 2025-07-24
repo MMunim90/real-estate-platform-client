@@ -67,11 +67,11 @@ const MyReviews = () => {
                 <p className="text-sm text-gray-600 mb-6">
                   <span className="font-medium">Agent:</span> {review.agentName}
                 </p>
-                <p className="text-sm text-gray-500 mb-2 flex items-center gap-2">
+                <div className="text-sm text-gray-500 mb-2 flex items-center gap-2">
                   <span className="font-medium"><p className="text-xl">🗓️</p></span>{" "}
                   {new Date(review.createdAt).toLocaleString()}
-                </p>
-                <p className="text-gray-700 italic flex items-center gap-2"><p className="text-xl">🗨️</p>"{review.comment}"</p>
+                </div>
+                <div className="text-gray-700 italic flex items-center gap-2"><p className="text-xl">🗨️</p>"{review.comment}"</div>
               </div>
               <button
                 onClick={() => handleDelete(review._id)}

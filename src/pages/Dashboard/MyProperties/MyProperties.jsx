@@ -72,7 +72,7 @@ const MyProperties = () => {
                 onChange={(e) => setSortByStatus(e.target.value)}
                 className="border border-gray-400 rounded px-3 py-1 text-black mb-6"
               >
-                <option value="Default">Default</option>
+                <option value="Default">Default(Status)</option>
                 <option value="verified">Verified</option>
                 <option value="available">Pending</option>
                 <option value="rejected">Rejected</option>
