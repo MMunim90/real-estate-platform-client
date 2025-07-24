@@ -52,7 +52,7 @@ const PropertyManagementCompanies = () => {
   return (
     <div className="pt-12 pb-6">
       <h2 className="text-3xl lg:text-5xl font-bold text-center mb-10">
-        Trusted Property Management Companies
+        Our Esteemed Partner
       </h2>
       <Marquee gradient={false} speed={50} pauseOnHover>
         {companies.map((company, index) => (
@@ -63,7 +63,7 @@ const PropertyManagementCompanies = () => {
             <img
               src={company.logo}
               alt={company.name}
-              className="h-16 w-auto object-contain"
+              className="h-16 w-auto object-contain rounded-md"
             />
             <p className="text-sm mt-2 text-gray-400">{company.name}</p>
           </div>

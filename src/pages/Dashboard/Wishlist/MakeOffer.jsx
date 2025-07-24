@@ -65,18 +65,40 @@ const MakeOffer = () => {
     }
   };
 
-  if (!property) return <div className="text-center py-20"><Loading></Loading></div>;
+  if (!property)
+    return (
+      <div className="text-center py-20">
+        <Loading></Loading>
+      </div>
+    );
 
   return (
     <div className="min-h-screen max-w-7xl mx-auto px-4 py-10">
       <Helmet>
         <title>Make an Offer | BrickBase</title>
       </Helmet>
-      <h2 className="text-3xl md:text-5xl font-semibold mb-6 text-center">Make an Offer</h2>
+      <h2 className="text-3xl md:text-5xl font-semibold mb-6 text-center">
+        Make an Offer
+      </h2>
       <form onSubmit={handleOffer} className="p-6 space-y-4">
-        <input type="text" readOnly value={property.title} className="input input-bordered w-full bg-white border border-gray-400" />
-        <input type="text" readOnly value={property.location} className="input input-bordered w-full bg-white border border-gray-400" />
-        <input type="text" readOnly value={property.agentName} className="input input-bordered w-full bg-white border border-gray-400" />
+        <input
+          type="text"
+          readOnly
+          value={property.title}
+          className="input input-bordered w-full bg-white border border-gray-400"
+        />
+        <input
+          type="text"
+          readOnly
+          value={property.location}
+          className="input input-bordered w-full bg-white border border-gray-400"
+        />
+        <input
+          type="text"
+          readOnly
+          value={property.agentName}
+          className="input input-bordered w-full bg-white border border-gray-400"
+        />
         <input
           type="number"
           placeholder={`Enter offer amount (between ${property.minRate} and ${property.maxRate})`}
@@ -84,8 +106,18 @@ const MakeOffer = () => {
           value={offerAmount}
           onChange={(e) => setOfferAmount(e.target.value)}
         />
-        <input type="email" readOnly value={user.email} className="input input-bordered w-full bg-white border border-gray-400" />
-        <input type="text" readOnly value={user.displayName} className="input input-bordered w-full bg-white border border-gray-400" />
+        <input
+          type="email"
+          readOnly
+          value={user.email}
+          className="input input-bordered w-full bg-white border border-gray-400"
+        />
+        <input
+          type="text"
+          readOnly
+          value={user.displayName}
+          className="input input-bordered w-full bg-white border border-gray-400"
+        />
         <input
           type="date"
           className="input input-bordered w-full bg-white border border-gray-400"
@@ -95,9 +127,17 @@ const MakeOffer = () => {
         />
         {error && <p className="text-red-500 text-sm">{error}</p>}
         {success && <p className="text-green-500 text-sm">{success}</p>}
-        <button type="submit" className="btn btn-primary w-full">
-          Offer
-        </button>
+        <div className="flex gap-4 justify-evenly">
+          <button type="submit" className="btn btn-primary w-1/2">
+            Offer
+          </button>
+          <button
+            onClick={() => navigate(-1)}
+            className="text-white px-4 py-2 rounded bg-gray-400 hover:bg-gray-500 w-1/2"
+          >
+            Cancel
+          </button>
+        </div>
       </form>
     </div>
   );

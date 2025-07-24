@@ -10,6 +10,7 @@ const MyProperties = () => {
   const [properties, setProperties] = useState([]);
   const axiosSecure = useAxiosSecure();
   const navigate = useNavigate();
+  const [sortByStatus, setSortByStatus] = useState("Default");
 
   useEffect(() => {
     if (user?.email) {
@@ -18,6 +19,11 @@ const MyProperties = () => {
       });
     }
   }, [user, axiosSecure]);
+
+  const filteredProperties =
+    sortByStatus === "Default"
+      ? properties
+      : properties.filter((p) => p.status === sortByStatus);
 
   const handleDelete = (id) => {
     Swal.fire({
@@ -55,11 +61,28 @@ const MyProperties = () => {
         </p>
       ) : (
         <div>
-          <p className="text-md md:text-2xl text-black mb-6">
-            Property Added({properties.length})
-          </p>
+          <div className="flex justify-between items-center">
+            <p className="text-sm md:text-2xl text-black mb-6">
+              Property Found({filteredProperties.length})
+            </p>
+            <div>
+              <label className="text-sm md:text-2xl text-black mr-2 mb-6">Sort:</label>
+              <select
+                value={sortByStatus}
+                onChange={(e) => setSortByStatus(e.target.value)}
+                className="border border-gray-400 rounded px-3 py-1 text-black mb-6"
+              >
+                <option value="Default">Default</option>
+                <option value="verified">Verified</option>
+                <option value="available">Pending</option>
+                <option value="rejected">Rejected</option>
+                <option value="sold">Sold</option>
+              </select>
+            </div>
+          </div>
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {properties.map((property) => (
+            {filteredProperties.map((property) => (
               <div
                 key={property._id}
                 className="bg-white rounded shadow-md overflow-hidden flex flex-col border border-gray-400"
@@ -96,7 +119,9 @@ const MyProperties = () => {
                             : "badge badge-error"
                         }`}
                       >
-                        {property.status === "available" ? "pending" : property.status}
+                        {property.status === "available"
+                          ? "pending"
+                          : property.status}
                       </span>
                     </p>
 
