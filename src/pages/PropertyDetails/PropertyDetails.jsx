@@ -8,7 +8,8 @@ import useAxiosSecure from "../../hooks/useAxiosSecure";
 import useAuth from "../../hooks/useAuth";
 import { MdOutlineStar } from "react-icons/md";
 import { RxCross2 } from "react-icons/rx";
-import logo from '../../assets/logo.png'
+import logo from "../../assets/logo.png";
+import { toast } from "react-toastify";
 
 const PropertyDetails = () => {
   const navigate = useNavigate();
@@ -21,6 +22,8 @@ const PropertyDetails = () => {
   const { user } = useAuth();
   const [hasWishlisted, setHasWishlisted] = useState(false);
   const [hasReviewed, setHasReviewed] = useState(false);
+  const [hasReported, setHasReported] = useState(false);
+  const [showReportModal, setShowReportModal] = useState(false);
 
   const emojiOptions = [
     { value: 5, label: "😊", title: "Excellent" },
@@ -110,9 +113,20 @@ const PropertyDetails = () => {
     }
   };
 
+  const handleReportSubmit = async (reportData) => {
+    try {
+      setShowReportModal(false)
+      const res = await axiosSecure.post("/reports", reportData);
+      setHasReported(true)
+    } catch (error) {
+      console.error("Error submitting report:", error);
+      toast.error("Something went wrong while reporting");
+    }
+  };
+
   if (!property)
     return (
-      <div className="text-center py-10">
+      <div className="text-center">
         <Loading></Loading>
       </div>
     );
@@ -135,31 +149,37 @@ const PropertyDetails = () => {
           <p className="text-lg font-semibold text-blue-500">
             Price Range: {property.minRate} - {property.maxRate}
           </p>
+          {property.installments && (
+            <p>Monthly Installments - {property.installments}/-</p>
+          )}
           <p className="text-md text-green-600 font-medium">
             Agent: {property.agentName}
           </p>
 
-          {role === "user" ? (
-            <button
-              onClick={handleWishlist}
-              disabled={hasWishlisted}
-              className={`${
-                hasWishlisted
-                  ? "bg-gray-400 cursor-not-allowed"
-                  : "bg-blue-500 hover:bg-blue-600"
-              } text-white px-5 py-2 rounded`}
-            >
-              {hasWishlisted ? "Already in Wishlist" : "Add to Wishlist"}
-            </button>
-          ) : (
-            <button
-              disabled
-              title="Only user can add to wishlist"
-              className="bg-gray-400 text-white px-5 py-2 rounded cursor-not-allowed"
-            >
-              Wishlist (User Only)
-            </button>
-          )}
+          <div className="flex">
+            {role === "user" && (
+              <button
+                onClick={handleWishlist}
+                disabled={hasWishlisted}
+                className={`${
+                  hasWishlisted
+                    ? "bg-gray-400 cursor-not-allowed"
+                    : "bg-blue-500 hover:bg-blue-600"
+                } text-white px-5 py-2 rounded`}
+              >
+                {hasWishlisted ? "Already in Wishlist" : "Add to Wishlist"}
+              </button>
+            )}
+            {role === "user" && (
+              <button
+                onClick={() => setShowReportModal(true)}
+                disabled={hasReported}
+                className={`${hasReported ? "bg-gray-400 cursor-not-allowed" : "bg-yellow-500 hover:bg-yellow-600"} text-white px-5 py-2 rounded ml-4`}
+              >
+                {hasReported ? "Reported" : "Report"}
+              </button>
+            )}
+          </div>
         </div>
       </div>
 
@@ -167,7 +187,7 @@ const PropertyDetails = () => {
         <div className="flex justify-between items-center mb-4">
           <h2 className="text-2xl font-semibold">Reviews</h2>
           <div className="flex flex-col md:flex-row gap-4">
-            {role === "user" ? (
+            {role === "user" && (
               <button
                 onClick={() => setShowModal(true)}
                 disabled={hasReviewed}
@@ -178,14 +198,6 @@ const PropertyDetails = () => {
                 } text-white px-4 py-2 rounded`}
               >
                 {hasReviewed ? "Review Submitted" : "Add a Review"}
-              </button>
-            ) : (
-              <button
-                disabled
-                title="Only user can add review"
-                className="bg-gray-400 text-white px-4 py-2 rounded cursor-not-allowed"
-              >
-                Review (User Only)
               </button>
             )}
 
@@ -251,7 +263,8 @@ const PropertyDetails = () => {
               How are you feeling?
             </h3>
             <p className="text-center text-gray-500 text-sm">
-              Let us and future buyers know what you think—your insights shape better property experiences for everyone.
+              Let us and future buyers know what you think—your insights shape
+              better property experiences for everyone.
             </p>
 
             {/* Form */}
@@ -326,6 +339,90 @@ const PropertyDetails = () => {
                   className="w-full py-2 rounded bg-gradient-to-r from-green-400 to-green-600 text-white font-semibold hover:opacity-90 transition"
                 >
                   Submit Now
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
+
+      {showReportModal && (
+        <div className="fixed inset-0 bg-black bg-opacity-60 flex justify-center items-center z-50 px-4">
+          <div className="bg-white p-6 rounded w-full max-w-md shadow-lg space-y-6 relative">
+            {/* Header Bar */}
+            <div className="flex items-center justify-between mb-4 pb-4 border-b border-gray-300">
+              {/* Logo and Title */}
+              <div className="flex items-center space-x-2">
+                <img src={logo} alt="BrickBase Logo" className="w-8 h-8" />
+                <span className="font-bold text-xl text-gray-800">
+                  BrickBase
+                </span>
+              </div>
+
+              {/* Close Button (X) */}
+              <button
+                onClick={() => setShowReportModal(false)}
+                className="text-gray-700 hover:text-red-600 text-2xl font-bold"
+                aria-label="Close"
+              >
+                <RxCross2 />
+              </button>
+            </div>
+
+            {/* Title and Description */}
+            <h3 className="text-2xl font-semibold text-center text-gray-800">
+              Report Property
+            </h3>
+            <p className="text-center text-gray-500 text-sm">
+              Found something inappropriate or misleading? Share the issue so we
+              can take action.
+            </p>
+
+            {/* Report Form */}
+            <form
+              onSubmit={(e) => {
+                e.preventDefault();
+                const form = e.target;
+                const reason = form.reason.value.trim();
+
+                if (!reason) {
+                  return Swal.fire(
+                    "Error",
+                    "Please provide a reason for the report.",
+                    "error"
+                  );
+                }
+
+                handleReportSubmit({
+                  reason,
+                  userEmail: user.email,
+                  userName: user.displayName || "Anonymous",
+                  userImage: user.photoURL,
+                  propertyId: property._id,
+                  propertyTitle: property.title,
+                  agentEmail: property.agentEmail,
+                  agentName: property.agentName,
+                  createdAt: new Date().toISOString(),
+                });
+              }}
+              className="space-y-4"
+            >
+              {/* Reason Box */}
+              <textarea
+                name="reason"
+                placeholder="Describe the issue you found..."
+                className="w-full border border-gray-300 p-3 rounded text-gray-700 focus:outline-none focus:ring-2 focus:ring-red-400"
+                rows="4"
+                required
+              ></textarea>
+
+              {/* Submit Button */}
+              <div className="flex justify-end">
+                <button
+                  type="submit"
+                  className="w-full py-2 rounded bg-gradient-to-r from-red-400 to-red-600 text-white font-semibold hover:opacity-90 transition"
+                >
+                  Submit Report
                 </button>
               </div>
             </form>

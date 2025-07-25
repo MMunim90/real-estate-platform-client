@@ -14,6 +14,8 @@ import {
   FileClock,
   MessageSquareHeart,
   FilePlus,
+  Megaphone,
+  AlertTriangle,
 } from "lucide-react";
 import useUserRole from "../../hooks/useUserRole";
 import useAuth from "../../hooks/useAuth";
@@ -30,6 +32,8 @@ const StatCards = () => {
     totalRejectedProperties: 0,
     totalReviews: 0,
     totalVerifiedAgents: 0,
+    totalAdvertisedProperties: 0,
+    totalReportedProperties: 0,
   });
 
   useEffect(() => {
@@ -120,6 +124,20 @@ const StatCards = () => {
         sub: "Updated weekly",
         icon: <BadgeCheck size={24} />,
         color: "from-cyan-500 to-cyan-400",
+      },
+      {
+        title: "Total Advertised Properties",
+        value: stats.totalAdvertisedProperties,
+        sub: "Updated daily",
+        icon: <Megaphone size={24} />,
+        color: "from-orange-500 to-orange-400",
+      },
+      {
+        title: "Reported Properties",
+        value: stats.totalReportedProperties,
+        sub: "Updated frequently",
+        icon: <AlertTriangle size={24} />,
+        color: "from-red-500 to-red-400",
       },
     ];
   }

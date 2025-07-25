@@ -50,7 +50,7 @@ const MyProperties = () => {
     navigate(`/dashboard/update-property/${id}`);
   };
   return (
-    <div className="p-4 max-w-7xl mx-auto">
+    <div className="min-h-screen p-4 max-w-7xl mx-auto">
       <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold my-12 text-center">
         My Added Properties
       </h2>
@@ -108,7 +108,7 @@ const MyProperties = () => {
                       </span>
                     </div>
 
-                    <p className="mt-2 text-sm">
+                    <p className="mt-2 text-sm flex items-center gap-2">
                       <span className="font-medium">Status:</span>{" "}
                       <span
                         className={`px-2 py-1 rounded-full text-white text-xs ${

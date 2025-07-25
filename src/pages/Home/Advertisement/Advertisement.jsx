@@ -12,7 +12,7 @@ const Advertisement = () => {
   useEffect(() => {
     const fetchAds = async () => {
       try {
-        const res = await axiosPublic.get("/properties/verified");
+        const res = await axiosPublic.get("/properties/advertised");
         const verifiedProperties = res.data || [];
         const randomAds = verifiedProperties
           .sort(() => 0.5 - Math.random())
@@ -24,6 +24,7 @@ const Advertisement = () => {
     };
     fetchAds();
   }, [axiosPublic]);
+
   return (
     <section className="py-12 px-4 md:px-8 lg:px-16">
       <h2 className="text-3xl lg:text-5xl font-bold text-center mb-2">

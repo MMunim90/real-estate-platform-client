@@ -31,6 +31,9 @@ import UserRoute from "../routes/UserRoute";
 import PropertyDetails from "../pages/PropertyDetails/PropertyDetails";
 import UpdateProperty from "../pages/Dashboard/MyProperties/UpdateProperty";
 import MakeOffer from "../pages/Dashboard/Wishlist/MakeOffer";
+import AdvertiseProperty from "../pages/Dashboard/AdvertiseProperty/AdvertiseProperty";
+import ReportedProperty from "../pages/Dashboard/ReportedProperty/ReportedProperty";
+import SellingStatistics from "../pages/Dashboard/SellingStatistics/SellingStatistics";
 
 export const router = createBrowserRouter([
   {
@@ -156,6 +159,18 @@ export const router = createBrowserRouter([
           <ManageReviews></ManageReviews>
         </AdminRoute>
       },
+      {
+        path: "advertise",
+        element: <AdminRoute>
+          <AdvertiseProperty></AdvertiseProperty>
+        </AdminRoute>
+      },
+      {
+        path: "report",
+        element: <AdminRoute>
+          <ReportedProperty></ReportedProperty>
+        </AdminRoute>
+      },
 
       //agent only route
       {
@@ -186,6 +201,12 @@ export const router = createBrowserRouter([
         path: "requestedProperties",
         element: <AgentRoute>
           <RequestedProperties></RequestedProperties>
+        </AgentRoute>
+      },
+      {
+        path: "statistics",
+        element: <AgentRoute>
+          <SellingStatistics></SellingStatistics>
         </AgentRoute>
       },
     ],

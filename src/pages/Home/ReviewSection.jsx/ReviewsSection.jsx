@@ -1,37 +1,57 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import ReviewCard from "./ReviewCard";
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
+import { useQuery } from "@tanstack/react-query";
+import Loading from "../../shared/Loading/Loading";
 
 const ReviewsSection = () => {
-   const [reviews, setReviews] = useState([]);
   const axiosPublic = useAxiosPublic();
-  useEffect(() => {
-    const fetchAllReviews = async () => {
-      try {
-        const res = await axiosPublic.get("/reviewSection");
-        setReviews(res.data);
-      } catch (err) {
-        console.error("Failed to fetch all reviews:", err);
-      }
-    };
 
-    fetchAllReviews();
-  }, [axiosPublic]);
+  const { data: reviews = [], isLoading: reviewsLoading } = useQuery({
+    queryKey: ["reviews"],
+    queryFn: async () => {
+      const res = await axiosPublic.get("/reviewSection");
+      return res.data;
+    },
+  });
 
+  const { data: properties = [], isLoading: propertiesLoading } = useQuery({
+    queryKey: ["verified-properties"],
+    queryFn: async () => {
+      const res = await axiosPublic.get("/properties/verified");
+      return res.data;
+    },
+  });
+
+  if (reviewsLoading || propertiesLoading) return <Loading />;
 
   return (
     <div className="py-10">
       <h2 className="text-3xl md:text-5xl font-bold text-center mb-2">
         Latest User Review
       </h2>
-      <p className="max-w-2xl mx-auto mb-8 text-center text-gray-400">Check Out the Most Recent Genuine User Reviews and Feedback from Our Valued Property Platform Users</p>
+      <p className="max-w-2xl mx-auto mb-8 text-center text-gray-400">
+        Check Out the Most Recent Genuine User Reviews and Feedback from Our
+        Valued Property Platform Users
+      </p>
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
         {reviews.length > 0 ? (
-          reviews.map((review) => (
-            <ReviewCard key={review._id} review={review} />
-          ))
+          reviews.map((review) => {
+            const property = properties.find(
+              (p) => p._id === review.propertyId
+            );
+            return (
+              <ReviewCard
+                key={review._id}
+                review={review}
+                property={property}
+              />
+            );
+          })
         ) : (
-          <p className="text-center text-gray-500 col-span-full">No reviews yet.</p>
+          <p className="text-center text-gray-500 col-span-full">
+            No reviews yet.
+          </p>
         )}
       </div>
     </div>

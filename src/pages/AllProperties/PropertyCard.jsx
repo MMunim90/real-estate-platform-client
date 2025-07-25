@@ -5,7 +5,18 @@ import { CiLocationOn } from "react-icons/ci";
 const PropertyCard = ({ property }) => {
   return (
     <div className="bg-white rounded shadow-lg overflow-hidden border border-gray-400">
-      <img src={property.image} alt={property.title} className="w-full h-56 object-cover" />
+      <div className="relative w-full h-56">
+        <img
+          src={property.image}
+          alt={property.title}
+          className="w-full h-56 object-cover"
+        />
+        {
+          property.installments && <span className="absolute top-2 right-0 bg-blue-600 text-white text-xs px-3 py-1 rounded-l-full shadow-md">
+          Monthly Installments - {property.installments}/-
+        </span>
+        }
+      </div>
 
       <div className="p-5 space-y-2">
         <h3 className="text-xl font-semibold text-black">{property.title}</h3>

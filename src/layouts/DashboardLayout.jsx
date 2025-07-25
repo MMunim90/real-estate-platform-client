@@ -2,9 +2,12 @@ import React from "react";
 import { Link, NavLink, Outlet } from "react-router";
 import {
   FaBuilding,
+  FaBullhorn,
+  FaChartLine,
   FaCheckCircle,
   FaClipboardList,
   FaCommentDots,
+  FaExclamationTriangle,
   FaHandHoldingUsd,
   FaHeart,
   FaListAlt,
@@ -203,6 +206,38 @@ const DashboardLayout = () => {
                     <FaCommentDots /> Manage Reviews
                   </NavLink>
                 </li>
+
+                {/* Advertise Property */}
+                <li>
+                  <NavLink
+                    to="/dashboard/advertise"
+                    className={({ isActive }) =>
+                      `flex items-center gap-2 px-3 py-2 rounded ${
+                        isActive
+                          ? "text-blue-600 font-semibold"
+                          : "hover:text-blue-500"
+                      }`
+                    }
+                  >
+                    <FaBullhorn /> Advertise Property
+                  </NavLink>
+                </li>
+
+                {/* Reported Property */}
+                <li>
+                  <NavLink
+                    to="/dashboard/report"
+                    className={({ isActive }) =>
+                      `flex items-center gap-2 px-3 py-2 rounded ${
+                        isActive
+                          ? "text-blue-600 font-semibold"
+                          : "hover:text-blue-500"
+                      }`
+                    }
+                  >
+                    <FaExclamationTriangle /> Reported Property
+                  </NavLink>
+                </li>
               </>
             )}
 
@@ -287,6 +322,22 @@ const DashboardLayout = () => {
                     <FaClipboardList /> Requested Properties
                   </NavLink>
                 </li>
+
+                {/* Selling Statistics */}
+                <li>
+                  <NavLink
+                    to="/dashboard/statistics"
+                    className={({ isActive }) =>
+                      `flex items-center gap-2 px-3 py-2 rounded ${
+                        isActive
+                          ? "text-blue-600 font-semibold"
+                          : "hover:text-blue-500"
+                      }`
+                    }
+                  >
+                    <FaChartLine /> Selling Statistics
+                  </NavLink>
+                </li>
               </>
             )}
           </div>
@@ -294,7 +345,7 @@ const DashboardLayout = () => {
           <div>
             <Link
               to="/"
-              className="flex items-center gap-2 mt-0 md:mt-36 lg:mt-0"
+              className="flex items-center gap-2 mt-0 md:mt-36 lg:mt-0 ml-4"
             >
               <img src={logo} alt="BrickBase Logo" className="w-8 h-8" />
               <span className="text-xl font-bold">BrickBase</span>

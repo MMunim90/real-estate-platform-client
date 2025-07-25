@@ -48,7 +48,7 @@ const ManageReviews = () => {
   if (isLoading) return <Loading />;
 
   return (
-    <section className="py-10 px-4 md:px-10 bg-gray-100 min-h-screen">
+    <section className="py-10 px-4 md:px-10 bg-blue-50 min-h-screen">
       <Helmet>
         <title>Manage Reviews | BrickBase Admin</title>
       </Helmet>
@@ -82,7 +82,7 @@ const ManageReviews = () => {
               </div>
 
               {/* Comment */}
-              <p className="text-gray-700 mb-4 flex-grow">{review.comment}</p>
+              <div className="text-gray-700 italic flex items-center gap-2 mb-4 flex-grow"><p className="text-xl">🗨️</p>"{review.comment}"</div>
 
               {/* Delete Button */}
               <div className="mt-auto">

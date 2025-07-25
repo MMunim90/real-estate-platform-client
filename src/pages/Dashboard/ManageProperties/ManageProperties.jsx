@@ -81,7 +81,7 @@ const ManageProperties = () => {
   });
 
   return (
-    <div className="p-4 md:p-8">
+    <div className="min-h-screen p-4 md:p-8">
       <Helmet>
         <title>Manage Properties | BrickBase</title>
       </Helmet>
@@ -93,9 +93,9 @@ const ManageProperties = () => {
           <Loading></Loading>
         </div>
       ) : (
-        <div className="overflow-x-auto border-2 border-gray-300">
+        <div className="overflow-x-auto border-2 border-gray-300 rounded">
           <table className="table w-full border border-gray-200">
-            <thead className="bg-gray-100 text-black font-bold">
+            <thead className="bg-blue-200 text-black font-bold">
               <tr>
                 <th>Title</th>
                 <th>Location</th>
