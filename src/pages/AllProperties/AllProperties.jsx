@@ -50,7 +50,7 @@ const AllProperties = () => {
 
   if (isLoading)
     return (
-      <div className="text-center py-20 text-lg">
+      <div className="text-center text-lg">
         <Loading></Loading>
       </div>
     );

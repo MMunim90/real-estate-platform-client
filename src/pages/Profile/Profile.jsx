@@ -109,7 +109,7 @@ const Profile = () => {
 
   if (loading)
     return (
-      <div className="text-center mt-4">
+      <div className="text-center">
         <Loading></Loading>
       </div>
     );

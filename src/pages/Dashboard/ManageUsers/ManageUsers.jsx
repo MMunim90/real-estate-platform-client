@@ -3,7 +3,6 @@ import { FaUserTie, FaTrash, FaExclamationTriangle } from "react-icons/fa";
 import { MdAdminPanelSettings } from "react-icons/md";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { Helmet } from "react-helmet-async";
-import { AuthContext } from "../../../context/AuthContext/AuthContext";
 import Swal from "sweetalert2";
 
 const ManageUsers = () => {
