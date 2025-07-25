@@ -25,7 +25,7 @@ const ReportedProperty = () => {
     try {
       const result = await Swal.fire({
         title: "Are you sure?",
-        text: "This will delete the property, its reviews and reports!",
+        text: "This will delete the property, its reviews, reports, ads, and wishlists!",
         icon: "warning",
         showCancelButton: true,
         confirmButtonText: "Yes, delete it!",
@@ -33,32 +33,48 @@ const ReportedProperty = () => {
 
       if (!result.isConfirmed) return;
 
-      // 1. Delete the property
-      const propertyRes = await axiosSecure.delete(`/properties/${propertyId}`);
+      // Send one DELETE request to handle all deletions
+      const res = await axiosSecure.delete(
+        `/admin/remove-property/${propertyId}`
+      );
 
-      if (propertyRes.data.deletedCount === 1) {
-        // 2. Delete the associated reviews
-        const reviewRes = await axiosSecure.delete(
-          `/reviews/${propertyId}`
-        );
-
-        // 3. Delete the associated reports
-        const reportRes = await axiosSecure.delete(
-          `/reports/${propertyId}`
-        );
-
+      if (res.data.success) {
         Swal.fire(
           "Deleted!",
-          `Property removed. ${reviewRes.data.deletedCount} reviews and ${reportRes.data.deletedCount} reports deleted.`,
+          `Property, ${res.data.reviewsDeleted} reviews, ${res.data.reportsDeleted} reports, ${res.data.adsDeleted} ads, and ${res.data.wishlistsDeleted} wishlist items deleted.`,
           "success"
         );
-
         setReports((prev) => prev.filter((r) => r.propertyId !== propertyId));
       } else {
         Swal.fire("Error", "Property not found or already deleted.", "error");
       }
     } catch (error) {
       console.error("Failed to remove property", error);
+      Swal.fire("Failed", "Something went wrong while deleting.", "error");
+    }
+  };
+
+  const handleRemoveReport = async (reportId) => {
+    try {
+      const result = await Swal.fire({
+        title: "Are you sure?",
+        text: "This will delete the report only.",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Yes, delete it!",
+      });
+
+      if (!result.isConfirmed) return;
+
+      const res = await axiosSecure.delete(`/reports/${reportId}`);
+      if (res.data.success) {
+        Swal.fire("Deleted!", "Report has been removed.", "success");
+        setReports((prev) => prev.filter((r) => r._id !== reportId));
+      } else {
+        Swal.fire("Error", "Report not found or already deleted.", "error");
+      }
+    } catch (err) {
+      console.error("Failed to delete report", err);
       Swal.fire("Failed", "Something went wrong while deleting.", "error");
     }
   };
@@ -106,12 +122,21 @@ const ReportedProperty = () => {
               <p>
                 <span className="font-semibold">Reason:</span> {report.reason}
               </p>
-              <button
+              <div className="flex gap-4">
+                <button
                 onClick={() => handleRemoveProperty(report.propertyId)}
                 className="mt-4 w-full py-2 bg-red-500 text-white rounded hover:bg-red-600 transition"
               >
-                Remove this property
+                Remove property
               </button>
+
+              <button
+                onClick={() => handleRemoveReport(report._id)}
+                className="mt-4 w-full py-2 bg-yellow-500 text-white rounded hover:bg-yellow-600 transition"
+              >
+                Remove report
+              </button>
+              </div>
             </div>
           ))}
         </div>

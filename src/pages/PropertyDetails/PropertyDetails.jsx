@@ -70,9 +70,25 @@ const PropertyDetails = () => {
       }
     };
 
+    const checkReportList = async () => {
+      try {
+        if (user) {
+          const res = await axiosSecure.get("/reports");
+          const alreadyReported = res.data.some(
+            (report) =>
+              report.propertyId === id && report.userEmail === user.email
+          );
+          setHasReported(alreadyReported);
+        }
+      } catch (err) {
+        console.error("Error checking report list", err);
+      }
+    };
+
     fetchProperty();
     fetchReviews();
     checkWishlist();
+    checkReportList();
   }, [id, axiosSecure, user]);
 
   const handleWishlist = async () => {
@@ -93,6 +109,7 @@ const PropertyDetails = () => {
         title: "Added to wishlist!",
         icon: "success",
       });
+      setHasWishlisted(true);
     } catch (err) {
       console.error("Failed to add to wishlist", err);
     }
@@ -115,9 +132,9 @@ const PropertyDetails = () => {
 
   const handleReportSubmit = async (reportData) => {
     try {
-      setShowReportModal(false)
+      setShowReportModal(false);
       const res = await axiosSecure.post("/reports", reportData);
-      setHasReported(true)
+      setHasReported(true);
     } catch (error) {
       console.error("Error submitting report:", error);
       toast.error("Something went wrong while reporting");
@@ -174,7 +191,11 @@ const PropertyDetails = () => {
               <button
                 onClick={() => setShowReportModal(true)}
                 disabled={hasReported}
-                className={`${hasReported ? "bg-gray-400 cursor-not-allowed" : "bg-yellow-500 hover:bg-yellow-600"} text-white px-5 py-2 rounded ml-4`}
+                className={`${
+                  hasReported
+                    ? "bg-gray-400 cursor-not-allowed"
+                    : "bg-yellow-500 hover:bg-yellow-600"
+                } text-white px-5 py-2 rounded ml-4`}
               >
                 {hasReported ? "Reported" : "Report"}
               </button>

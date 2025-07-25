@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { FaUserTie, FaTrash, FaExclamationTriangle } from "react-icons/fa";
 import { MdAdminPanelSettings } from "react-icons/md";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
@@ -9,7 +9,6 @@ import Swal from "sweetalert2";
 const ManageUsers = () => {
   const axiosSecure = useAxiosSecure();
   const [users, setUsers] = useState([]);
-  const { deleteUserAccount } = useContext(AuthContext);
 
   // Fetch users
   useEffect(() => {
@@ -52,8 +51,7 @@ const ManageUsers = () => {
         confirmButtonText: "Yes, delete it!",
       });
 
-      if (!result.isConfirmed) return;
-      await deleteUserAccount(user.email); 
+      if (!result.isConfirmed) return; 
 
       await axiosSecure.delete(`/users/${user._id}`);
 

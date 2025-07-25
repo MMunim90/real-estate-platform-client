@@ -25,8 +25,8 @@ const Footer = () => {
         <div className="flex flex-col gap-2">
           <h3 className="font-semibold text-gray-800 mb-2">Quick Links</h3>
           <Link to="/" className="hover:text-blue-600">Home</Link>
-          <Link to="/properties" className="hover:text-blue-600">All Properties</Link>
-          <Link to="/dashboard" className="hover:text-blue-600">Dashboard</Link>
+          <Link to="/allProperties" className="hover:text-blue-600">All Properties</Link>
+          <Link to="/dashboard/profile" className="hover:text-blue-600">Dashboard</Link>
           {
             !user && (<Link to="/login" className="hover:text-blue-600">Login</Link>)
           }
