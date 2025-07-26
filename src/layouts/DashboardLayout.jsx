@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link, NavLink, Outlet } from "react-router";
 import {
   FaBuilding,
@@ -8,23 +8,50 @@ import {
   FaClipboardList,
   FaCommentDots,
   FaExclamationTriangle,
+  FaFacebook,
   FaHandHoldingUsd,
   FaHeart,
   FaListAlt,
   FaPlusSquare,
   FaStar,
+  FaTwitter,
   FaUserCircle,
   FaUserCog,
   FaUsers,
   FaUserTie,
+  FaWhatsapp,
 } from "react-icons/fa";
 import logo from "../assets/logo.png";
 import useAuth from "../hooks/useAuth";
 import useUserRole from "../hooks/useUserRole";
+import useAxios from "../hooks/useAxios";
 
 const DashboardLayout = () => {
   const { user } = useAuth();
   const { role, loading } = useUserRole();
+  const [socials, setSocials] = useState({});
+  const [error, setError] = useState(null);
+  const axiosInstance = useAxios();
+
+  useEffect(() => {
+    if (!user?.email) return;
+
+    const fetchSocialLinks = async () => {
+      try {
+        const res = await axiosInstance.get(
+          `/users/socials?email=${user.email}`
+        );
+        setSocials(res.data);
+      } catch (err) {
+        setError(err.response?.data?.error || "Failed to fetch social links");
+      }
+    };
+
+    fetchSocialLinks();
+  }, [user?.email, axiosInstance]);
+
+  if (error) return <p className="text-red-500 text-center mt-4">{error}</p>;
+
   return (
     <div className="drawer lg:drawer-open">
       <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
@@ -75,9 +102,39 @@ const DashboardLayout = () => {
                 className="w-28 h-28 object-cover rounded-full mx-auto border-4 border-blue-400 mb-4"
               />
               <h2 className="font-semibold my-2">{user.displayName}</h2>
-              <p className="text-sm text-gray-500 mb-4">{user.email}</p>
+              <p className="text-sm text-gray-500 mb-2">{user.email}</p>
+
+              <div className="flex gap-4 justify-center mb-4">
+                {socials?.facebook && (
+                  <a
+                    href={socials.facebook}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <FaFacebook className="text-blue-600 text-2xl" />
+                  </a>
+                )}
+                {socials?.twitter && (
+                  <a
+                    href={socials.twitter}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <FaTwitter className="text-sky-500 text-2xl" />
+                  </a>
+                )}
+                {socials?.whatsapp && (
+                  <a
+                    href={socials.whatsapp}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <FaWhatsapp className="text-green-500 text-2xl" />
+                  </a>
+                )}
+              </div>
             </div>
-            <div className="border border-blue-400 text-black mb-2"></div>
+            <div className="border border-blue-400 text-black mb-4"></div>
 
             {/* user link */}
             {!loading && role === "user" && (

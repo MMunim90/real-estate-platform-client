@@ -47,7 +47,7 @@ const UpdateProperty = () => {
     );
 
   return (
-    <div className="p-4 md:p-8 my-8">
+    <div className="p-4 md:p-8 my-8 min-h-screen">
       <Helmet>
         <title>Update Property | BrickBase</title>
       </Helmet>

@@ -1,11 +1,125 @@
-import React from 'react';
+import React, { useEffect, useState } from "react";
+import { Helmet } from "react-helmet-async";
+import useAuth from "../../../hooks/useAuth";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import Swal from "sweetalert2";
 
 const RequestedProperties = () => {
-    return (
-        <div>
-            
-        </div>
-    );
+  const { user } = useAuth();
+  const axiosSecure = useAxiosSecure();
+  const [offers, setOffers] = useState([]);
+
+  useEffect(() => {
+    const fetchOffers = async () => {
+      try {
+        const res = await axiosSecure.get(`/offers/agent?email=${user?.email}`);
+        setOffers(res.data);
+      } catch (error) {
+        console.error("Failed to fetch offers", error);
+      }
+    };
+
+    if (user?.email) fetchOffers();
+  }, [user?.email, axiosSecure]);
+
+  const handleAccept = async (offer) => {
+    try {
+      // Update current offer to accepted
+      await axiosSecure.patch(`/offers/${offer._id}/accept`);
+
+      // Update local state
+      setOffers((prev) =>
+        prev.map((o) =>
+          o._id === offer._id
+            ? { ...o, status: "accepted" }
+            : o.propertyId === offer.propertyId
+            ? { ...o, status: "rejected" }
+            : o
+        )
+      );
+
+      Swal.fire("Accepted!", "The offer has been accepted.", "success");
+    } catch (error) {
+      console.error("Accept error", error);
+      Swal.fire("Error", "Failed to accept the offer.", "error");
+    }
+  };
+
+  const handleReject = async (id) => {
+    try {
+      await axiosSecure.patch(`/offers/${id}/reject`);
+
+      setOffers((prev) =>
+        prev.map((o) => (o._id === id ? { ...o, status: "rejected" } : o))
+      );
+
+      Swal.fire("Rejected!", "The offer has been rejected.", "info");
+    } catch (error) {
+      console.error("Reject error", error);
+      Swal.fire("Error", "Failed to reject the offer.", "error");
+    }
+  };
+  return (
+    <div className="p-4 md:p-8 min-h-screen">
+      <Helmet>
+        <title>Requested Offers | BrickBase</title>
+      </Helmet>
+      <h2 className="text-3xl md:text-5xl font-semibold my-8 text-center">
+        Requested/Offered Properties
+      </h2>
+
+      <div className="overflow-x-auto border border-gray-400">
+        <table className="min-w-full shadow rounded overflow-hidden">
+          <thead className="bg-blue-200 text-black text-left">
+            <tr>
+              <th className="py-3 px-4">Property Title</th>
+              <th className="py-3 px-4">Location</th>
+              <th className="py-3 px-4">Buyer Name</th>
+              <th className="py-3 px-4">Buyer Email</th>
+              <th className="py-3 px-4">Offered Price</th>
+              <th className="py-3 px-4">Status</th>
+              <th className="py-3 px-4">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {offers.map((offer) => (
+              <tr
+                key={offer._id}
+                className="border-b hover:bg-gray-50 transition"
+              >
+                <td className="py-3 px-4">{offer.title}</td>
+                <td className="py-3 px-4">{offer.location}</td>
+                <td className="py-3 px-4">{offer.buyerName}</td>
+                <td className="py-3 px-4">{offer.buyerEmail}</td>
+                <td className="py-3 px-4">${offer.offerAmount}</td>
+                <td className="py-3 px-4 capitalize font-medium text-blue-500">
+                  {offer.status}
+                </td>
+                <td className="py-3 px-4 space-x-2">
+                  {offer.status === "pending" && (
+                    <div className="flex gap-2">
+                      <button
+                        onClick={() => handleAccept(offer)}
+                        className="bg-green-500 hover:bg-green-600 text-white px-3 py-1 rounded"
+                      >
+                        Accept
+                      </button>
+                      <button
+                        onClick={() => handleReject(offer._id)}
+                        className="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded"
+                      >
+                        Reject
+                      </button>
+                    </div>
+                  )}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  );
 };
 
 export default RequestedProperties;

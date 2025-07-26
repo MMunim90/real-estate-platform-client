@@ -62,11 +62,11 @@ const MyProperties = () => {
       ) : (
         <div>
           <div className="flex justify-between items-center">
-            <p className="text-sm md:text-2xl text-black mb-6">
+            <p className="text-md md:text-2xl text-black mb-6">
               Property Found({filteredProperties.length})
             </p>
             <div>
-              <label className="text-sm md:text-2xl text-black mr-2 mb-6">Sort:</label>
+              <label className="text-md md:text-2xl text-black mr-2 mb-6">Sort:</label>
               <select
                 value={sortByStatus}
                 onChange={(e) => setSortByStatus(e.target.value)}

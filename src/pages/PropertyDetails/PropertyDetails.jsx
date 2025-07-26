@@ -102,6 +102,7 @@ const PropertyDetails = () => {
         minRate: property.minRate,
         maxRate: property.maxRate,
         agentName: property.agentName,
+        agentEmail: property.agentEmail,
         agentImage: property.agentImage,
         status: property.status,
       });

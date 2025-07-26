@@ -4,6 +4,7 @@ import { useNavigate, useParams } from "react-router";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import useAuth from "../../../hooks/useAuth";
 import Loading from "../../shared/Loading/Loading";
+import Swal from "sweetalert2";
 
 const MakeOffer = () => {
   const { user } = useAuth();
@@ -40,6 +41,11 @@ const MakeOffer = () => {
 
     if (offer < property.minRate || offer > property.maxRate) {
       setError("Offer must be within the specified price range.");
+      Swal.fire({
+        icon: "error",
+        title: "Invalid Offer",
+        text: "Offer must be within the specified price range.",
+      });
       return;
     }
 
@@ -48,6 +54,7 @@ const MakeOffer = () => {
       title: property.title,
       location: property.location,
       agentName: property.agentName,
+      agentEmail: property.agentEmail,
       buyerEmail: user.email,
       buyerName: user.displayName,
       offerAmount: offer,
@@ -59,9 +66,28 @@ const MakeOffer = () => {
       setSuccess("Offer successfully submitted.");
       setOfferAmount("");
       setBuyingDate("");
+
+      Swal.fire({
+        icon: "success",
+        title: "Offer Submitted",
+        text: "Your offer has been successfully submitted.",
+        timer: 1800,
+        showConfirmButton: false,
+      });
+
+      // Redirect back after a short delay
+      setTimeout(() => {
+        navigate(-1);
+      }, 1800);
     } catch (err) {
       console.error(err);
       setError("Failed to submit the offer.");
+
+      Swal.fire({
+        icon: "error",
+        title: "Submission Failed",
+        text: "Something went wrong. Please try again later.",
+      });
     }
   };
 
@@ -97,6 +123,12 @@ const MakeOffer = () => {
           type="text"
           readOnly
           value={property.agentName}
+          className="input input-bordered w-full bg-white border border-gray-400"
+        />
+        <input
+          type="text"
+          readOnly
+          value={property.agentEmail}
           className="input input-bordered w-full bg-white border border-gray-400"
         />
         <input
