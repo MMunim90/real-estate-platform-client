@@ -41,7 +41,7 @@ const ReportedProperty = () => {
       if (res.data.success) {
         Swal.fire(
           "Deleted!",
-          `Property, ${res.data.reviewsDeleted} reviews, ${res.data.reportsDeleted} reports, ${res.data.adsDeleted} ads, and ${res.data.wishlistsDeleted} wishlist items deleted.`,
+          `Property, ${res.data.reviewsDeleted} reviews, ${res.data.reportsDeleted} reports, ${res.data.adsDeleted} ads, ${res.data.wishlistsDeleted} wishlist items deleted, and ${res.data.offersDeleted} offer item deleted.`,
           "success"
         );
         setReports((prev) => prev.filter((r) => r.propertyId !== propertyId));

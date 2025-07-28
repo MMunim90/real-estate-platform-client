@@ -34,6 +34,7 @@ import MakeOffer from "../pages/Dashboard/Wishlist/MakeOffer";
 import AdvertiseProperty from "../pages/Dashboard/AdvertiseProperty/AdvertiseProperty";
 import ReportedProperty from "../pages/Dashboard/ReportedProperty/ReportedProperty";
 import SellingStatistics from "../pages/Dashboard/SellingStatistics/SellingStatistics";
+import Payment from "../pages/Dashboard/Payment/Payment";
 
 export const router = createBrowserRouter([
   {
@@ -112,6 +113,10 @@ export const router = createBrowserRouter([
       {
         path: "profile",
         Component: Profile,
+      },
+      {
+        path: "payment/:id",
+        Component: Payment,
       },
 
       //user only route

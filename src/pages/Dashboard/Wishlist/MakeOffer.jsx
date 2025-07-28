@@ -50,9 +50,10 @@ const MakeOffer = () => {
     }
 
     const offerData = {
-      propertyId: id,
+      propertyId: property.propertyId,
       title: property.title,
       location: property.location,
+      image: property.image,
       agentName: property.agentName,
       agentEmail: property.agentEmail,
       buyerEmail: user.email,
@@ -67,6 +68,11 @@ const MakeOffer = () => {
       setOfferAmount("");
       setBuyingDate("");
 
+      // Redirect back after a short delay
+      setTimeout(() => {
+        navigate(-1);
+      }, 1000);
+
       Swal.fire({
         icon: "success",
         title: "Offer Submitted",
@@ -74,11 +80,6 @@ const MakeOffer = () => {
         timer: 1800,
         showConfirmButton: false,
       });
-
-      // Redirect back after a short delay
-      setTimeout(() => {
-        navigate(-1);
-      }, 1800);
     } catch (err) {
       console.error(err);
       setError("Failed to submit the offer.");

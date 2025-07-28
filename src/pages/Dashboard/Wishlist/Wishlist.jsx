@@ -5,6 +5,7 @@ import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import useAuth from "../../../hooks/useAuth";
 import { Helmet } from "react-helmet-async";
 import Loading from "../../shared/Loading/Loading";
+import Swal from "sweetalert2";
 
 const Wishlist = () => {
   const [wishlist, setWishlist] = useState([]);
@@ -21,12 +22,16 @@ const Wishlist = () => {
       try {
         const [wishlistRes, offerRes] = await Promise.all([
           axiosSecure.get(`/wishlist?email=${user.email}`),
-          axiosSecure.get(`/offers?email=${user.email}`)
+          axiosSecure.get(`/offers?email=${user.email}`),
         ]);
 
-        setWishlist(wishlistRes.data);
         const offeredIds = offerRes.data.map((offer) => offer.propertyId);
         setOfferedProperties(offeredIds);
+
+        const filteredWishlist = wishlistRes.data.filter(
+          (item) => !offeredIds.includes(item.propertyId)
+        );
+        setWishlist(filteredWishlist);
       } catch (error) {
         console.error("Failed to fetch wishlist or offers", error);
       } finally {
@@ -42,9 +47,22 @@ const Wishlist = () => {
       const res = await axiosSecure.delete(`/wishlist/${id}`);
       if (res.data.deletedCount > 0) {
         setWishlist((prev) => prev.filter((item) => item._id !== id));
+
+        Swal.fire({
+          title: "Removed!",
+          text: "The item has been removed from your wishlist.",
+          icon: "success",
+          confirmButtonColor: "#3085d6",
+          confirmButtonText: "OK",
+        });
       }
     } catch (error) {
       console.error("Failed to remove from wishlist", error);
+      Swal.fire({
+        title: "Error!",
+        text: "Something went wrong. Try again later.",
+        icon: "error",
+      });
     }
   };
 
@@ -52,7 +70,12 @@ const Wishlist = () => {
     navigate(`/dashboard/my-offer/${propertyId}`);
   };
 
-  if (loading) return <div className="text-center mt-10"><Loading /></div>;
+  if (loading)
+    return (
+      <div className="text-center">
+        <Loading />
+      </div>
+    );
 
   return (
     <div className="min-h-screen px-4 py-8 max-w-6xl mx-auto">
@@ -64,7 +87,9 @@ const Wishlist = () => {
       </h2>
 
       {wishlist.length === 0 ? (
-        <p className="text-center text-gray-500">No properties added to wishlist yet.</p>
+        <p className="text-center text-gray-500">
+          No properties added to wishlist yet.
+        </p>
       ) : (
         <div className="flex flex-col gap-6">
           <p className="text-md md:text-2xl text-black mb-6">
@@ -88,7 +113,9 @@ const Wishlist = () => {
                       <h3 className="text-xl font-bold text-gray-800">
                         {property.title}
                       </h3>
-                      <p className="text-gray-500 text-sm">{property.location}</p>
+                      <p className="text-gray-500 text-sm">
+                        {property.location}
+                      </p>
 
                       <div className="mt-3 flex items-center gap-3">
                         <img
@@ -133,7 +160,11 @@ const Wishlist = () => {
                       </button>
                       <button
                         onClick={() => handleRemove(property._id)}
-                        className="py-2 px-4 text-white bg-red-500 rounded hover:bg-red-600 transition"
+                        className={`${
+                          isOffered
+                            ? "hidden"
+                            : "py-2 px-4 text-white bg-red-500 rounded hover:bg-red-600 transition"
+                        }`}
                         title="Remove"
                       >
                         <FaTrashAlt size={24} />

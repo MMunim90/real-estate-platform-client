@@ -80,7 +80,7 @@ const ManageReviews = () => {
                   <p className="text-sm text-gray-500">{review.userEmail}</p>
                 </div>
               </div>
-
+              <p className="text-xl font-semibold text-black">{review.propertyTitle}</p>
               {/* Comment */}
               <div className="text-gray-700 italic flex items-center gap-2 mb-4 flex-grow"><p className="text-xl">🗨️</p>"{review.comment}"</div>
 

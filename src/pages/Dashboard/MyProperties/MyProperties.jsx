@@ -76,7 +76,6 @@ const MyProperties = () => {
                 <option value="verified">Verified</option>
                 <option value="available">Pending</option>
                 <option value="rejected">Rejected</option>
-                <option value="sold">Sold</option>
               </select>
             </div>
           </div>

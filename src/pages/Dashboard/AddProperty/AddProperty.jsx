@@ -139,7 +139,7 @@ const AddProperty = () => {
             type="number"
             {...register("minRate", { required: true })}
             className="w-full px-4 py-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
-            placeholder="৳ 0.00"
+            placeholder="৳ 0.00 (Less than 10000)"
           />
         </div>
         
@@ -150,7 +150,7 @@ const AddProperty = () => {
             type="number"
             {...register("maxRate", { required: true })}
             className="w-full px-4 py-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
-            placeholder="৳ 0.00"
+            placeholder="৳ 0.00 (Less than 10000)"
           />
         </div>
 

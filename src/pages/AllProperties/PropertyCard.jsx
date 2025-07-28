@@ -4,24 +4,27 @@ import { CiLocationOn } from "react-icons/ci";
 
 const PropertyCard = ({ property }) => {
   return (
-    <div className="bg-white rounded shadow-lg overflow-hidden border border-gray-400">
+    <div className="bg-white rounded shadow-lg overflow-hidden border border-gray-400 flex flex-col">
       <div className="relative w-full h-56">
         <img
           src={property.image}
           alt={property.title}
           className="w-full h-56 object-cover"
         />
-        {
-          property.installments && <span className="absolute top-2 right-0 bg-blue-600 text-white text-xs px-3 py-1 rounded-l-full shadow-md">
-          Monthly Installments - {property.installments}/-
-        </span>
-        }
+        {property.installments && (
+          <span className="absolute top-2 right-0 bg-blue-600 text-white text-xs px-3 py-1 rounded-l-full shadow-md">
+            Monthly Installments - {property.installments}/-
+          </span>
+        )}
       </div>
 
-      <div className="p-5 space-y-2">
+      {/* Content area that grows */}
+      <div className="p-5 space-y-2 flex-1 flex flex-col">
         <h3 className="text-xl font-semibold text-black">{property.title}</h3>
         <p className="text-gray-600 flex items-center space-x-2">
-          <span className="font-medium">Location:</span> <CiLocationOn className="mr-1" /> {property.location}
+          <span className="font-medium">Location:</span>
+          <CiLocationOn className="mr-1" />
+          {property.location}
         </p>
 
         <div className="flex items-center gap-3 mt-2">
@@ -32,17 +35,23 @@ const PropertyCard = ({ property }) => {
           />
           <div>
             <p className="font-medium text-black">{property.agentName}</p>
-            <p className="text-xs text-green-600 font-semibold">Verified Agent</p>
+            <p className="text-xs text-green-600 font-semibold">
+              Verified Agent
+            </p>
           </div>
         </div>
 
         <p className="text-sm text-gray-700">
-          <span className="font-medium">Price Range:</span> {property.minRate} - {property.maxRate}
+          <span className="font-medium">Price Range:</span> {property.minRate} -{" "}
+          {property.maxRate}
         </p>
 
-        <p className="flex items-center gap-2 text-sm text-black font-semibold"><MdVerified className="text-blue-500 text-2xl inline"/> Verified</p>
+        <p className="flex items-center gap-2 text-sm text-black font-semibold">
+          <MdVerified className="text-blue-500 text-2xl inline" /> Verified
+        </p>
 
-        <div className="pt-4">
+        {/* Push button to bottom */}
+        <div className="pt-4 mt-auto">
           <Link to={`/properties/${property._id}`}>
             <button className="w-full bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded transition-all">
               View Details
