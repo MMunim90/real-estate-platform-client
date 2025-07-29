@@ -30,7 +30,7 @@ const Profile = () => {
     const form = e.target;
     const name = form.name.value;
     const photoURL = form.photoURL.value;
-    console.log(photoURL);
+    //console.log(photoURL);
 
     updateUserProfile({
       displayName: name,
@@ -73,7 +73,7 @@ const Profile = () => {
 
     try {
       const res = await axiosInstance.patch("/users", application);
-      console.log(res.data);
+      //console.log(res.data);
       if (res.data.modifiedCount > 0) {
         Swal.fire({
           icon: "success",

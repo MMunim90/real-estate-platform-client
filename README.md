@@ -104,8 +104,8 @@ Ensure both frontend and backend are connected properly via APIs and authenticat
 
 ### Admin email: witired@mailinator.com
 ### Admin password: Asdfgh!
-### Agent email:
-### Agent password:
+### Agent email: gora@gari.com
+### Agent password: Asdfgh!
 
 # Live Link :
-[BrickBase]()
+[BrickBase](https://brickbase-47887.web.app/)

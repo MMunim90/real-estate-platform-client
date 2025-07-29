@@ -12,7 +12,7 @@ const ResetPassword = () => {
   const [submitted, setSubmitted] = useState(false);
 
   const onSubmit = (data) => {
-    console.log(data);
+    //console.log(data);
     setSubmitted(true);
   };
 

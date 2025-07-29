@@ -57,7 +57,7 @@ const SoldProperties = () => {
             {soldProperties.length > 0 ? (
               soldProperties.map((property) => (
                 <tr
-                  key={property._id}
+                  key={property.propertyId}
                   className="border-t hover:bg-gray-50 transition"
                 >
                   <td className="px-4 py-3">{property.title}</td>

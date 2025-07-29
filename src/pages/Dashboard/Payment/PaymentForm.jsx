@@ -32,10 +32,10 @@ const PaymentForm = ({ property }) => {
     return <span className="loading loading-spinner text-info"></span>;
   }
 
-  console.log(propertyInfo);
+  //console.log(propertyInfo);
   const amount = propertyInfo.offerAmount;
   const amountInCents = amount * 100;
-  console.log(amountInCents);
+  //console.log(amountInCents);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -54,7 +54,7 @@ const PaymentForm = ({ property }) => {
       setError(error.message);
     } else {
       setError("");
-      console.log("Payment method:", paymentMethod);
+      //console.log("Payment method:", paymentMethod);
       //   navigate("/payment-success");
     }
     //create payment intent
@@ -62,7 +62,7 @@ const PaymentForm = ({ property }) => {
       amountInCents,
       propertyId: property.propertyId,
     });
-    console.log("response from intent", res);
+    //console.log("response from intent", res);
 
     const clientSecret = res.data.clientSecret;
 
@@ -76,7 +76,7 @@ const PaymentForm = ({ property }) => {
       },
     });
 
-    console.log(result)
+    //console.log(result)
 
     if (result.error) {
       setError(result.error.message);
