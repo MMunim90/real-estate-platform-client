@@ -33,7 +33,7 @@ const slides = [
     title: "Secure and Simple Platform",
     description: "Enjoy safe transactions and complete transparency at BrickBase.",
     buttonText: "Learn More",
-    buttonLink: "/privacy-policy",
+    buttonLink: "/privacyPolicy",
     bg: "https://upcdn.io/FW25b3d/raw/uploads/2023/04/18/file-6h8s.jpeg",
   },
   {
