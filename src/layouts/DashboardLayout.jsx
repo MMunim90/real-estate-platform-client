@@ -402,7 +402,7 @@ const DashboardLayout = () => {
           <div>
             <Link
               to="/"
-              className="flex items-center gap-2 mt-0 md:mt-36 lg:mt-0 ml-4"
+              className="flex items-center gap-2 mt-20 md:mt-36 lg:mt-0 ml-4"
             >
               <img src={logo} alt="BrickBase Logo" className="w-8 h-8" />
               <span className="text-xl font-bold">BrickBase</span>
