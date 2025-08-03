@@ -358,7 +358,7 @@ const PropertyDetails = () => {
               <div className="flex justify-end">
                 <button
                   type="submit"
-                  className="w-full py-2 rounded bg-gradient-to-r from-green-400 to-green-600 text-white font-semibold hover:opacity-90 transition"
+                  className="w-full py-2 rounded md:bg-gradient-to-r md:from-green-400 md:to-green-600 border border-gray-300 md:border-none text-gray-400 md:text-white font-semibold hover:opacity-90 transition"
                 >
                   Submit Now
                 </button>
@@ -442,7 +442,7 @@ const PropertyDetails = () => {
               <div className="flex justify-end">
                 <button
                   type="submit"
-                  className="w-full py-2 rounded bg-gradient-to-r from-red-400 to-red-600 text-white font-semibold hover:opacity-90 transition"
+                  className="w-full py-2 rounded md:bg-gradient-to-r md:from-red-400 md:to-red-600 md:text-white border border-gray-300 md:border-none text-gray-400 font-semibold hover:opacity-90 transition"
                 >
                   Submit Report
                 </button>
