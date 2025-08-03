@@ -144,7 +144,7 @@ const PaymentForm = ({ property }) => {
           <button
             type="submit"
             disabled={!stripe}
-            className="w-full bg-gradient-to-r from-blue-400 to-blue-800 text-white py-3 rounded font-semibold hover:opacity-90"
+            className="w-full md:bg-gradient-to-r md:from-blue-400 md:to-blue-800 md:text-white text-gray-400 border border-gray-300 md:border-none py-3 rounded font-semibold hover:opacity-90"
           >
             Pay <MdOutlineKeyboardArrowRight size={25} className="inline" />
           </button>
