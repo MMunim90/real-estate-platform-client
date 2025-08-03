@@ -6,7 +6,7 @@ project name : Real Estate Website
 
 webpage name : BrickBase
 
-### Real Estate Server Repository -> [Click Here](https://github.com/Programming-Hero-Web-Course4/b11a12-server-side-MMunim90)
+### Real Estate Server Repository -> [Click Here](https://github.com/MMunim90/real-estate-platform-server)
 
 purpose :
 BrickBase is a Real Estate Platform designed to simplify the buying, renting, and listing of properties. It offers agents the ability to list properties with detailed information, images, and pricing, while allowing buyers and renters to explore verified listings with filters, favorites, and tracking features. Admins maintain data integrity by verifying listings, managing user access, and ensuring content quality. BrickBase makes the real estate journey more transparent, efficient, and user-friendly for everyone involved.
