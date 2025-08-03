@@ -102,10 +102,12 @@ Visit: http://localhost:5000 or similar
 
 Ensure both frontend and backend are connected properly via APIs and authentication headers.
 
+<!--
 ### Admin email: witired@mailinator.com
 ### Admin password: Asdfgh!
 ### Agent email: gora@gari.com
 ### Agent password: Asdfgh!
+-->
 
 # Live Link :
 [BrickBase](https://brickbase-47887.web.app/)
