@@ -18,7 +18,7 @@ createRoot(document.getElementById("root")).render(
     <QueryClientProvider client={queryClient}>
       <HelmetProvider>
         <AuthProvider>
-          <div className="font-source-code-pro">
+          <div className="font-raleway">
             <RouterProvider router={router} />
           </div>
           <ToastContainer position="top-right" autoClose={3000} />

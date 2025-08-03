@@ -93,60 +93,70 @@ const ManageProperties = () => {
           <Loading></Loading>
         </div>
       ) : (
-        <div className="overflow-x-auto border-2 border-gray-300 rounded">
-          <table className="table w-full border border-gray-200">
-            <thead className="bg-blue-200 text-black font-bold">
-              <tr>
-                <th>Title</th>
-                <th>Location</th>
-                <th>Agent Name</th>
-                <th>Agent Email</th>
-                <th>Price Range</th>
-                <th>Status</th>
-                <th>Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              {properties.map((property) => (
-                <tr key={property._id} className="border-t">
-                  <td>{property.title}</td>
-                  <td>{property.location}</td>
-                  <td>{property.agentName}</td>
-                  <td>{property.agentEmail}</td>
-                  <td>{property.priceRange}</td>
-                  <td className="capitalize">{property.status}</td>
-                  <td>
-                    {property.status === "available" && (
-                      <div className="flex gap-2">
-                        <button
-                          onClick={() => verifyProperty.mutate(property._id)}
-                          className="px-3 py-1 bg-green-500 text-white rounded hover:bg-green-600"
-                        >
-                          Verify
-                        </button>
-                        <button
-                          onClick={() => rejectProperty.mutate(property._id)}
-                          className="px-3 py-1 bg-red-500 text-white rounded hover:bg-red-600"
-                        >
-                          Reject
-                        </button>
-                      </div>
-                    )}
-                    {property.status === "verified" && (
-                      <span className="text-green-600 font-semibold">
-                        Verified
-                      </span>
-                    )}
-                    {property.status === "rejected" && (
-                      <span className="text-red-600 font-semibold">
-                        Rejected
-                      </span>
-                    )}
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+        <div>
+          {properties.length === 0 ? (
+            <p className="text-center text-lg text-gray-500">No Properties Found</p>
+          ) : (
+            <div className="overflow-x-auto border-2 border-gray-300 rounded">
+              <table className="table w-full border border-gray-200">
+                <thead className="bg-blue-200 text-black font-bold">
+                  <tr>
+                    <th>Title</th>
+                    <th>Location</th>
+                    <th>Agent Name</th>
+                    <th>Agent Email</th>
+                    <th>Price Range</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {properties.map((property) => (
+                    <tr key={property._id} className="border-t">
+                      <td>{property.title}</td>
+                      <td>{property.location}</td>
+                      <td>{property.agentName}</td>
+                      <td>{property.agentEmail}</td>
+                      <td>{property.priceRange}</td>
+                      <td className="capitalize">{property.status}</td>
+                      <td>
+                        {property.status === "available" && (
+                          <div className="flex gap-2">
+                            <button
+                              onClick={() =>
+                                verifyProperty.mutate(property._id)
+                              }
+                              className="px-3 py-1 bg-green-500 text-white rounded hover:bg-green-600"
+                            >
+                              Verify
+                            </button>
+                            <button
+                              onClick={() =>
+                                rejectProperty.mutate(property._id)
+                              }
+                              className="px-3 py-1 bg-red-500 text-white rounded hover:bg-red-600"
+                            >
+                              Reject
+                            </button>
+                          </div>
+                        )}
+                        {property.status === "verified" && (
+                          <span className="text-green-600 font-semibold">
+                            Verified
+                          </span>
+                        )}
+                        {property.status === "rejected" && (
+                          <span className="text-red-600 font-semibold">
+                            Rejected
+                          </span>
+                        )}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          )}
         </div>
       )}
     </div>

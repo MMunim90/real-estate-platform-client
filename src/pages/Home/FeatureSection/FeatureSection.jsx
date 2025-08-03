@@ -83,7 +83,10 @@ const FeatureSection = () => {
             ]}
             loop={Infinity}
             typeSpeed={70}
-            deleteSpeed={50}
+            delaySpeed={5000}
+            cursor
+            cursorStyle="|"
+            deleteSpeed={70}
           />
         </h2>
 

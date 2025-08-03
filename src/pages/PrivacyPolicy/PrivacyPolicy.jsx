@@ -45,7 +45,7 @@ const PrivacyPolicy = () => {
             <h2 className="text-2xl font-semibold mb-2 text-blue-500 flex items-center gap-2">
               <FaExchangeAlt /> How We Use Your Information
             </h2>
-            <p>
+            <div>
               Your data is used to:
               <ul className="list-disc list-inside ml-4 mt-2">
                 <li>Match listings based on your preferences</li>
@@ -53,7 +53,7 @@ const PrivacyPolicy = () => {
                 <li>Enhance user experience and platform security</li>
                 <li>Comply with legal obligations</li>
               </ul>
-            </p>
+            </div>
           </section>
 
           {/* 3. Data Retention */}
