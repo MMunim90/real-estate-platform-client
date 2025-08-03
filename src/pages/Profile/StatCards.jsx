@@ -220,7 +220,7 @@ const StatCards = () => {
       {stats.map((card, idx) => (
         <div
           key={idx}
-          className={`bg-gradient-to-tr ${card.color} text-gray-800 p-4 rounded-xl shadow-lg flex flex-col justify-between border border-gray-400`}
+          className={`bg-gradient-to-tr ${card.color} text-gray-800 md:text-white p-4 rounded-xl shadow-lg flex flex-col justify-between border border-gray-400`}
         >
           <div className="flex justify-between items-center">
             <h2 className="text-sm font-semibold">{card.title}</h2>
