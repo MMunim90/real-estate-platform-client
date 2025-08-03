@@ -47,22 +47,11 @@ const Wishlist = () => {
       const res = await axiosSecure.delete(`/wishlist/${id}`);
       if (res.data.deletedCount > 0) {
         setWishlist((prev) => prev.filter((item) => item._id !== id));
-
-        Swal.fire({
-          title: "Removed!",
-          text: "The item has been removed from your wishlist.",
-          icon: "success",
-          confirmButtonColor: "#3085d6",
-          confirmButtonText: "OK",
-        });
+        Swal.fire("Removed!", "Property removed from wishlist.", "success");
       }
     } catch (error) {
-      console.error("Failed to remove from wishlist", error);
-      Swal.fire({
-        title: "Error!",
-        text: "Something went wrong. Try again later.",
-        icon: "error",
-      });
+      console.error("Remove error:", error);
+      Swal.fire("Error", "Failed to remove property.", "error");
     }
   };
 
@@ -91,90 +80,82 @@ const Wishlist = () => {
           No properties added to wishlist yet.
         </p>
       ) : (
-        <div className="flex flex-col gap-6">
+        <div className="flex flex-col gap-4">
           <p className="text-md md:text-2xl text-black mb-6">
             Wishlist list ({wishlist.length})
           </p>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 items-center justify-between mb-6 gap-4">
-            {wishlist.map((property) => {
-              const isOffered = offeredProperties.includes(property._id);
-              return (
-                <div
-                  key={property._id}
-                  className="bg-white shadow rounded overflow-hidden flex flex-col border border-gray-400"
-                >
-                  <img
-                    src={property.image}
-                    alt={property.title}
-                    className="h-48 w-full object-cover"
-                  />
-                  <div className="p-4 flex-1 flex flex-col justify-between">
-                    <div>
-                      <h3 className="text-xl font-bold text-gray-800">
-                        {property.title}
-                      </h3>
-                      <p className="text-gray-500 text-sm">
-                        {property.location}
-                      </p>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {wishlist.map((property) => {
+            const isOffered = offeredProperties.includes(property._id);
+            return (
+              <div
+                key={property._id}
+                className="bg-white border border-gray-300 rounded-lg shadow-md flex flex-col overflow-hidden"
+              >
+                <img
+                  src={property.image}
+                  alt={property.title}
+                  className="h-48 w-full object-cover"
+                />
+                <div className="p-4 flex-1 flex flex-col justify-between">
+                  <div>
+                    <h3 className="text-xl font-semibold text-gray-800">
+                      {property.title}
+                    </h3>
+                    <p className="text-sm text-gray-600">{property.location}</p>
 
-                      <div className="mt-3 flex items-center gap-3">
-                        <img
-                          src={property.agentImage}
-                          alt={property.agentName}
-                          className="w-9 h-9 rounded-full"
-                        />
-                        <div>
-                          <p className="font-medium text-gray-700">
-                            {property.agentName}
-                          </p>
-                          <p className="text-sm text-green-600 flex items-center gap-1">
-                            {property.status === "verified" && (
-                              <>
-                                <FaCheckCircle className="text-green-500" />
-                                Verified Agent
-                              </>
-                            )}
-                          </p>
-                        </div>
-                      </div>
-
-                      <div className="mt-4">
-                        <p className="text-gray-800 font-semibold">
-                          Price: ৳{property.minRate.toLocaleString()} - ৳
-                          {property.maxRate.toLocaleString()}
+                    <div className="mt-3 flex items-center gap-3">
+                      <img
+                        src={property.agentImage}
+                        alt={property.agentName}
+                        className="w-9 h-9 rounded-full object-cover"
+                      />
+                      <div>
+                        <p className="font-medium text-gray-700">
+                          {property.agentName}
                         </p>
+                        {property.status === "verified" && (
+                          <p className="text-sm text-green-600 flex items-center gap-1">
+                            <FaCheckCircle className="text-green-500" />
+                            Verified Agent
+                          </p>
+                        )}
                       </div>
                     </div>
 
-                    <div className="mt-4 flex justify-between items-center gap-2">
-                      <button
-                        onClick={() => handleOffer(property._id)}
-                        disabled={isOffered}
-                        className={`flex-1 py-2 px-4 rounded transition ${
-                          isOffered
-                            ? "bg-gray-400 text-white cursor-not-allowed"
-                            : "bg-blue-500 text-white hover:bg-blue-600"
-                        }`}
-                      >
-                        {isOffered ? "Already Offered" : "Make an Offer"}
-                      </button>
+                    <p className="mt-4 text-gray-800 font-medium">
+                      Price: ৳{property.minRate.toLocaleString()} - ৳
+                      {property.maxRate.toLocaleString()}
+                    </p>
+                  </div>
+
+                  <div className="mt-4 flex justify-between items-center gap-2">
+                    <button
+                      onClick={() => handleOffer(property._id)}
+                      disabled={isOffered}
+                      className={`flex-1 py-2 px-4 rounded font-semibold ${
+                        isOffered
+                          ? "bg-gray-400 text-white cursor-not-allowed"
+                          : "bg-blue-500 text-white hover:bg-blue-600"
+                      }`}
+                    >
+                      {isOffered ? "Already Offered" : "Make an Offer"}
+                    </button>
+                    {!isOffered && (
                       <button
                         onClick={() => handleRemove(property._id)}
-                        className={`${
-                          isOffered
-                            ? "hidden"
-                            : "py-2 px-4 text-white bg-red-500 rounded hover:bg-red-600 transition"
-                        }`}
+                        className="py-3 px-4 text-white bg-red-500 rounded hover:bg-red-600 transition"
                         title="Remove"
                       >
-                        <FaTrashAlt size={24} />
+                        <FaTrashAlt />
                       </button>
-                    </div>
+                    )}
                   </div>
                 </div>
-              );
-            })}
-          </div>
+              </div>
+            );
+          })}
+        </div>
         </div>
       )}
     </div>

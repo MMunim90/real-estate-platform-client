@@ -131,7 +131,7 @@ const PropertyBought = () => {
                           : "badge badge-error"
                       }`}
                     >
-                      {property.status}
+                      {property.status === "paid" ? "bought" : property.status}
                     </p>
                   </div>
                   <p className="text-gray-600">

@@ -37,9 +37,15 @@ const MyProperties = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         axiosSecure.delete(`/properties/${id}`).then((res) => {
-          if (res.data.deletedCount > 0) {
+          if (res.data.success) {
             Swal.fire("Deleted!", "Your property has been deleted.", "success");
-            setProperties(properties.filter((p) => p._id !== id));
+            setProperties((prev) => prev.filter((p) => p._id !== id));
+          } else {
+            Swal.fire(
+              "Error!",
+              res.data.message || "Could not delete.",
+              "error"
+            );
           }
         });
       }
@@ -66,7 +72,9 @@ const MyProperties = () => {
               Property Found({filteredProperties.length})
             </p>
             <div>
-              <label className="text-md md:text-2xl text-black mr-2 mb-6">Sort:</label>
+              <label className="text-md md:text-2xl text-black mr-2 mb-6">
+                Sort:
+              </label>
               <select
                 value={sortByStatus}
                 onChange={(e) => setSortByStatus(e.target.value)}
