@@ -35,6 +35,7 @@ import AdvertiseProperty from "../pages/Dashboard/AdvertiseProperty/AdvertisePro
 import ReportedProperty from "../pages/Dashboard/ReportedProperty/ReportedProperty";
 import SellingStatistics from "../pages/Dashboard/SellingStatistics/SellingStatistics";
 import Payment from "../pages/Dashboard/Payment/Payment";
+import Branches from "../pages/Branches/Branches";
 
 export const router = createBrowserRouter([
   {
@@ -62,6 +63,10 @@ export const router = createBrowserRouter([
         Component: PrivacyPolicy,
       },
       {
+        path: "branches",
+        Component: Branches,
+      },
+      {
         path: "/*",
         Component: ErrorPage,
       },
@@ -71,9 +76,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "allProperties",
-        element: <PrivateRoute>
-          <AllProperties></AllProperties>
-        </PrivateRoute>
+        element: <AllProperties></AllProperties>
       },
       {
         path: "properties/:id",

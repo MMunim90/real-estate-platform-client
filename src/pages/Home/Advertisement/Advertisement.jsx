@@ -37,7 +37,7 @@ const Advertisement = () => {
         ))}
       </div>
 
-      <Link to='/allProperties' className="flex items-center gap-2 justify-center mt-10 text-base md:text-2xl font-semibold"><GoArrowUpLeft className="text-xl md:text-3xl font-semibold"/>View All Verified Properties</Link>
+      <Link to='/allProperties' className="flex items-center gap-2 justify-center mt-10 text-base md:text-xl font-semibold"><GoArrowUpLeft className="text-xl md:text-2xl font-semibold"/>View All Verified Properties</Link>
     </section>
   );
 };

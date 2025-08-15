@@ -44,6 +44,14 @@ const Navbar = () => {
         All Properties
       </NavLink>
       <NavLink
+        to="/branches"
+        className={({ isActive }) =>
+          isActive ? "text-blue-600 font-semibold" : "hover:text-blue-500"
+        }
+      >
+        Branches
+      </NavLink>
+      <NavLink
         to="/dashboard/profile"
         className={({ isActive }) =>
           isActive ? "text-blue-600 font-semibold" : "hover:text-blue-500"

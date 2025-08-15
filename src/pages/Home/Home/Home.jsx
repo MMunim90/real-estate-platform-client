@@ -9,6 +9,7 @@ import PropertyManagementCompanies from "../PropertyManagementCompanies/Property
 import FAQs from "../../FAQs/FAQs";
 import Advertisement from "../Advertisement/Advertisement";
 import ReviewsSection from "../ReviewSection.jsx/ReviewsSection";
+import { Helmet } from "react-helmet-async";
 
 const Home = () => {
   const slightFadeDown = keyframes`
@@ -23,6 +24,9 @@ const Home = () => {
 `;
   return (
     <div>
+      <Helmet>
+        <title>Home | BrickBase</title>
+      </Helmet>
       <Banner></Banner>
       <Fade direction="down" keyframes={slightFadeDown}>
         <StatsHighlight></StatsHighlight>
