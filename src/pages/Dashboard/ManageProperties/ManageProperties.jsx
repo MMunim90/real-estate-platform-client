@@ -85,6 +85,7 @@ const ManageProperties = () => {
       <Helmet>
         <title>Manage Properties | BrickBase</title>
       </Helmet>
+
       <h2 className="text-3xl lg:text-5xl font-semibold text-center mb-10">
         Manage Properties
       </h2>

@@ -8,14 +8,25 @@ import {
   RefreshCcw,
 } from "lucide-react";
 import FadeIn from "react-fade-in";
+import { Link } from "react-router";
 
 const TermsOfUse = () => {
   return (
-    <div className="max-w-7xl mx-auto px-8 py-12">
+    <div className="mx-auto px-8 py-20 bg-blue-50 pl-8 md:pl-12 lg:pl-20">
       <Helmet>
         <title>Terms | BrickBase</title>
       </Helmet>
-      <h2 className="text-3xl font-bold mb-6 text-center text-gray-500">
+
+      <div className="breadcrumbs text-sm text-black mb-2">
+        <ul>
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+          <li>Terms of Use</li>
+        </ul>
+      </div>
+
+      <h2 className="text-3xl font-bold mb-6 text-gray-700">
         Terms of Use
       </h2>
       <div className="space-y-8 text-gray-500">

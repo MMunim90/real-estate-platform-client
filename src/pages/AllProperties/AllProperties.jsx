@@ -4,6 +4,7 @@ import useAxiosPublic from "../../hooks/useAxiosPublic";
 import PropertyCard from "./PropertyCard";
 import { Helmet } from "react-helmet-async";
 import Loading from "../shared/Loading/Loading";
+import { Link } from "react-router";
 
 const AllProperties = () => {
   const axiosPublic = useAxiosPublic();
@@ -40,13 +41,23 @@ const AllProperties = () => {
             .includes(selectedDivision.toLowerCase())
     )
     .sort((a, b) => {
-    if (sortOrder === "LowToHigh") {
-      return a.minRate - b.minRate;
-    } else if (sortOrder === "HighToLow") {
-      return b.minRate - a.minRate;
-    }
-    return 0; // Default
-  });
+      if (sortOrder === "LowToHigh") {
+        return a.minRate - b.minRate;
+      } else if (sortOrder === "HighToLow") {
+        return b.minRate - a.minRate;
+      }
+      return 0; // Default
+    });
+
+  const [itemPerPage, setItemPerPage] = useState(8);
+  const count = filteredProperties.length;
+  const numberOfPages = Math.ceil(count / itemPerPage);
+
+  const pages = [...Array(numberOfPages).keys()];
+
+  const handleItemPerPage = (e) => {
+    console.log(e.target.value);
+  };
 
   if (isLoading)
     return (
@@ -62,8 +73,17 @@ const AllProperties = () => {
       </Helmet>
 
       <h2 className="text-3xl md:text-5xl font-bold text-center mb-10 text-black">
-        Verified Properties
+        All Verified Properties
       </h2>
+
+      <div className="breadcrumbs text-sm text-black mb-2">
+        <ul>
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+          <li>All Properties</li>
+        </ul>
+      </div>
 
       {filteredProperties.length === 0 ? (
         <div className="flex flex-col gap-5">
@@ -87,7 +107,7 @@ const AllProperties = () => {
             {/* Division Filter */}
             <div>
               <label className="text-md text-black">
-                Sort: <br className="block md:hidden"/>
+                Sort: <br className="block md:hidden" />
               </label>
               <select
                 className="border border-gray-400 rounded px-3 py-1 text-black mt-4 md:mt-0"
@@ -104,8 +124,7 @@ const AllProperties = () => {
 
             {/* Sort Dropdown */}
             <div>
-              <label className="text-lg font-semibold mr-1 text-black">
-              </label>
+              <label className="text-lg font-semibold mr-1 text-black"></label>
               <select
                 className="border border-gray-400 rounded px-3 py-1 text-black"
                 value={sortOrder}
@@ -124,6 +143,28 @@ const AllProperties = () => {
         {filteredProperties.map((property) => (
           <PropertyCard key={property._id} property={property} />
         ))}
+      </div>
+
+      <div className="mt-8 text-center">
+        {pages.map((page) => (
+          <button
+            key={page}
+            className="btn btn-outline border-2 border-blue-500 text-blue-500 mr-4 hover:bg-blue-200"
+          >
+            {page + 1}
+          </button>
+        ))}
+        <select
+          value={itemPerPage}
+          onChange={handleItemPerPage}
+          className="text-blue-500 btn btn-outline bg-blue-50 hover:bg-blue-200 rounded border-2 border-blue-500"
+          name=""
+          id=""
+        >
+          <option value="4">4</option>
+          <option value="8">8</option>
+          <option value="12">12</option>
+        </select>
       </div>
     </section>
   );

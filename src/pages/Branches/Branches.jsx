@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useLoaderData } from "react-router";
+import { Link, useLoaderData } from "react-router";
 import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
@@ -80,7 +80,17 @@ const Branches = () => {
   };
 
   return (
-    <div className="min-h-screen py-12 px-4 md:px-12 w-full bg-white">
+    <div className="min-h-screen py-12 px-4 md:px-12 w-full bg-blue-50">
+
+      <div className="breadcrumbs text-sm text-black mb-2">
+        <ul>
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+          <li>Branches</li>
+        </ul>
+      </div>
+      
       <h2 className="text-3xl md:text-6xl font-bold text-start mb-1 text-black">
         Find Our Offline Branches 
       </h2>

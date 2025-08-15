@@ -8,20 +8,30 @@ import {
   FaRegClock,
   FaRegEnvelope,
 } from "react-icons/fa";
+import { Link } from "react-router";
 
 const PrivacyPolicy = () => {
   return (
-    <div className="px-4 md:px-16 py-10 max-w-6xl mx-auto">
+    <div className="px-4 md:px-16 py-20 mx-auto bg-blue-50 text-black pl-8 md:pl-12 lg:pl-20">
       <Helmet>
         <title>Privacy Policy | BrickBase</title>
       </Helmet>
 
-      <h1 className="text-3xl md:text-4xl font-bold mb-6 text-blue-600 text-center">
+      <div className="breadcrumbs text-sm text-black mb-2">
+        <ul>
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+          <li>Privacy Policy</li>
+        </ul>
+      </div>
+
+      <h1 className="text-3xl md:text-4xl font-bold mb-2 text-blue-600">
         <FaUserShield className="inline-block mr-2" />
         Privacy Policy
       </h1>
 
-      <p className="mb-6 text-gray-600 text-center">
+      <p className="mb-6 text-gray-600">
         Last Updated: July 18, 2025
       </p>
 
@@ -32,7 +42,7 @@ const PrivacyPolicy = () => {
             <h2 className="text-2xl font-semibold mb-2 text-blue-500 flex items-center gap-2">
               <FaLock /> Information We Collect
             </h2>
-            <p>
+            <p className="max-w-6xl">
               We collect personal information such as name, email address, phone
               number, and property preferences when you register, list
               properties, or communicate with us. We may also gather location

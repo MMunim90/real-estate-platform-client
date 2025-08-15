@@ -5,7 +5,7 @@ import { Helmet } from "react-helmet-async";
 
 const Contact = () => {
   return (
-    <div className="min-h-screen flex items-center justify-center px-4 py-12">
+    <div className="min-h-screen flex items-center justify-center px-4 py-12 bg-blue-50">
       <Helmet>
         <title>Contact | BrickBase</title>
       </Helmet>
@@ -38,7 +38,7 @@ const Contact = () => {
                   </a>
                 </div>
               </div>
-              <button className="mt-4 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded">
+              <button className="mt-4 bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded">
                 Request a Demo
               </button>
             </div>
@@ -69,7 +69,7 @@ const Contact = () => {
                   </a>
                 </div>
               </div>
-              <button className="mt-4 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded">
+              <button className="mt-4 bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded">
                 Get Help
               </button>
             </div>
