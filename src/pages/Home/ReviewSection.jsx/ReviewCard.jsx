@@ -7,7 +7,7 @@ const ReviewCard = ({ review }) => {
   const { userImage, userName, userEmail, rating, comment, propertyTitle, propertyId } = review;
 
   return (
-    <div className="bg-blue-50 shadow-md rounded-2xl p-12 border border-gray-200 hover:shadow-lg transition-all flex flex-col justify-between">
+    <div className="bg-blue-50 shadow-md rounded-md p-12 border border-gray-200 hover:shadow-lg transition-all flex flex-col justify-between">
       {/* Reviewer Image */}
       <div className="mb-12 flex justify-between items-center">
         <img

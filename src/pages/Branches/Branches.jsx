@@ -89,7 +89,7 @@ const Branches = () => {
         At Brickbase, we believe in building trust through real connections. Along with our online services, we have multiple offline branches across Bangladesh where you can meet our team in person. Whether you need property advice, want to explore investment opportunities, or require assistance with buying, selling, or renting, our branch offices are ready to help. Visit your nearest Brickbase branch to experience our dedicated service firsthand.
       </p>
 
-      <div className="h-[500px] lg:h-[700px] mx-auto rounded-3xl border-3 border-blue-400 shadow-md overflow-hidden relative">
+      <div className="h-[500px] lg:h-[700px] mx-auto rounded-lg border-3 border-blue-400 shadow-md overflow-hidden relative">
         {/* Search Input and Suggestions */}
         <div className="absolute top-4 left-1/2 -translate-x-1/2 z-10 w-[90%] sm:w-[400px]">
           <div className="relative">

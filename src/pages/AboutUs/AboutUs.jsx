@@ -77,7 +77,7 @@ const AboutUs = () => {
               What Makes Us Unique
             </h2>
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-              <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-2xl transition">
+              <div className="bg-white hover:bg-blue-50 p-6 rounded-lg shadow-md hover:shadow-2xl transition">
                 <FaShieldAlt className="text-blue-500 text-3xl mb-3" />
                 <h3 className="font-semibold text-lg mb-2">Trusted Platform</h3>
                 <p className="text-sm text-gray-600">
@@ -85,7 +85,7 @@ const AboutUs = () => {
                 </p>
               </div>
 
-              <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-2xl transition">
+              <div className="bg-white hover:bg-blue-50 p-6 rounded-lg shadow-md hover:shadow-2xl transition">
                 <FaTools className="text-blue-500 text-3xl mb-3" />
                 <h3 className="font-semibold text-lg mb-2">Smart Tools</h3>
                 <p className="text-sm text-gray-600">
@@ -93,7 +93,7 @@ const AboutUs = () => {
                 </p>
               </div>
 
-              <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-2xl transition">
+              <div className="bg-white hover:bg-blue-50 p-6 rounded-lg shadow-md hover:shadow-2xl transition">
                 <FaGlobe className="text-blue-500 text-3xl mb-3" />
                 <h3 className="font-semibold text-lg mb-2">Nationwide Reach</h3>
                 <p className="text-sm text-gray-600">
@@ -101,7 +101,7 @@ const AboutUs = () => {
                 </p>
               </div>
 
-              <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-2xl transition">
+              <div className="bg-white hover:bg-blue-50 p-6 rounded-lg shadow-md hover:shadow-2xl transition">
                 <FaHandshake className="text-blue-500 text-3xl mb-3" />
                 <h3 className="font-semibold text-lg mb-2">Customer Support</h3>
                 <p className="text-sm text-gray-600">
@@ -156,7 +156,7 @@ const AboutUs = () => {
             <h2 className="text-2xl font-semibold mb-6 text-blue-500 flex justify-center items-center gap-2">
               <FaUserTie /> Meet the Developer
             </h2>
-            <div className="bg-blue-50 rounded-xl p-6 shadow-md">
+            <div className="bg-blue-50 rounded-xl p-6 shadow-lg">
               <img
                 className="w-32 h-32 object-cover rounded-full mx-auto mb-4 border-4 border-blue-300"
                 src={developerImg}

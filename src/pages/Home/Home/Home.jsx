@@ -10,6 +10,7 @@ import FAQs from "../../FAQs/FAQs";
 import Advertisement from "../Advertisement/Advertisement";
 import ReviewsSection from "../ReviewSection.jsx/ReviewsSection";
 import { Helmet } from "react-helmet-async";
+import CustomersMessages from "../CustomersMessage/CustomersMessages";
 
 const Home = () => {
   const slightFadeDown = keyframes`
@@ -53,6 +54,11 @@ const Home = () => {
       </Fade>
       <Fade direction="down" keyframes={slightFadeDown}>
         <FeatureSection></FeatureSection>
+      </Fade>
+      <Fade direction="down" keyframes={slightFadeDown}>
+        <div className="md:w-10/12 lg:w-7/12 mx-auto hidden md:block">
+          <CustomersMessages></CustomersMessages>
+        </div>
       </Fade>
       <Fade direction="down" keyframes={slightFadeDown}>
         <div className="w-10/12 mx-auto">

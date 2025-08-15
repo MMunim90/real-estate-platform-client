@@ -51,14 +51,16 @@ const Navbar = () => {
       >
         Branches
       </NavLink>
-      <NavLink
-        to="/dashboard/profile"
-        className={({ isActive }) =>
-          isActive ? "text-blue-600 font-semibold" : "hover:text-blue-500"
-        }
-      >
-        Dashboard
-      </NavLink>
+      {user && (
+        <NavLink
+          to="/dashboard/profile"
+          className={({ isActive }) =>
+            isActive ? "text-blue-600 font-semibold" : "hover:text-blue-500"
+          }
+        >
+          Dashboard
+        </NavLink>
+      )}
       {!user && (
         <NavLink
           to="/login"
@@ -92,9 +94,7 @@ const Navbar = () => {
           {user && (
             <div className="relative">
               <img
-                src={
-                  user?.photoURL || "https://i.ibb.co/F4BxGnK2/user.png"
-                }
+                src={user?.photoURL || "https://i.ibb.co/F4BxGnK2/user.png"}
                 alt="Profile"
                 className="w-9 h-9 rounded-full cursor-pointer border-2 border-blue-400 object-cover"
                 onClick={() => setDropdownOpen(!dropdownOpen)}
@@ -105,9 +105,7 @@ const Navbar = () => {
                     <p className="font-semibold text-lg">
                       {user?.displayName || "User"}
                     </p>
-                    <p className="text-xs">
-                      {user?.email}
-                    </p>
+                    <p className="text-xs">{user?.email}</p>
                   </div>
                   <Link
                     to="/about"
