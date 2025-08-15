@@ -3,14 +3,15 @@ import { useLoaderData } from "react-router";
 import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
+import logo from "../../assets/logo.png"
 
 const greenIcon = new L.Icon({
-  iconUrl: "https://i.ibb.co.com/5HcwKBq/marker.png",
+  iconUrl: logo,
   shadowUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png",
-  iconSize: [60, 41],
+  iconSize: [25, 35],
   iconAnchor: [12, 41],
   popupAnchor: [1, -34],
-  shadowSize: [91, 51],
+  shadowSize: [38, 38],
 });
 
 const MapMover = ({ target }) => {
@@ -79,12 +80,16 @@ const Branches = () => {
   };
 
   return (
-    <div className="min-h-screen py-12 px-4 md:px-12 w-full">
-      <h2 className="text-3xl md:text-6xl font-bold text-start mb-8">
-        We are available in 64 districts
+    <div className="min-h-screen py-12 px-4 md:px-12 w-full bg-white">
+      <h2 className="text-3xl md:text-6xl font-bold text-start mb-1 text-black">
+        Find Our Offline Branches 
       </h2>
 
-      <div className="h-[500px] mx-auto rounded-3xl border-3 border-blue-400 shadow-md overflow-hidden relative">
+      <p className="mb-8 text-gray-700 max-w-7xl text-start">
+        At Brickbase, we believe in building trust through real connections. Along with our online services, we have multiple offline branches across Bangladesh where you can meet our team in person. Whether you need property advice, want to explore investment opportunities, or require assistance with buying, selling, or renting, our branch offices are ready to help. Visit your nearest Brickbase branch to experience our dedicated service firsthand.
+      </p>
+
+      <div className="h-[500px] lg:h-[700px] mx-auto rounded-3xl border-3 border-blue-400 shadow-md overflow-hidden relative">
         {/* Search Input and Suggestions */}
         <div className="absolute top-4 left-1/2 -translate-x-1/2 z-10 w-[90%] sm:w-[400px]">
           <div className="relative">

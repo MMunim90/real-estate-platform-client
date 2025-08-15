@@ -48,7 +48,7 @@ const AboutUs = () => {
         <section className="py-12 px-6 md:px-16 bg-blue-50">
           <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-10">
             <div>
-              <h2 className="text-2xl font-semibold mb-4 text-blue-800 flex items-center gap-2">
+              <h2 className="text-2xl font-semibold mb-4 text-blue-500 flex items-center gap-2">
                 <FaRocket /> Our Mission
               </h2>
               <p className="text-gray-600">
@@ -58,7 +58,7 @@ const AboutUs = () => {
               </p>
             </div>
             <div>
-              <h2 className="text-2xl font-semibold mb-4 text-blue-800 flex items-center gap-2">
+              <h2 className="text-2xl font-semibold mb-4 text-blue-500 flex items-center gap-2">
                 <FaEye /> Our Vision
               </h2>
               <p className="text-gray-600">
@@ -73,7 +73,7 @@ const AboutUs = () => {
         {/* 4 Responsive Feature Cards */}
         <section className="bg-white py-16 px-6 md:px-16">
           <div className="max-w-7xl mx-auto text-center">
-            <h2 className="text-3xl font-bold text-blue-800 mb-10">
+            <h2 className="text-3xl font-bold text-blue-500 mb-10">
               What Makes Us Unique
             </h2>
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -115,7 +115,7 @@ const AboutUs = () => {
         {/* History Section */}
         <section className="bg-blue-50 py-12 px-6 md:px-16">
           <div className="max-w-6xl mx-auto text-center">
-            <h2 className="text-2xl font-semibold mb-4 text-blue-500 flex justify-center items-center gap-2">
+            <h2 className="text-2xl font-bold mb-4 text-blue-500 flex justify-center items-center gap-2">
               <FaHistory /> Our Journey
             </h2>
             <p className="text-gray-700 max-w-3xl mx-auto">
@@ -129,7 +129,7 @@ const AboutUs = () => {
         {/* New Section: Why Choose Us */}
         <section className="py-16 px-6 md:px-16">
           <div className="max-w-6xl mx-auto text-center">
-            <h2 className="text-2xl font-bold mb-6 text-blue-800">Why Choose Us?</h2>
+            <h2 className="text-2xl font-bold mb-6 text-blue-500">Why Choose Us?</h2>
             <p className="text-gray-600 max-w-3xl mx-auto">
               BrickBase is more than just a listing platform — it's a trusted companion
               in your property journey. With user-friendly tools, transparent data, and a
@@ -141,7 +141,7 @@ const AboutUs = () => {
         {/* New Section: Technology We Use */}
         <section className="bg-blue-50 py-16 px-6 md:px-16">
           <div className="max-w-6xl mx-auto text-center">
-            <h2 className="text-2xl font-bold mb-6 text-blue-800">Technology We Use</h2>
+            <h2 className="text-2xl font-bold mb-6 text-blue-500">Technology We Use</h2>
             <p className="text-gray-600 max-w-3xl mx-auto mb-6">
               BrickBase is built using modern, scalable technologies like React.js,
               Node.js, MongoDB, Tailwind CSS, and cloud infrastructure — ensuring
@@ -153,7 +153,7 @@ const AboutUs = () => {
         {/* Developer Info */}
         <section className="py-12 px-6 md:px-16">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-2xl font-semibold mb-6 text-blue-800 flex justify-center items-center gap-2">
+            <h2 className="text-2xl font-semibold mb-6 text-blue-500 flex justify-center items-center gap-2">
               <FaUserTie /> Meet the Developer
             </h2>
             <div className="bg-blue-50 rounded-xl p-6 shadow-md">
@@ -172,13 +172,13 @@ const AboutUs = () => {
                 Engineering.
               </p>
               <div className="flex flex-wrap justify-center gap-6 text-blue-600 text-sm">
-                <a href="https://github.com/shahanalmunim" target="_blank" rel="noreferrer" className="flex items-center gap-1 hover:underline">
+                <a href="https://github.com/MMunim90" target="_blank" rel="noreferrer" className="flex items-center gap-1 hover:underline">
                   <FaGithub /> GitHub
                 </a>
-                <a href="https://www.linkedin.com/in/shahanalmunim" target="_blank" rel="noreferrer" className="flex items-center gap-1 hover:underline">
+                <a href="https://www.linkedin.com/in/m-munim/" target="_blank" rel="noreferrer" className="flex items-center gap-1 hover:underline">
                   <FaLinkedin /> LinkedIn
                 </a>
-                <a href="mailto:shahanalmunim@gmail.com" className="flex items-center gap-1 hover:underline">
+                <a href="mailto:shahan.al.munim@gmail.com" className="flex items-center gap-1 hover:underline">
                   <FaEnvelope /> Email
                 </a>
                 <a href="https://t.me/codecraftgamers" target="_blank" rel="noreferrer" className="flex items-center gap-1 hover:underline">
