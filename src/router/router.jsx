@@ -65,6 +65,7 @@ export const router = createBrowserRouter([
       {
         path: "branches",
         Component: Branches,
+        loader: () => fetch("./branches.json"),
       },
       {
         path: "/*",

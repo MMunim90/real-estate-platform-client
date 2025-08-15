@@ -5,12 +5,12 @@ import "leaflet/dist/leaflet.css";
 import L from "leaflet";
 
 const greenIcon = new L.Icon({
-  iconUrl: "https://i.ibb.co/YBCrkSnb/marker.png",
+  iconUrl: "https://i.ibb.co.com/5HcwKBq/marker.png",
   shadowUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png",
-  iconSize: [25, 41],
+  iconSize: [60, 41],
   iconAnchor: [12, 41],
   popupAnchor: [1, -34],
-  shadowSize: [41, 41],
+  shadowSize: [91, 51],
 });
 
 const MapMover = ({ target }) => {
@@ -84,7 +84,7 @@ const Branches = () => {
         We are available in 64 districts
       </h2>
 
-      <div className="h-[500px] mx-auto rounded-3xl border-3 border-[#CAEB66] shadow-md overflow-hidden relative">
+      <div className="h-[500px] mx-auto rounded-3xl border-3 border-blue-400 shadow-md overflow-hidden relative">
         {/* Search Input and Suggestions */}
         <div className="absolute top-4 left-1/2 -translate-x-1/2 z-10 w-[90%] sm:w-[400px]">
           <div className="relative">
@@ -94,25 +94,25 @@ const Branches = () => {
               onChange={handleSearchChange}
               onKeyDown={handleKeyDown}
               placeholder="🔍 Search district name..."
-              className="input input-bordered w-full border-2 border-[#CAEB66] rounded-full pr-24"
+              className="input input-bordered w-full border-2 border-blue-400 rounded-full pr-24"
             />
             <button
               onClick={() => handleGo()}
-              className="absolute top-1/2 right-2 transform -translate-y-1/2 bg-[#CAEB66] hover:bg-[#badd54] text-black font-semibold px-5 py-1 rounded-full text-sm z-10"
+              className="absolute top-1/2 right-2 transform -translate-y-1/2 bg-blue-400 hover:bg-blue-500 text-white font-semibold px-5 py-1 rounded-full text-sm z-10"
             >
               Go
             </button>
 
             {suggestions.length > 0 && (
-              <ul className="absolute top-full mt-2 left-0 right-0 bg-white text-black border border-[#CAEB66] rounded-lg max-h-48 overflow-auto shadow-lg z-50">
+              <ul className="absolute top-full mt-2 left-0 right-0 bg-white text-black border border-blue-400 rounded-lg max-h-48 overflow-auto shadow-lg z-50">
                 {suggestions.map((branch, idx) => (
                   <li
                     key={idx}
                     onClick={() => handleGo(branch.district)}
                     className={`px-4 py-2 cursor-pointer ${
                       idx === highlightedIndex
-                        ? "bg-[#CAEB66] text-black"
-                        : "hover:bg-[#CAEB66] hover:text-black"
+                        ? "bg-blue-400 text-black"
+                        : "hover:bg-blue-400 hover:text-black"
                     }`}
                   >
                     {branch.district}

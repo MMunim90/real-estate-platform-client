@@ -45,7 +45,7 @@ const AboutUs = () => {
         </section>
 
         {/* Mission & Vision */}
-        <section className="py-12 px-6 md:px-16">
+        <section className="py-12 px-6 md:px-16 bg-blue-50">
           <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-10">
             <div>
               <h2 className="text-2xl font-semibold mb-4 text-blue-800 flex items-center gap-2">
@@ -71,13 +71,13 @@ const AboutUs = () => {
         </section>
 
         {/* 4 Responsive Feature Cards */}
-        <section className="bg-gray-50 py-16 px-6 md:px-16">
+        <section className="bg-white py-16 px-6 md:px-16">
           <div className="max-w-7xl mx-auto text-center">
             <h2 className="text-3xl font-bold text-blue-800 mb-10">
               What Makes Us Unique
             </h2>
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-              <div className="bg-white p-6 rounded-lg shadow hover:shadow-lg transition">
+              <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-2xl transition">
                 <FaShieldAlt className="text-blue-500 text-3xl mb-3" />
                 <h3 className="font-semibold text-lg mb-2">Trusted Platform</h3>
                 <p className="text-sm text-gray-600">
@@ -85,7 +85,7 @@ const AboutUs = () => {
                 </p>
               </div>
 
-              <div className="bg-white p-6 rounded-lg shadow hover:shadow-lg transition">
+              <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-2xl transition">
                 <FaTools className="text-blue-500 text-3xl mb-3" />
                 <h3 className="font-semibold text-lg mb-2">Smart Tools</h3>
                 <p className="text-sm text-gray-600">
@@ -93,7 +93,7 @@ const AboutUs = () => {
                 </p>
               </div>
 
-              <div className="bg-white p-6 rounded-lg shadow hover:shadow-lg transition">
+              <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-2xl transition">
                 <FaGlobe className="text-blue-500 text-3xl mb-3" />
                 <h3 className="font-semibold text-lg mb-2">Nationwide Reach</h3>
                 <p className="text-sm text-gray-600">
@@ -101,7 +101,7 @@ const AboutUs = () => {
                 </p>
               </div>
 
-              <div className="bg-white p-6 rounded-lg shadow hover:shadow-lg transition">
+              <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-2xl transition">
                 <FaHandshake className="text-blue-500 text-3xl mb-3" />
                 <h3 className="font-semibold text-lg mb-2">Customer Support</h3>
                 <p className="text-sm text-gray-600">
@@ -113,9 +113,9 @@ const AboutUs = () => {
         </section>
 
         {/* History Section */}
-        <section className="bg-gray-100 py-12 px-6 md:px-16">
+        <section className="bg-blue-50 py-12 px-6 md:px-16">
           <div className="max-w-6xl mx-auto text-center">
-            <h2 className="text-2xl font-semibold mb-4 text-blue-800 flex justify-center items-center gap-2">
+            <h2 className="text-2xl font-semibold mb-4 text-blue-500 flex justify-center items-center gap-2">
               <FaHistory /> Our Journey
             </h2>
             <p className="text-gray-700 max-w-3xl mx-auto">
