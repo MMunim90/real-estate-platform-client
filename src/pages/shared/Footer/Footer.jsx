@@ -45,13 +45,13 @@ const Footer = () => {
         <div className="flex flex-col gap-2">
           <h3 className="font-semibold text-gray-800 mb-2">Follow Us</h3>
           <div className="flex gap-4">
-            <a href="https://facebook.com/profile.php?id=61554851699924" target="_blank" rel="noreferrer" className="hover:text-blue-600">
+            <a href="https://www.facebook.com/munim9munim" target="_blank" rel="noreferrer" className="hover:text-blue-600">
               <FaFacebookF size={20} />
             </a>
             <a href="https://x.com/__munim__" target="_blank" rel="noreferrer" className="hover:text-blue-500">
               <FaTwitter size={20} />
             </a>
-            <a href="https://linkedin.com/in/m-munim-436456279" target="_blank" rel="noreferrer" className="hover:text-blue-700">
+            <a href="https://www.linkedin.com/in/m-munim/" target="_blank" rel="noreferrer" className="hover:text-blue-700">
               <FaLinkedinIn size={20} />
             </a>
             <a href="https://instagram.com/_mmunim_" target="_blank" rel="noreferrer" className="hover:text-pink-500">
