@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import TestimonialCard from "./TestimonialCard";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { EffectCoverflow, Pagination, Navigation } from "swiper/modules";
+import { EffectCoverflow, Pagination, Navigation, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
@@ -101,12 +101,16 @@ const CustomersMessages = () => {
             depth: 100,
             modifier: 2.5,
           }}
+          autoplay={{
+            delay: 10000, 
+            disableOnInteraction: false, 
+          }}
           pagination={{ el: ".swiper-pagination", clickable: true }}
           navigation={{
             nextEl: ".custom-swiper-next",
             prevEl: ".custom-swiper-prev",
           }}
-          modules={[EffectCoverflow, Pagination, Navigation]}
+          modules={[EffectCoverflow, Pagination, Navigation, Autoplay]}
           className="swiper_container"
           onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)} // track active slide
         >
