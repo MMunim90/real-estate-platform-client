@@ -26,7 +26,12 @@ const Footer = () => {
           <h3 className="font-semibold text-gray-800 mb-2">Quick Links</h3>
           <Link to="/" className="hover:text-blue-600">Home</Link>
           <Link to="/allProperties" className="hover:text-blue-600">All Properties</Link>
-          <Link to="/dashboard/profile" className="hover:text-blue-600">Dashboard</Link>
+          <Link to="/branches" className="hover:text-blue-600">Branches</Link>
+          {
+            user && (
+              <Link to="/dashboard/profile" className="hover:text-blue-600">Dashboard</Link>
+            )
+          }
           {
             !user && (<Link to="/login" className="hover:text-blue-600">Login</Link>)
           }
