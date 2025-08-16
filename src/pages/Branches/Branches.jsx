@@ -167,6 +167,59 @@ const Branches = () => {
           <MapMover target={targetBranch} />
         </MapContainer>
       </div>
+
+
+        {/* Additional Content Section */}
+      <div className="mt-12 max-w-7xl mx-auto text-center">
+        <h3 className="text-2xl md:text-4xl font-bold text-black mb-4">
+          Why Visit Our Branches?
+        </h3>
+        <p className="text-gray-700 mb-6">
+          Our offline branches are designed to bring you closer to your property goals. 
+          Whether you want one-on-one guidance, local insights, or quick assistance, 
+          our expert team is available to support you in person. 
+          We make sure you feel confident and informed at every step.
+        </p>
+
+        <div className="grid gap-6 md:grid-cols-3">
+          <div className="p-6 bg-white shadow-md rounded-xl border border-blue-100">
+            <h4 className="text-lg font-semibold mb-2 text-blue-500">
+              Personalized Consultation
+            </h4>
+            <p className="text-gray-600">
+              Meet with our advisors directly and get tailored property solutions 
+              based on your budget and preferences.
+            </p>
+          </div>
+          <div className="p-6 bg-white shadow-md rounded-xl border border-blue-100">
+            <h4 className="text-lg font-semibold mb-2 text-blue-500">
+              Local Market Insights
+            </h4>
+            <p className="text-gray-600">
+              Our branch teams have deep knowledge of the local property market 
+              and can help you make smarter investment choices.
+            </p>
+          </div>
+          <div className="p-6 bg-white shadow-md rounded-xl border border-blue-100">
+            <h4 className="text-lg font-semibold mb-2 text-blue-500">
+              Quick Assistance
+            </h4>
+            <p className="text-gray-600">
+              Get instant support for documentation, legal queries, and property visits 
+              without waiting for online responses.
+            </p>
+          </div>
+        </div>
+
+        <div className="mt-10">
+          <Link
+            to="/contact"
+            className="inline-block bg-blue-500 hover:bg-blue-600 text-white font-semibold px-8 py-3 rounded-full shadow-md transition"
+          >
+            Contact Our Nearest Branch
+          </Link>
+        </div>
+      </div>
     </div>
   );
 };

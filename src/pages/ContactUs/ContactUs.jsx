@@ -31,7 +31,7 @@ const Contact = () => {
                   Find out more about our advertising solutions as a CRE owner
                   or broker.
                 </p>
-                <div className="flex items-center justify-center text-blue-400 font-medium space-x-2 mb-4">
+                <div className="flex items-center justify-center text-blue-400 font-medium space-x-2 mb-4 text-2xl">
                   <FaPhoneAlt className="text-blue-400" />
                   <a href="tel:2253594875" className="hover:underline">
                     225-359-4875
@@ -62,7 +62,7 @@ const Contact = () => {
                   Manage account, billing inquiries, property questions, support
                   team, and more.
                 </p>
-                <div className="flex items-center justify-center text-blue-400 font-medium space-x-2 mb-4">
+                <div className="flex items-center justify-center text-blue-400 font-medium space-x-2 mb-4 text-2xl">
                   <FaPhoneAlt className="text-blue-400" />
                   <a href="tel:4876554545" className="hover:underline">
                     487-655-4545
