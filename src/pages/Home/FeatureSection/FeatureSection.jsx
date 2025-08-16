@@ -4,7 +4,7 @@ import { Typewriter } from "react-simple-typewriter";
 import { IoMdClose } from "react-icons/io";
 import { Link } from "react-router";
 import { GoArrowUpLeft } from "react-icons/go";
-import './SearchBar.css'
+import "./SearchBar.css";
 
 const FeatureSection = () => {
   const [search, setSearch] = useState("");
@@ -49,11 +49,14 @@ const FeatureSection = () => {
           return res.json();
         })
         .then((data) => {
-          const filtered = data.filter((property) =>
-            property.location.toLowerCase().includes(search.toLowerCase())
+          const properties = Array.isArray(data) ? data : data.properties || [];
+
+          const filtered = properties.filter((property) =>
+            property.location?.toLowerCase().includes(search.toLowerCase())
           );
           setSearchData(filtered);
         })
+
         .catch((error) => console.error("Fetch error:", error));
     } else {
       setSearchData([]);

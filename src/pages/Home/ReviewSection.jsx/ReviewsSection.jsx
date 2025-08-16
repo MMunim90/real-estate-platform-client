@@ -15,13 +15,15 @@ const ReviewsSection = () => {
     },
   });
 
-  const { data: properties = [], isLoading: propertiesLoading } = useQuery({
+  const { data: propertiesData, isLoading: propertiesLoading } = useQuery({
     queryKey: ["verified-properties"],
     queryFn: async () => {
       const res = await axiosPublic.get("/properties/verified");
       return res.data;
     },
   });
+
+  const properties = propertiesData?.properties || [];
 
   if (reviewsLoading || propertiesLoading) return <Loading />;
 
