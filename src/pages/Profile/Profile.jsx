@@ -9,9 +9,9 @@ import useUserRole from "../../hooks/useUserRole";
 import useAxios from "../../hooks/useAxios";
 import { useForm } from "react-hook-form";
 import { FaFacebook, FaTwitter, FaWhatsapp } from "react-icons/fa";
-import { Link } from "react-router";
 import Loading from "../shared/Loading/Loading";
 import StatCards from "./StatCards";
+import { CiMail } from "react-icons/ci";
 
 const Profile = () => {
   const { user, setUser, updateUserProfile } = useAuth();
@@ -139,6 +139,7 @@ const Profile = () => {
           <h1 className="text-2xl md:text-3xl font-semibold text-gray-800">
             {user.displayName}
           </h1>
+          <p className="text-sm mb-8 text-gray-500 flex items-center gap-2"><CiMail />{user.email}</p>
 
           <div className="flex gap-4 justify-center md:justify-start my-2">
             {socials?.facebook && (

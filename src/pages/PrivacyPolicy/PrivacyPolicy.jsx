@@ -83,14 +83,14 @@ const PrivacyPolicy = () => {
             <h2 className="text-2xl font-semibold mb-2 text-blue-500 flex items-center gap-2">
               <FaUserShield /> Data Sharing & Disclosure
             </h2>
-            <p>
+            <div>
               We do not sell your personal data. However, we may share it with:
               <ul className="list-disc list-inside ml-4 mt-2">
                 <li>Trusted partners for listing promotions</li>
                 <li>Law enforcement when required</li>
                 <li>Third-party analytics services (e.g., Google Analytics)</li>
               </ul>
-            </p>
+            </div>
           </section>
 
           {/* 5. Contact */}

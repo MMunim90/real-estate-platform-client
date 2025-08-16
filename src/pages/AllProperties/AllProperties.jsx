@@ -11,6 +11,8 @@ const AllProperties = () => {
 
   const [selectedDivision, setSelectedDivision] = useState("All(Division)");
   const [sortOrder, setSortOrder] = useState("Default");
+  const [itemPerPage, setItemPerPage] = useState(8);
+  const [currentPage, setCurrentPage] = useState(1);
 
   const divisions = [
     "All(Division)",
@@ -24,13 +26,18 @@ const AllProperties = () => {
     "Mymensingh",
   ];
 
-  const { data: properties = [], isLoading } = useQuery({
-    queryKey: ["verified-properties"],
+  const { data, isLoading } = useQuery({
+    queryKey: ["verified-properties", currentPage, itemPerPage],
     queryFn: async () => {
-      const res = await axiosPublic.get("/properties/verified");
+      const res = await axiosPublic.get(
+        `/properties/verified?page=${currentPage}&size=${itemPerPage}`
+      );
       return res.data;
     },
   });
+
+  const properties = data?.properties || [];
+  const count = data?.total || 0;
 
   const filteredProperties = properties
     .filter((property) =>
@@ -49,14 +56,25 @@ const AllProperties = () => {
       return 0; // Default
     });
 
-  const [itemPerPage, setItemPerPage] = useState(8);
-  const count = filteredProperties.length;
   const numberOfPages = Math.ceil(count / itemPerPage);
-
   const pages = [...Array(numberOfPages).keys()];
 
   const handleItemPerPage = (e) => {
-    console.log(e.target.value);
+    const val = parseInt(e.target.value);
+    setItemPerPage(val);
+    setCurrentPage(1);
+  };
+
+  const handleNextPage = () => {
+    if (currentPage < pages.length) {
+      setCurrentPage(currentPage + 1);
+    }
+  };
+
+  const handlePrevPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage(currentPage - 1);
+    }
   };
 
   if (isLoading)
@@ -145,27 +163,46 @@ const AllProperties = () => {
         ))}
       </div>
 
-      <div className="mt-8 text-center">
-        {pages.map((page) => (
+      {filteredProperties.length !== 0 && (
+        <div className="mt-8 text-center">
           <button
-            key={page}
-            className="btn btn-outline border-2 border-blue-500 text-blue-500 mr-4 hover:bg-blue-200"
+            onClick={handlePrevPage}
+            className="hidden md:inline btn btn-outline border-2 border-blue-500 text-blue-600 mr-4 hover:bg-blue-200"
           >
-            {page + 1}
+            Previous
           </button>
-        ))}
-        <select
-          value={itemPerPage}
-          onChange={handleItemPerPage}
-          className="text-blue-500 btn btn-outline bg-blue-50 hover:bg-blue-200 rounded border-2 border-blue-500"
-          name=""
-          id=""
-        >
-          <option value="4">4</option>
-          <option value="8">8</option>
-          <option value="12">12</option>
-        </select>
-      </div>
+          {pages.map((page) => (
+            <button
+              onClick={() => setCurrentPage(page + 1)}
+              key={page}
+              className={
+                currentPage === page + 1
+                  ? "btn btn-outline border-2 border-blue-500 text-blue-600 mr-4 bg-blue-200"
+                  : "btn btn-outline border-2 border-blue-500 text-blue-600 mr-4 hover:bg-blue-200"
+              }
+            >
+              {page + 1}
+            </button>
+          ))}
+          <button
+            onClick={handleNextPage}
+            className="hidden md:inline btn btn-outline border-2 border-blue-500 text-blue-600 mr-4 hover:bg-blue-200"
+          >
+            Next
+          </button>
+          <select
+            value={itemPerPage}
+            onChange={handleItemPerPage}
+            className="text-blue-600 btn btn-outline bg-blue-50 hover:bg-blue-200 rounded border-2 border-blue-500"
+            name=""
+            id=""
+          >
+            <option value="4">4</option>
+            <option value="8">8</option>
+            <option value="12">12</option>
+          </select>
+        </div>
+      )}
     </section>
   );
 };

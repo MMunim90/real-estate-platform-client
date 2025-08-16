@@ -86,7 +86,7 @@ const StatCards = () => {
       {
         title: "Total Users",
         value: stats.totalUsers,
-        sub: "Updated monthly",
+        sub: "Updated daily",
         icon: <Users size={24} />,
         color: "from-pink-500 to-pink-400",
       },

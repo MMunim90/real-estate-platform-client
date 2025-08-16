@@ -9,7 +9,7 @@ const greenIcon = new L.Icon({
   iconUrl: logo,
   shadowUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png",
   iconSize: [25, 35],
-  iconAnchor: [12, 41],
+  iconAnchor: [12, 20],
   popupAnchor: [1, -34],
   shadowSize: [38, 38],
 });
