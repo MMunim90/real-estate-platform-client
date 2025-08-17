@@ -1,4 +1,4 @@
-import { Link } from "react-router";
+import { Link, useLocation } from "react-router";
 import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn } from "react-icons/fa";
 import logo from "../../../assets/logo.png";
 import { useContext } from "react";
@@ -6,6 +6,13 @@ import { AuthContext } from "../../../context/AuthContext/AuthContext";
 
 const Footer = () => {
   const { user } = useContext(AuthContext);
+  const location = useLocation();
+
+  const getLinkClass = (path) =>
+    location.pathname === path
+      ? "text-blue-600 font-semibold"
+      : "hover:text-blue-600";
+
   return (
     <footer className="bg-white text-gray-700">
       <div className="max-w-6xl mx-auto px-4 py-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
@@ -24,26 +31,20 @@ const Footer = () => {
         {/* Navigation Links */}
         <div className="flex flex-col gap-2">
           <h3 className="font-semibold text-gray-800 mb-2">Quick Links</h3>
-          <Link to="/" className="hover:text-blue-600">Home</Link>
-          <Link to="/allProperties" className="hover:text-blue-600">All Properties</Link>
-          <Link to="/branches" className="hover:text-blue-600">Branches</Link>
-          {
-            user && (
-              <Link to="/dashboard/profile" className="hover:text-blue-600">Dashboard</Link>
-            )
-          }
-          {
-            !user && (<Link to="/login" className="hover:text-blue-600">Login</Link>)
-          }
+          <Link to="/" className={getLinkClass("/")}>Home</Link>
+          <Link to="/allProperties" className={getLinkClass("/allProperties")}>All Properties</Link>
+          <Link to="/branches" className={getLinkClass("/branches")}>Branches</Link>
+          {user && <Link to="/dashboard/profile" className={getLinkClass("/dashboard/profile")}>Dashboard</Link>}
+          {!user && <Link to="/login" className={getLinkClass("/login")}>Login</Link>}
         </div>
 
         {/* Company Links */}
         <div className="flex flex-col gap-2">
           <h3 className="font-semibold text-gray-800 mb-2">Company</h3>
-          <Link to="/about" className="hover:text-blue-600">About Us</Link>
-          <Link to="/contact" className="hover:text-blue-600">Contact Us</Link>
-          <Link to="/terms" className="hover:text-blue-600">Terms of Use</Link>
-          <Link to="/privacyPolicy" className="hover:text-blue-600">Privacy Policy</Link>
+          <Link to="/about" className={getLinkClass("/about")}>About Us</Link>
+          <Link to="/contact" className={getLinkClass("/contact")}>Contact Us</Link>
+          <Link to="/terms" className={getLinkClass("/terms")}>Terms of Use</Link>
+          <Link to="/privacyPolicy" className={getLinkClass("/privacyPolicy")}>Privacy Policy</Link>
         </div>
 
         {/* Social Links */}

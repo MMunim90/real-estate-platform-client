@@ -79,7 +79,7 @@ const CustomersMessages = () => {
     <div className="py-8 px-4 relative">
       {/* Header */}
       <div className="text-center mb-12 flex flex-col items-center">
-        <h1 className="font-extrabold text-[40px] mt-2 mb-2">
+        <h1 className="text-white font-bold text-[40px] mt-2 mb-2">
           What our satisfied clients are saying...
         </h1>
         <p className="opacity-50 text-center">

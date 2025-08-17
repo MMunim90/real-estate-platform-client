@@ -9,31 +9,41 @@ import {
   FaRegEnvelope,
 } from "react-icons/fa";
 import { Link } from "react-router";
+import logo from "../../assets/logo.png";
 
 const PrivacyPolicy = () => {
   return (
-    <div className="px-4 md:px-16 py-20 mx-auto bg-blue-50 text-black pl-8 md:pl-12 lg:pl-20">
+    <div className="px-4 md:px-16 py-20 mx-auto bg-blue-50 text-black pl-6 md:pl-12 lg:pl-20">
       <Helmet>
         <title>Privacy Policy | BrickBase</title>
       </Helmet>
 
-      <div className="breadcrumbs text-sm text-black mb-2">
-        <ul>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>Privacy Policy</li>
-        </ul>
+      <div className="mb-10 relative flex flex-col bg-gradient-to-r from-blue-400 to-blue-300 px-12 py-16 rounded-2xl">
+        {/* Logo at top-right */}
+
+        <img
+          src={logo}
+          alt="BrickBase Logo"
+          className="absolute top-8 left-12 w-12 h-12"
+        />
+        <p className="absolute left-26 top-10 text-2xl text-gray-800 font-bold"> BrickBase</p>
+
+        <div className="breadcrumbs text-sm text-black mb-2 mt-6">
+          <ul>
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+            <li>Privacy Policy</li>
+          </ul>
+        </div>
+
+        <h1 className="text-3xl md:text-4xl font-bold text-blue-700 mb-2">
+          <FaUserShield className="inline-block mr-2" />
+          Privacy Policy
+        </h1>
+
+        <p className="text-gray-700">Last Updated: July 18, 2025</p>
       </div>
-
-      <h1 className="text-3xl md:text-4xl font-bold mb-2 text-blue-600">
-        <FaUserShield className="inline-block mr-2" />
-        Privacy Policy
-      </h1>
-
-      <p className="mb-6 text-gray-600">
-        Last Updated: July 18, 2025
-      </p>
 
       <div>
         <FadeIn className="space-y-8">
