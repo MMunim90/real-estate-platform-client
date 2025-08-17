@@ -39,8 +39,8 @@ const PrivacyPolicy = () => {
         </div>
 
         {/* Title */}
-        <h1 className="text-3xl md:text-5xl font-extrabold text-blue-600 mb-3 drop-shadow">
-          <FaUserShield className="inline-block mr-2 text-blue-600" />
+        <h1 className="text-3xl md:text-5xl font-extrabold text-blue-600 mb-3 drop-shadow flex items-center">
+          <FaUserShield className="mr-3 text-blue-600" />
           Privacy Policy
         </h1>
 

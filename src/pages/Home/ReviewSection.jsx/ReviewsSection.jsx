@@ -36,7 +36,7 @@ const ReviewsSection = () => {
         Check Out the Most Recent Genuine User Reviews and Feedback from Our
         Valued Property Platform Users
       </p>
-      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+      <div className="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {reviews.length > 0 ? (
           reviews.map((review) => {
             const property = properties.find(

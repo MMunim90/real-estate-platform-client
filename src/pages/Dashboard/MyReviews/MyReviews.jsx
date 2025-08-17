@@ -67,7 +67,7 @@ const MyReviews = () => {
       {reviews.length === 0 ? (
         <p className="text-center text-gray-500">You haven't given any reviews yet.</p>
       ) : (
-        <div className="grid gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {reviews.map((review) => (
             <div
               key={review._id}
