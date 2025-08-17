@@ -3,6 +3,7 @@ import Swal from "sweetalert2";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import Loading from "../../shared/Loading/Loading";
 import { Helmet } from "react-helmet-async";
+import { Link } from "react-router";
 
 const ManageProperties = () => {
   const axiosSecure = useAxiosSecure();
@@ -85,6 +86,18 @@ const ManageProperties = () => {
       <Helmet>
         <title>Manage Properties | BrickBase</title>
       </Helmet>
+
+      <div className="breadcrumbs text-xs md:text-sm text-gray-800 mb-4 self-start md:self-center">
+          <ul className="flex gap-2">
+            <li>
+              <Link to="/" className="hover:underline font-medium">
+                Home
+              </Link>
+            </li>
+            <li className="text-gray-700 font-medium"><Link to="/dashboard/profile">Dashboard</Link></li>
+            <li className="text-gray-700 font-medium">Manage Properties</li>
+          </ul>
+        </div>
 
       <h2 className="text-3xl lg:text-5xl font-semibold text-center mb-10">
         Manage Properties

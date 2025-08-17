@@ -3,6 +3,7 @@ import { Helmet } from "react-helmet-async";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import useAuth from "../../../hooks/useAuth";
+import { Link } from "react-router";
 
 const MyReviews = () => {
   const [reviews, setReviews] = useState([]);
@@ -47,7 +48,19 @@ const MyReviews = () => {
         <title>My Reviews | BrickBase</title>
       </Helmet>
 
-      <h2 className="text-3xl md:text-5xl font-bold mb-6 text-center">
+      <div className="breadcrumbs text-xs md:text-sm text-gray-800 mb-4 self-start md:self-center">
+          <ul className="flex gap-2">
+            <li>
+              <Link to="/" className="hover:underline font-medium">
+                Home
+              </Link>
+            </li>
+            <li className="text-gray-700 font-medium"><Link to="/dashboard/profile">Dashboard</Link></li>
+            <li className="text-gray-700 font-medium">My Reviews</li>
+          </ul>
+        </div>
+
+      <h2 className="text-3xl md:text-5xl font-semibold mb-8 text-center">
         My Reviews
       </h2>
 

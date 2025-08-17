@@ -1,9 +1,10 @@
 import React from "react";
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router";
+import { Link, useNavigate } from "react-router";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import useAuth from "../../../hooks/useAuth";
+import { Helmet } from "react-helmet-async";
 
 const MyProperties = () => {
   const { user } = useAuth();
@@ -57,7 +58,25 @@ const MyProperties = () => {
   };
   return (
     <div className="min-h-screen p-4 max-w-7xl mx-auto">
-      <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold my-12 text-center">
+      <Helmet>
+        <title>My Added Properties | BrickBase</title>
+      </Helmet>
+
+      <div className="breadcrumbs text-xs md:text-sm text-gray-800 mb-4 self-start md:self-center">
+        <ul className="flex gap-2">
+          <li>
+            <Link to="/" className="hover:underline font-medium">
+              Home
+            </Link>
+          </li>
+          <li className="text-gray-700 font-medium">
+            <Link to="/dashboard/profile">Dashboard</Link>
+          </li>
+          <li className="text-gray-700 font-medium">My Added Properties</li>
+        </ul>
+      </div>
+
+      <h2 className="text-2xl md:text-4xl lg:text-5xl font-semibold my-12 text-center">
         My Added Properties
       </h2>
 

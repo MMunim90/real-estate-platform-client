@@ -4,6 +4,7 @@ import { Helmet } from "react-helmet-async";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import Loading from "../../shared/Loading/Loading";
 import { toast } from "react-toastify";
+import { Link } from "react-router";
 
 const AdvertiseProperty = () => {
   const axiosSecure = useAxiosSecure();
@@ -64,7 +65,19 @@ const AdvertiseProperty = () => {
         <title>Advertise Property | Admin Panel</title>
       </Helmet>
 
-      <h2 className="text-3xl md:text-5xl font-bold text-center mb-8">
+      <div className="breadcrumbs text-xs md:text-sm text-gray-800 mb-4 self-start md:self-center">
+          <ul className="flex gap-2">
+            <li>
+              <Link to="/" className="hover:underline font-medium">
+                Home
+              </Link>
+            </li>
+            <li className="text-gray-700 font-medium"><Link to="/dashboard/profile">Dashboard</Link></li>
+            <li className="text-gray-700 font-medium">Advertise Property</li>
+          </ul>
+        </div>
+
+      <h2 className="text-3xl md:text-5xl font-semibold text-center mb-8">
         Advertise Property
       </h2>
 
@@ -82,7 +95,7 @@ const AdvertiseProperty = () => {
             </tr>
           </thead>
           <tbody>
-            {properties.map((property) => (
+            {Array.isArray(properties) && (properties.map((property) => (
               <tr key={property._id} className="hover:bg-blue-50">
                 <td>
                   <img
@@ -106,7 +119,7 @@ const AdvertiseProperty = () => {
                   </button>
                 </td>
               </tr>
-            ))}
+            )))}
             {properties.length === 0 && (
               <tr>
                 <td colSpan="5" className="text-center text-gray-500 py-8">
@@ -119,7 +132,7 @@ const AdvertiseProperty = () => {
       </div>
 
       {/* Table for Already Advertised Properties */}
-      <h2 className="text-3xl md:text-5xl font-bold text-center mb-6">
+      <h2 className="text-3xl md:text-5xl font-semibold text-center mb-6">
         Advertised Properties
       </h2>
       <div className="overflow-x-auto shadow rounded border border-gray-400">

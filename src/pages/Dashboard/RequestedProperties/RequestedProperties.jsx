@@ -3,6 +3,7 @@ import { Helmet } from "react-helmet-async";
 import useAuth from "../../../hooks/useAuth";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import Swal from "sweetalert2";
+import { Link } from "react-router";
 
 const RequestedProperties = () => {
   const { user } = useAuth();
@@ -65,6 +66,21 @@ const RequestedProperties = () => {
       <Helmet>
         <title>Requested Offers | BrickBase</title>
       </Helmet>
+
+      <div className="breadcrumbs text-xs md:text-sm text-gray-800 mb-4 self-start md:self-center">
+        <ul className="flex gap-2">
+          <li>
+            <Link to="/" className="hover:underline font-medium">
+              Home
+            </Link>
+          </li>
+          <li className="text-gray-700 font-medium">
+            <Link to="/dashboard/profile">Dashboard</Link>
+          </li>
+          <li className="text-gray-700 font-medium">Requested Properties</li>
+        </ul>
+      </div>
+
       <h2 className="text-3xl md:text-5xl font-semibold my-8 text-center">
         Requested/Offered Properties
       </h2>

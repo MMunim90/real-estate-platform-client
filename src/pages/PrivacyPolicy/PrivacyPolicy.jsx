@@ -7,9 +7,12 @@ import {
   FaExchangeAlt,
   FaRegClock,
   FaRegEnvelope,
+  FaCookieBite,
+  FaChild,
+  FaSyncAlt,
+  FaServer,
 } from "react-icons/fa";
 import { Link } from "react-router";
-import logo from "../../assets/logo.png";
 
 const PrivacyPolicy = () => {
   return (
@@ -18,31 +21,33 @@ const PrivacyPolicy = () => {
         <title>Privacy Policy | BrickBase</title>
       </Helmet>
 
-      <div className="mb-10 relative flex flex-col bg-gradient-to-r from-blue-400 to-blue-300 px-12 py-16 rounded-2xl">
-        {/* Logo at top-right */}
-
-        <img
-          src={logo}
-          alt="BrickBase Logo"
-          className="absolute top-8 left-12 w-12 h-12"
-        />
-        <p className="absolute left-26 top-10 text-2xl text-gray-800 font-bold"> BrickBase</p>
-
-        <div className="breadcrumbs text-sm text-black mb-2 mt-6">
-          <ul>
+      <div
+        className="relative flex flex-col items-start md:items-center text-center md:text-center 
+  bg-gradient-to-tr from-blue-500 via-blue-400 to-blue-300 
+  px-8 md:px-16 py-16 rounded-3xl shadow-lg border border-blue-200 mb-10"
+      >
+        {/* Breadcrumbs */}
+        <div className="breadcrumbs text-sm text-gray-800 mb-4 self-start md:self-center">
+          <ul className="flex gap-2">
             <li>
-              <Link to="/">Home</Link>
+              <Link to="/" className="hover:underline font-medium">
+                Home
+              </Link>
             </li>
-            <li>Privacy Policy</li>
+            <li className="text-gray-700 font-medium">Privacy Policy</li>
           </ul>
         </div>
 
-        <h1 className="text-3xl md:text-4xl font-bold text-blue-700 mb-2">
-          <FaUserShield className="inline-block mr-2" />
+        {/* Title */}
+        <h1 className="text-3xl md:text-5xl font-extrabold text-blue-600 mb-3 drop-shadow">
+          <FaUserShield className="inline-block mr-2 text-blue-600" />
           Privacy Policy
         </h1>
 
-        <p className="text-gray-700">Last Updated: July 18, 2025</p>
+        {/* Last Updated */}
+        <p className="text-gray-100 text-sm md:text-base bg-blue-600 px-4 py-2 rounded-full shadow-sm mt-2">
+          Last Updated: July 18, 2025
+        </p>
       </div>
 
       <div>
@@ -103,7 +108,59 @@ const PrivacyPolicy = () => {
             </div>
           </section>
 
-          {/* 5. Contact */}
+          {/* 5. Cookies */}
+          <section>
+            <h2 className="text-2xl font-semibold mb-2 text-blue-500 flex items-center gap-2">
+              <FaCookieBite /> Cookies & Tracking Technologies
+            </h2>
+            <p>
+              We use cookies and similar technologies to improve your browsing
+              experience, analyze site traffic, and personalize content. You may
+              adjust your browser settings to decline cookies, but some features
+              of our platform may not function properly without them.
+            </p>
+          </section>
+
+          {/* 6. User Rights */}
+          <section>
+            <h2 className="text-2xl font-semibold mb-2 text-blue-500 flex items-center gap-2">
+              <FaServer /> Your Rights
+            </h2>
+            <ul className="list-disc list-inside ml-4">
+              <li>Access your personal data</li>
+              <li>Request corrections or updates</li>
+              <li>Request deletion of your account</li>
+              <li>Opt-out of marketing communications</li>
+            </ul>
+          </section>
+
+          {/* 7. Children's Privacy */}
+          <section>
+            <h2 className="text-2xl font-semibold mb-2 text-blue-500 flex items-center gap-2">
+              <FaChild /> Children's Privacy
+            </h2>
+            <p>
+              Our services are not intended for children under 13 years of age.
+              We do not knowingly collect personal data from minors. If we
+              become aware that we have collected such information, we will
+              promptly delete it.
+            </p>
+          </section>
+
+          {/* 8. Policy Updates */}
+          <section>
+            <h2 className="text-2xl font-semibold mb-2 text-blue-500 flex items-center gap-2">
+              <FaSyncAlt /> Changes to This Policy
+            </h2>
+            <p>
+              We may update this Privacy Policy from time to time. Any changes
+              will be posted here with the updated date. We encourage you to
+              review this policy periodically to stay informed about how we
+              protect your information.
+            </p>
+          </section>
+
+          {/* 9. Contact */}
           <section>
             <h2 className="text-2xl font-semibold mb-2 text-blue-500 flex items-center gap-2">
               <FaRegEnvelope /> Contact Us
@@ -114,7 +171,7 @@ const PrivacyPolicy = () => {
             </p>
             <ul className="list-inside ml-4 mt-2">
               <li>Email: support@brickbase.com</li>
-              <li>Phone: +880-1234-567890</li>
+              <li>Phone: 487-655-4545</li>
               <li>Address: Dhaka, Bangladesh</li>
             </ul>
           </section>

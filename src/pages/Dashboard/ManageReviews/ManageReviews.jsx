@@ -3,6 +3,7 @@ import { Helmet } from "react-helmet-async";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import Loading from "../../shared/Loading/Loading";
 import Swal from "sweetalert2";
+import { Link } from "react-router";
 
 const ManageReviews = () => {
   const axiosSecure = useAxiosSecure();
@@ -52,6 +53,18 @@ const ManageReviews = () => {
       <Helmet>
         <title>Manage Reviews | BrickBase Admin</title>
       </Helmet>
+
+      <div className="breadcrumbs text-xs md:text-sm text-gray-800 mb-4 self-start md:self-center">
+          <ul className="flex gap-2">
+            <li>
+              <Link to="/" className="hover:underline font-medium">
+                Home
+              </Link>
+            </li>
+            <li className="text-gray-700 font-medium"><Link to="/dashboard/profile">Dashboard</Link></li>
+            <li className="text-gray-700 font-medium">Manage Reviews</li>
+          </ul>
+        </div>
 
       <h2 className="text-3xl md:text-5xl font-semibold text-center mb-10 ">
         Manage All Reviews

@@ -8,6 +8,7 @@ import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import useAuth from "../../../hooks/useAuth";
 import Swal from "sweetalert2";
 import { Helmet } from "react-helmet-async";
+import { Link } from "react-router";
 
 const AddProperty = () => {
   const { user } = useAuth();
@@ -79,6 +80,19 @@ const AddProperty = () => {
       <Helmet>
         <title>Add Property | BrickBase</title>
       </Helmet>
+
+      <div className="breadcrumbs text-xs md:text-sm text-gray-800 mb-4 self-start md:self-center mt-6 ml-6">
+          <ul className="flex gap-2">
+            <li>
+              <Link to="/" className="hover:underline font-medium">
+                Home
+              </Link>
+            </li>
+            <li className="text-gray-700 font-medium"><Link to="/dashboard/profile">Dashboard</Link></li>
+            <li className="text-gray-700 font-medium">Add Property</li>
+          </ul>
+        </div>
+
       <h2 className="text-3xl lg:text-5xl font-semibold text-center mb-8 mt-8 lg:mt-8">
         Add New Property
       </h2>

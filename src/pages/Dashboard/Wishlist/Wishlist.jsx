@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { FaCheckCircle, FaTrashAlt } from "react-icons/fa";
-import { useNavigate } from "react-router";
+import { Link, useNavigate } from "react-router";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import useAuth from "../../../hooks/useAuth";
 import { Helmet } from "react-helmet-async";
@@ -71,7 +71,21 @@ const Wishlist = () => {
       <Helmet>
         <title>Wishlist | BrickBase</title>
       </Helmet>
-      <h2 className="text-3xl md:text-5xl font-bold mb-6 text-center text-gray-800">
+
+      <div className="breadcrumbs text-xs md:text-sm text-gray-800 mb-4 self-start md:self-center">
+          <ul className="flex gap-2">
+            <li>
+              <Link to="/" className="hover:underline font-medium">
+                Home
+              </Link>
+            </li>
+            <li className="text-gray-700 font-medium"><Link to="/dashboard/profile">Dashboard</Link></li>
+            <li className="text-gray-700 font-medium">Wishlist</li>
+          </ul>
+        </div>
+
+
+      <h2 className="text-3xl md:text-5xl font-semibold mb-6 text-center text-gray-800">
         Your Wishlist
       </h2>
 
