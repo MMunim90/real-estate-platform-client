@@ -39,13 +39,13 @@ const PrivacyPolicy = () => {
         </div>
 
         {/* Title */}
-        <h1 className="text-3xl md:text-5xl font-extrabold text-blue-600 mb-3 drop-shadow flex items-center">
+        <h1 className="text-3xl md:text-5xl font-extrabold text-blue-600 mb-4 drop-shadow flex items-center">
           <FaUserShield className="mr-3 text-blue-600" />
           Privacy Policy
         </h1>
 
         {/* Last Updated */}
-        <p className="text-gray-100 text-sm md:text-base bg-blue-600 px-4 py-2 rounded-full shadow-sm mt-2">
+        <p className="text-gray-100 text-sm md:text-base bg-blue-600 px-4 py-2 rounded-full shadow-sm mt-4">
           Last Updated: July 18, 2025
         </p>
       </div>

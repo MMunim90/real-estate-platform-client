@@ -2,8 +2,26 @@ import React from "react";
 import { FaPhoneAlt } from "react-icons/fa";
 import { motion } from "framer-motion";
 import { Helmet } from "react-helmet-async";
+import Swal from "sweetalert2";
 
 const Contact = () => {
+  const handleRequest = () => {
+    Swal.fire({
+      icon: "success",
+      title: "Request Submitted",
+      text: "Thank you for your request, we will respond you soon. Otherwise you can call this number ( 225-359-4875 ) directly for a demo.",
+      confirmButtonColor: "#01AFF7",
+    });
+  };
+
+  const handleHelp = () => {
+    Swal.fire({
+      icon: "warning",
+      title: "Service Not Available",
+      text: "Please call this number ( 487-655-4545 ) for help",
+      confirmButtonColor: "#01AFF7",
+    });
+  };
   return (
     <div className="min-h-screen bg-gradient-to-b from-blue-50 via-white to-blue-100 px-6 py-16">
       <Helmet>
@@ -50,7 +68,10 @@ const Contact = () => {
                 225-359-4875
               </a>
             </div>
-            <button className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-6 rounded-full shadow-md transition">
+            <button
+              onClick={() => handleRequest()}
+              className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-6 rounded-full shadow-md transition"
+            >
               Request a Demo
             </button>
           </div>
@@ -82,7 +103,10 @@ const Contact = () => {
                 487-655-4545
               </a>
             </div>
-            <button className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-6 rounded-full shadow-md transition">
+            <button
+              onClick={() => handleHelp()}
+              className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-6 rounded-full shadow-md transition"
+            >
               Get Help
             </button>
           </div>
