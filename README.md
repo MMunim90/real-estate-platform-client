@@ -36,7 +36,7 @@ Vite, Node.js, React.js, LocalStorage, React Router DOM, Tailwind CSS, DaisyUI, 
 
 - Favorite property feature for buyers
 
-- Dark and light mode toggle
+- user can wishlist, review, report any properties,
 
 - Clean UI with real estate card layout
 
